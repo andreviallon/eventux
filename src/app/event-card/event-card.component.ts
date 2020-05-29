@@ -1,3 +1,4 @@
+import { IEvent } from './../event.service';
 import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class EventCardComponent implements OnInit {
 
-  @Input() event: string;
+  @Input() event: IEvent;
 
   constructor() { }
 
