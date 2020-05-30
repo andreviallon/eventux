@@ -49,7 +49,7 @@ export class EventService {
         _tutorId: '123',
         firstName: 'John',
         lastName: 'Doe',
-        img: ''
+        img: './src/app/assets/john-doe-avatar.png'
       }
     },
     {
