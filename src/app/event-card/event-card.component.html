@@ -14,9 +14,18 @@
       </div>
 
       <div class="content">
-        <p>{{ event.location.address }} - {{ event.location.city }}, {{ event.location.zipcode }}</p>
-        <p>From {{ event.startTime }} to {{ event.endTime }}</p>
-        <p>{{ event.date }}</p>
+        <div class="flex-container">
+          <fa-icon [icon]="faMapMarkerAlt"></fa-icon>
+          <p>{{ event.location.address }} - {{ event.location.city }}, {{ event.location.zipcode }}</p>
+        </div>
+        <div class="flex-container">
+          <fa-icon [icon]="faClock"></fa-icon>
+          <p>From {{ event.startTime }} to {{ event.endTime }}</p>
+        </div>
+        <div class="flex-container">
+          <fa-icon [icon]="faCalendar"></fa-icon>
+          <p>{{ event.date }}</p>
+        </div>
         <div class="tags">
           <span *ngFor="let tag of event.tags" class="tag is-normal"><a>#{{tag}}</a></span>
         </div>

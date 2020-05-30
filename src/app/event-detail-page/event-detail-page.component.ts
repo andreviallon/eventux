@@ -9,21 +9,6 @@ import { EventService } from '../event.service';
   templateUrl: './event-detail-page.component.html',
   styleUrls: ['./event-detail-page.component.scss']
 })
-export class EventDetailPageComponent implements OnInit, OnDestroy {
-
-  private event: IEvent;
-
-  private subscription: Subscription;
-
-  constructor(private route: ActivatedRoute, private eventService: EventService) { }
-
-  ngOnInit() {
-    this.subscription = this.route.params.subscribe(params => this.event = this.eventService.getEvent(params['id']))
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
-
+export class EventDetailPageComponent {
 
 }

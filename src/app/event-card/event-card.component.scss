@@ -7,9 +7,13 @@
 }
 
 .content {
-  p {
-    margin: 0.2rem 0.5rem;
-    font-weight: 500;
+  .flex-container {
+    display: flex;
+    align-items: baseline;
+
+    p {
+      margin: 0.3rem 0.5rem;
+    }
   }
 }
 

@@ -1,3 +1,4 @@
+import { FontAwesomeModule, FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -15,6 +16,7 @@ import { EventDetailPageComponent } from './event-detail-page/event-detail-page.
 import { HomePageComponent } from './home-page/home-page.component';
 import { EventsPageComponent } from './events-page/events-page.component';
 import { CreateEventPageComponent } from './create-event-page/create-event-page.component';
+
 
 @NgModule({
   declarations: [
@@ -34,9 +36,10 @@ import { CreateEventPageComponent } from './create-event-page/create-event-page.
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule  { }
