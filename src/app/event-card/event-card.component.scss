@@ -1,8 +1,11 @@
 .card {
   cursor: pointer;
+  height: 100%;
 
-  .media {
-    margin-bottom: 1rem;
+  .card-content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
   }
 }
 
@@ -12,11 +15,29 @@
     align-items: baseline;
 
     p {
-      margin: 0.3rem 0.5rem;
+      margin: 0.3rem;
     }
   }
 }
 
+.event-description {
+  max-height: 4.6em;
+  overflow: hidden;
+
+  p {
+    margin-bottom: 0.6rem;
+  }
+}
+
+.content {
+  flex-grow: 1;
+}
+
+fa-icon {
+  width: 20px;
+  text-align: center;
+}
+
 .tags {
-  margin-top: 1.5rem;
+  flex-grow: 1;
 }

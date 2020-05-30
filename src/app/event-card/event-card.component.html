@@ -12,8 +12,8 @@
           <p class="subtitle is-6">{{ event.tutor.firstName }} {{ event.tutor.lastName }}</p>
         </div>
       </div>
-
       <div class="content">
+        <p class="event-description">{{ event.description }}</p>
         <div class="flex-container">
           <fa-icon [icon]="faMapMarkerAlt"></fa-icon>
           <p>{{ event.location.address }} - {{ event.location.city }}, {{ event.location.zipcode }}</p>
@@ -26,9 +26,9 @@
           <fa-icon [icon]="faCalendar"></fa-icon>
           <p>{{ event.date }}</p>
         </div>
-        <div class="tags">
-          <span *ngFor="let tag of event.tags" class="tag is-normal"><a>#{{tag}}</a></span>
-        </div>
+      </div>
+      <div class="tags">
+        <span *ngFor="let tag of event.tags" class="tag is-normal"><a>#{{tag}}</a></span>
       </div>
     </div>
   </div>
