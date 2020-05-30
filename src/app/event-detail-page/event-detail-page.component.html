@@ -1,7 +1,7 @@
 <section class="hero is-medium is-link is-bold">
   <div class="hero-body">
     <div class="container">
-      <div class="event-detail-container columns">
+      <div class="columns">
         <div class="title-container column is-half">
           <div>
             <p class="title is-1 is-spaced">{{ event.title }}</p>
@@ -25,3 +25,33 @@
     </div>
   </div>
 </section>
+
+<div class="event-content container">
+  <div class="columns">
+    <div class="column is-7">
+      <div class="description-container">
+        <p class="title is-4">Description</p>
+        <p>{{ event.description }}</p>
+      </div>
+    </div>
+    <div class="column is-5">
+      <div class="tutor-container">
+        <p class="title is-4">Meet you tutor</p>
+        <article class="media">
+          <figure class="media-left">
+            <p class="image is-64x64">
+              <img class="round-img" src="https://bulma.io/images/placeholders/128x128.png">
+            </p>
+          </figure>
+          <div class="media-content">
+            <div class="content tutor-description">
+              <p><strong>John Doe</strong> <a><small> @johndoe</small></a></p>
+              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque tortor
+                vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</div>

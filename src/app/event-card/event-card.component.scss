@@ -1,15 +1,18 @@
-.round-img {
-  border-radius: 100px;
-  -webkit-border-radius: 100px;
-  -moz-border-radius: 100px;
-  -ms-border-radius: 100px;
-  -o-border-radius: 100px;
-}
-
 .card {
   cursor: pointer;
+
+  .media {
+    margin-bottom: 1rem;
+  }
 }
 
-.location {
-  margin: 1.5rem 0 0.5rem;
+.content {
+  p {
+    margin: 0.2rem 0.5rem;
+    font-weight: 500;
+  }
+}
+
+.tags {
+  margin-top: 1.5rem;
 }

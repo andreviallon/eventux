@@ -7,12 +7,13 @@ export interface IEvent {
   date: string;
   startTime: string;
   endTime: string;
-  img: string;
   price: number;
+  tags: string[];
   location: {
+    address: string;
     city: string;
+    zipcode: string;
     country: string;
-    street: string;
   }
   tutor: {
     _tutorId: string;
@@ -32,16 +33,17 @@ export class EventService {
     {
       _id: '1',
       title: 'Event 1',
-      description: 'Event 1 description',
+      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
       date: '12 Dec 2020',
       startTime: '10.00',
       endTime: '12.00',
-      img: '',
       price: 120.00,
+      tags: ['React', 'JavaScript', 'Frontend Dev'],
       location: {
-        city: 'London',
-        country: 'England',
-        street: '21 baker street'
+        address: 'Jernbanegade, 201',
+        city: 'Kolding',
+        zipcode: '6000',
+        country: 'Denmark'
       },
       tutor: {
         _tutorId: '123',
@@ -57,12 +59,13 @@ export class EventService {
       date: '13 Dec 2020',
       startTime: '11.00',
       endTime: '15.00',
-      img: '',
       price: 100.00,
+      tags: ['React', 'JavaScript', 'Frontend Dev'],
       location: {
-        city: 'London',
-        country: 'England',
-        street: '21 baker street'
+        address: 'Jernbanegade, 201',
+        city: 'Kolding',
+        zipcode: '6000',
+        country: 'Denmark'
       },
       tutor: {
         _tutorId: '123',
@@ -78,12 +81,13 @@ export class EventService {
       date: '15 Dec 2020',
       startTime: '09.00',
       endTime: '12.00',
-      img: '',
-      price: 90.00,
+      price: 100.00,
+      tags: ['React', 'JavaScript', 'Frontend Dev'],
       location: {
-        city: 'Copenhagen',
-        country: 'Denmark',
-        street: 'Some street'
+        address: 'Jernbanegade, 201',
+        city: 'Kolding',
+        zipcode: '6000',
+        country: 'Denmark'
       },
       tutor: {
         _tutorId: '456',
@@ -99,12 +103,13 @@ export class EventService {
       date: '15 Dec 2020',
       startTime: '09.00',
       endTime: '12.00',
-      img: '',
       price: 90.00,
+      tags: ['React', 'JavaScript', 'Frontend Dev'],
       location: {
-        city: 'Copenhagen',
-        country: 'Denmark',
-        street: 'Some street'
+        address: 'Jernbanegade, 201',
+        city: 'Kolding',
+        zipcode: '6000',
+        country: 'Denmark'
       },
       tutor: {
         _tutorId: '456',
@@ -120,12 +125,13 @@ export class EventService {
       date: '15 Dec 2020',
       startTime: '09.00',
       endTime: '12.00',
-      img: '',
       price: 90.00,
+      tags: ['React', 'JavaScript', 'Frontend Dev'],
       location: {
-        city: 'Copenhagen',
-        country: 'Denmark',
-        street: 'Some street'
+        address: 'Jernbanegade, 201',
+        city: 'Kolding',
+        zipcode: '6000',
+        country: 'Denmark'
       },
       tutor: {
         _tutorId: '456',
@@ -141,12 +147,13 @@ export class EventService {
       date: '15 Dec 2020',
       startTime: '09.00',
       endTime: '12.00',
-      img: '',
       price: 90.00,
+      tags: ['React', 'JavaScript', 'Frontend Dev'],
       location: {
-        city: 'Copenhagen',
-        country: 'Denmark',
-        street: 'Some street'
+        address: 'Jernbanegade, 201',
+        city: 'Kolding',
+        zipcode: '6000',
+        country: 'Denmark'
       },
       tutor: {
         _tutorId: '456',
