@@ -1,0 +1,25 @@
+<section class="hero is-medium is-link is-bold">
+  <div class="hero-body">
+    <div class="container">
+      <div class="event-detail-container columns">
+        <div class="title-container column is-half">
+          <div>
+            <p class="title is-1 is-spaced">{{ event.title }}</p>
+            <p class="subtitle is-6 tutor">by {{ event.tutor.firstName }} {{ event.tutor.lastName }}</p>
+            <p class="subtitle is-5 street">{{ event.location.street }}</p>
+            <p class="subtitle is-5 location">{{ event.location.city }}, {{ event.location.country }}</p>
+          </div>
+        </div>
+        <div class="register-container column is-half">
+          <div class="card">
+            <div class="card-content">
+              <p class="title is-4">Date & Time</p>
+              <p class="is-6">Saturday, Sep, 14 2019 at 20.30 PM</p>
+              <a class="button is-link"><strong>Buy a ticket ({{ event.price | currency }})</strong></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

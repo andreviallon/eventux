@@ -91,6 +91,69 @@ export class EventService {
         lastName: 'Viallon',
         img: ''
       }
+    },
+    {
+      _id: '4',
+      title: 'Event 4',
+      description: 'Event 4 description',
+      date: '15 Dec 2020',
+      startTime: '09.00',
+      endTime: '12.00',
+      img: '',
+      price: 90.00,
+      location: {
+        city: 'Copenhagen',
+        country: 'Denmark',
+        street: 'Some street'
+      },
+      tutor: {
+        _tutorId: '456',
+        firstName: 'Andre',
+        lastName: 'Viallon',
+        img: ''
+      }
+    },
+    {
+      _id: '5',
+      title: 'Event 5',
+      description: 'Event 5 description',
+      date: '15 Dec 2020',
+      startTime: '09.00',
+      endTime: '12.00',
+      img: '',
+      price: 90.00,
+      location: {
+        city: 'Copenhagen',
+        country: 'Denmark',
+        street: 'Some street'
+      },
+      tutor: {
+        _tutorId: '456',
+        firstName: 'Andre',
+        lastName: 'Viallon',
+        img: ''
+      }
+    },
+    {
+      _id: '6',
+      title: 'Event 6',
+      description: 'Event 6 description',
+      date: '15 Dec 2020',
+      startTime: '09.00',
+      endTime: '12.00',
+      img: '',
+      price: 90.00,
+      location: {
+        city: 'Copenhagen',
+        country: 'Denmark',
+        street: 'Some street'
+      },
+      tutor: {
+        _tutorId: '456',
+        firstName: 'Andre',
+        lastName: 'Viallon',
+        img: ''
+      }
     }
   ];
 
@@ -98,5 +161,9 @@ export class EventService {
 
   public getEvents() {
     return this.events;
+  }
+
+  public getEvent(id) {
+    return this.events.find(event => event._id === id);
   }
 }
