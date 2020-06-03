@@ -41,7 +41,7 @@ import { CreateEventPageComponent } from './create-event-page/create-event-page.
     AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,
-    AngularSvgIconModule
+    AngularSvgIconModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

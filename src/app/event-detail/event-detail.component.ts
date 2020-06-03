@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class EventDetailComponent implements OnInit, OnDestroy {
 
-  private event: IEvent;
+  public event: IEvent;
 
   private subscription: Subscription;
 

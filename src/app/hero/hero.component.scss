@@ -1,3 +1,5 @@
+@import "../../styles.scss";
+
 .hero-body {
   padding: 3rem 3rem !important;
 }
@@ -14,6 +16,14 @@
   -moz-border-radius: 8px;
   -ms-border-radius: 8px;
   -o-border-radius: 8px;
+}
+
+svg-icon {
+  z-index: -1;
+  position: absolute;
+  top: 15px;
+  right: -35px;
+  fill: $lightGray;
 }
 
 h1 {
