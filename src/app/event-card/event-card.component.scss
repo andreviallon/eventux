@@ -1,3 +1,5 @@
+@import "../../styles.scss";
+
 .card {
   cursor: pointer;
   height: 100%;
@@ -9,24 +11,43 @@
   }
 }
 
-.content {
-  .flex-container {
-    display: flex;
-    align-items: baseline;
-
-    p {
-      margin: 0.3rem;
-    }
-  }
+.price {
+  position: absolute;
+  z-index: 1;
+  background-color: white;
+  padding: 7px 9px;
+  top: 10px;
+  left: 10px;
+  color: $black;
+  font-weight: 500;
+  font-size: 0.9rem;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
 }
 
-.event-description {
-  max-height: 4.6em;
-  overflow: hidden;
+.media {
+  margin-bottom: 0.5rem !important;
+}
 
-  p {
-    margin-bottom: 0.6rem;
-  }
+img {
+  border-radius: 4px 4px 0 0;
+  -webkit-border-radius: 4px 4px 0 0;
+  -moz-border-radius: 4px 4px 0 0;
+  -ms-border-radius: 4px 4px 0 0;
+  -o-border-radius: 4px 4px 0 0;
+}
+
+h3 {
+  color: #000;
+}
+
+p {
+  margin-top: 0.3rem;
+  font-size: 0.9rem;
+  color: $mediumGray;
 }
 
 .content {
@@ -39,5 +60,10 @@ fa-icon {
 }
 
 .tags {
+  margin-top: 1.3rem;
   flex-grow: 1;
+}
+
+a {
+  color: $black;
 }

@@ -1,34 +1,27 @@
 <a [routerLink]="['/event', event._id]">
   <div class="card">
+    <div class="price">{{ event.price | currency : 'DKK' : 'symbol' : '1.0-0' }}</div>
+    <div class="card-image">
+      <figure class="image is-16by9">
+        <img src={{event.img}} alt="Event image">
+      </figure>
+    </div>
     <div class="card-content">
       <div class="media">
-        <div class="media-left">
-          <figure class="image is-48x48">
-            <img class="round-img" src="../../assets//john-doe-avatar.png" alt="Placeholder image">
-          </figure>
-        </div>
         <div class="media-content">
-          <p class="title is-4">{{ event.title }}</p>
-          <p class="subtitle is-6">{{ event.tutor.firstName }} {{ event.tutor.lastName }}</p>
+          <h3 class="title is-4">{{ event.title }}</h3>
         </div>
       </div>
       <div class="content">
-        <p class="event-description">{{ event.description }}</p>
         <div class="flex-container">
-          <fa-icon [icon]="faMapMarkerAlt"></fa-icon>
-          <p>{{ event.location.address }} - {{ event.location.city }}, {{ event.location.zipcode }}</p>
+          <p>{{ event.location.city }}, {{ event.location.country }}</p>
         </div>
         <div class="flex-container">
-          <fa-icon [icon]="faClock"></fa-icon>
-          <p>From {{ event.startTime }} to {{ event.endTime }}</p>
-        </div>
-        <div class="flex-container">
-          <fa-icon [icon]="faCalendar"></fa-icon>
           <p>{{ event.date }}</p>
         </div>
-      </div>
-      <div class="tags">
-        <span *ngFor="let tag of event.tags" class="tag is-normal"><a>#{{tag}}</a></span>
+        <div class="tags">
+          <span *ngFor="let tag of event.tags" class="tag is-normal"><a>#{{ tag }}</a></span>
+        </div>
       </div>
     </div>
   </div>
