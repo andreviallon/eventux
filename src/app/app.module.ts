@@ -18,6 +18,7 @@ import { EventDetailPageComponent } from './event-detail-page/event-detail-page.
 import { HomePageComponent } from './home-page/home-page.component';
 import { EventsPageComponent } from './events-page/events-page.component';
 import { CreateEventPageComponent } from './create-event-page/create-event-page.component';
+import { FrontPageSearchComponent } from './front-page-search/front-page-search.component';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { CreateEventPageComponent } from './create-event-page/create-event-page.
     HomePageComponent,
     EventsPageComponent,
     CreateEventPageComponent,
+    FrontPageSearchComponent,
   ],
   imports: [
     BrowserModule,

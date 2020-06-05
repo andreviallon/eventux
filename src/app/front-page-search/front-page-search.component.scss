@@ -1,0 +1,75 @@
+@import "../../styles.scss";
+
+.search-container {
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  right: 0;
+  width: 80%;
+  margin: 0 auto;
+  background-color: $darkBlue;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.3rem 2rem;
+}
+
+.field {
+  margin: 0;
+  width: 27%;
+}
+
+label {
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.input, select {
+  width: 100%;
+  background-color: unset;
+  color: white;
+  border: none;
+  border-bottom: 3px solid $mediumBlue;
+  box-shadow: none;
+  padding: 0;
+  font-weight: 600;
+  border-radius: 0;
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  -ms-border-radius: 0;
+  -o-border-radius: 0;
+
+  &::placeholder {
+    color: white;
+    opacity: 1;
+  }
+
+  &:hover {
+    border-color: $mediumBlue;
+  }
+}
+
+.select {
+  width: 100%;
+
+  &:after {
+    right: 0.5rem !important;
+    border-color: white !important;
+  }
+}
+
+.button {
+  height: 80%;
+}
+
+fa-icon {
+  font-size: 1.4rem;
+}
