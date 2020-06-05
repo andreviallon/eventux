@@ -13,15 +13,11 @@
         </div>
       </div>
       <div class="content">
-        <div class="flex-container">
           <p>{{ event.location.city }}, {{ event.location.country }}</p>
-        </div>
-        <div class="flex-container">
           <p>{{ event.date }}</p>
-        </div>
-        <div class="tags">
-          <span *ngFor="let tag of event.tags" class="tag is-normal"><a>#{{ tag }}</a></span>
-        </div>
+      </div>
+      <div class="tags">
+        <span *ngFor="let tag of event.tags" class="tag is-normal"><a>#{{ tag }}</a></span>
       </div>
     </div>
   </div>

@@ -17,8 +17,8 @@ export interface IEvent {
     country: string;
     phoneNumber: number;
   }
-  tutor: {
-    _tutorId: string;
+  teacher: {
+    _id: string;
     firstName: string;
     lastName: string;
     description: string;
@@ -35,7 +35,7 @@ export class EventService {
   events: IEvent[] = [
     {
       _id: '1',
-      title: 'Event 1',
+      title: 'Reack context API and hooks 101',
       description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
       date: '12 Dec 2020',
       startTime: '10.00',
@@ -50,8 +50,8 @@ export class EventService {
         country: 'Denmark',
         phoneNumber: 30303030
       },
-      tutor: {
-        _tutorId: '123',
+      teacher: {
+        _id: '123',
         firstName: 'John',
         lastName: 'Doe',
         description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
@@ -75,8 +75,8 @@ export class EventService {
         country: 'Denmark',
         phoneNumber: 30303030
       },
-      tutor: {
-        _tutorId: '123',
+      teacher: {
+        _id: '123',
         firstName: 'John',
         lastName: 'Doe',
         description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
@@ -100,8 +100,8 @@ export class EventService {
         country: 'Denmark',
         phoneNumber: 30303030
       },
-      tutor: {
-        _tutorId: '456',
+      teacher: {
+        _id: '456',
         firstName: 'Andre',
         lastName: 'Viallon',
         description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
@@ -125,8 +125,8 @@ export class EventService {
         country: 'Denmark',
         phoneNumber: 30303030
       },
-      tutor: {
-        _tutorId: '456',
+      teacher: {
+        _id: '456',
         firstName: 'Andre',
         description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
         lastName: 'Viallon',
@@ -150,8 +150,8 @@ export class EventService {
         country: 'Denmark',
         phoneNumber: 30303030
       },
-      tutor: {
-        _tutorId: '456',
+      teacher: {
+        _id: '456',
         firstName: 'Andre',
         lastName: 'Viallon',
         description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
@@ -175,8 +175,8 @@ export class EventService {
         country: 'Denmark',
         phoneNumber: 30303030
       },
-      tutor: {
-        _tutorId: '456',
+      teacher: {
+        _id: '456',
         firstName: 'Andre',
         lastName: 'Viallon',
         description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
