@@ -29,3 +29,28 @@ a {
     color: $black;
   }
 }
+
+.user-name {
+  font-weight: 500;
+  color: $black;
+}
+
+.navbar-dropdown {
+  border: none;
+}
+
+.navbar-link:after {
+  border-color: black !important;
+}
+
+.avatar {
+  width: 35px;
+  height: 35px;
+  max-height: inherit;
+  align-self: center;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+}

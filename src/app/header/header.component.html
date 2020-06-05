@@ -15,11 +15,32 @@
 
     <div class="navbar-end">
       <div class="navbar-item">
-        <div class="buttons">
-          <a routerLink="/create-event" class="button is-white"><strong>Login</strong></a>
-          <a routerLink="/create-event" class="button is-link"><strong>Sign Up</strong></a>
-        </div>
+        <ng-container *ngIf="currentUser; then logedIn; else logedOut"></ng-container>
       </div>
     </div>
+
+    <ng-template #logedIn>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <img src="{{currentUser.avatar}}" class="avatar"/>
+        <a class="navbar-link user-name">{{ currentUser.firstName }} {{ currentUser.lastName }}</a>
+        <div class="navbar-dropdown is-right">
+          <ng-container *ngIf="isAdmin()">
+            <a class="navbar-item">Manage Events</a>
+            <a class="navbar-item">Manage Teachers</a>
+            <a class="navbar-item">Manage Venues</a>
+          </ng-container>
+          <a class="navbar-item">Settings</a>
+          <hr class="navbar-divider">
+          <a class="navbar-item">Logout</a>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template #logedOut>
+      <div class="buttons">
+        <a routerLink="/create-event" class="button is-white"><strong>Login</strong></a>
+        <a routerLink="/create-event" class="button is-link"><strong>Sign Up</strong></a>
+      </div>
+    </ng-template>
   </div>
 </nav>
