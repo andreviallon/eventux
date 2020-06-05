@@ -5,24 +5,33 @@
 }
 
 .img-container {
+  position: relative;
   background-image: url('../../assets/eventux-img-background.png');
   height: 50vh;
   background-repeat: no-repeat;
   background-position: center;
   margin: 3rem 0;
   background-size: cover;
-  border-radius: 8px;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
-  -ms-border-radius: 8px;
-  -o-border-radius: 8px;
+  border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  -ms-border-radius: 4px;
+  -o-border-radius: 4px;
 }
 
-svg-icon {
+.svg-top {
   z-index: -1;
   position: absolute;
-  top: 15px;
-  right: -35px;
+  top: -35px;
+  right: -40px;
+  fill: $lightGray;
+}
+
+.svg-bottom {
+  z-index: -1;
+  position: absolute;
+  bottom: -40px;
+  left: -35px;
   fill: $lightGray;
 }
 
@@ -35,6 +44,6 @@ h1 {
 
 h2 {
   color: white;
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 500;
 }
