@@ -1,7 +1,9 @@
 import { IEvent, EventService } from './../event.service';
-import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
+
 
 @Component({
   selector: 'app-event-detail',
@@ -11,6 +13,7 @@ import { ActivatedRoute } from '@angular/router';
 export class EventDetailComponent implements OnInit, OnDestroy {
 
   public event: IEvent;
+  public faLongArrowAltRight = faLongArrowAltRight;
 
   private subscription: Subscription;
 

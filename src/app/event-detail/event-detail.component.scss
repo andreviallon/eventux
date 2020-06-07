@@ -1,3 +1,5 @@
+@import "../../styles.scss";
+
 .container, .columns {
   height: 100%;
 }
@@ -20,17 +22,6 @@
   -moz-border-radius: 4px;
   -ms-border-radius: 4px;
   -o-border-radius: 4px;
-
-  &::after {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0.4;
-    color: #FFF;
-
-  }
 }
 
 .button {
@@ -96,7 +87,7 @@
       padding: 2rem;
 
       .title {
-        color: #363636;
+        color: $black;
         margin-bottom: 0.5rem;
       }
 
@@ -112,17 +103,89 @@
   }
 }
 
-.event-content {
-  margin-top: 5rem;
+.description {
+  font-size: 0.9rem;
+  line-height: 1.9;
+  color: $mediumGray;
 }
 
+.event-content {
+  margin-top: 2rem;
+}
 
-.tutor-container {
-  // margin-top: 3rem;
+.teacher-container, .topics-container, .schedule-container {
+  margin-top: 3rem;
+}
 
-  .tutor-description {
-    p {
-      margin: 0;
-    }
+.teacher-title {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+}
+
+.media {
+  display: flex;
+  flex-direction: column;
+}
+
+.media-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.tag {
+  color: $black;
+}
+
+.venue-container {
+
+  .venue-img {
+    height: 250px;
+    margin-bottom: 2rem;
+    background-image: url('../../assets/venue-img.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+  }
+
+  .venue-name {
+    font-weight: 600;
+  }
+
+  p {
+    margin-bottom: 0.3rem;
+  }
+
+  .venue-website {
+    margin-top: 1rem;
+    font-weight: 600;
+    display: flex;
+  }
+
+  fa-icon {
+    margin-left: 0.3rem;
+    margin-top: 0.05rem;
+  }
+
+  .svg-venue {
+    width: 80px;
+    z-index: -1;
+    position: absolute;
+    top: 25px;
+    right: -35px;
+    fill: $lightGray;
+  }
+
+}
+
+.schedule-container {
+  p {
+    font-weight: 600;
   }
 }

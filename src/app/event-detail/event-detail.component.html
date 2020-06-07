@@ -1,19 +1,23 @@
 <div class="container">
   <section class="hero is-medium">
     <div class="img-container">
+      <div class="svg-top">
+        <svg-icon src="../../assets/dot-pattern.svg"></svg-icon>
+      </div>
+      <div class="svg-bottom">
+        <svg-icon src="../../assets/dot-pattern.svg"></svg-icon>
+      </div>
       <div class="hero-body">
-        <div class="container">
-          <div class="columns">
-            <div class="title-container column is-half">
-              <h3 class="title is-1 is-spaced">{{ event.title }}</h3>
-              <div class="subtitle teacher">
-                <p>by {{ event.teacher.firstName }} {{ event.teacher.lastName }}</p>
-              </div>
-              <div class="subtitle location">
-                <p>{{ event.location.address }}</p>
-                <p>{{ event.location.city }}</p>
-                <p>{{event.location.zipcode}} {{ event.location.country }}</p>
-              </div>
+        <div class="columns">
+          <div class="title-container column is-half">
+            <h3 class="title is-1 is-spaced">{{ event.title }}</h3>
+            <div class="subtitle teacher">
+              <p>by {{ event.teacher.firstName }} {{ event.teacher.lastName }}</p>
+            </div>
+            <div class="subtitle location">
+              <p>{{ event.location.name }}</p>
+              <p>{{ event.location.address }}</p>
+              <p>{{event.location.zipcode}} {{ event.location.city }}</p>
             </div>
           </div>
         </div>
@@ -28,32 +32,69 @@
   <div class="event-content container">
     <div class="columns is-variable is-8">
       <div class="column is-7">
+
         <div class="description-container">
-          <p class="title is-4">Description</p>
-          <p>{{ event.description }}</p>
+          <h3 class="title is-4">Description</h3>
+          <div class="description">
+            <p>{{ event.description }}</p>
+          </div>
         </div>
-      </div>
-      <div class="column is-5">
-        <div class="tutor-container">
-          <p class="title is-4">Meet you tutor</p>
+
+        <div class="teacher-container">
+          <h3 class="title is-4">Meet you teacher</h3>
           <article class="media">
-            <figure class="media-left">
-              <p class="image is-64x64">
-                <img class="round-img" src="../../assets/john-doe-avatar.png">
-              </p>
-            </figure>
-            <div class="media-content">
-              <div class="content tutor-description">
-                <p><strong>John Doe</strong> <a><small> @johndoe</small></a></p>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque
-                  tortor
-                  vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+            <div class="teacher-title">
+              <figure class="media-left">
+                <p class="image is-64x64">
+                  <img class="round-img" src="../../assets/john-doe-avatar.png">
+                </p>
+              </figure>
+              <div class="media-content">
+                <p><strong>John Doe</strong></p>
+                <a>@{{ event.teacher.socialLink }}</a>
               </div>
+            </div>
+            <div class="description">
+              <p>{{ event.teacher.description }}</p>
             </div>
           </article>
         </div>
+
+        <div class="topics-container">
+          <p class="title is-4">Topics</p>
+          <div class="description tags are-medium">
+            <span class="tag" *ngFor="let tag of event.tags">#{{ tag }}</span>
+          </div>
+        </div>
       </div>
+
+      <div class="column is-5">
+
+        <div class="event-location-container">
+          <h3 class="title is-4">Event Location</h3>
+          <div class="venue-container">
+            <div class="venue-img">
+              <div class="svg-venue">
+                <svg-icon src="../../assets/dot-pattern.svg"></svg-icon>
+              </div>
+              <img/>
+            </div>
+            <p class="venue-name">{{ event.location.name }}</p>
+            <p>{{ event.location.address }}</p>
+            <p>{{ event.location.zipcode }} {{ event.location.city }}</p>
+            <p>{{ event.location.phoneNumber }}</p>
+            <a href="#" class="venue-website">Go to venue's website <fa-icon [icon]="faLongArrowAltRight"></fa-icon></a>
+          </div>
+        </div>
+
+        <div class="schedule-container">
+          <h3 class="title is-4">Schedule</h3>
+          <p>From {{ event.startTime }} to {{ event.endTime }}</p>
+          <p>{{ event.date }}</p>
+        </div>
+
+      </div>
+
     </div>
   </div>
-
 </div>

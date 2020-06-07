@@ -24,6 +24,7 @@ export interface IEvent {
     lastName: string;
     description: string;
     img: string;
+    socialLink: string;
   }
 }
 
@@ -57,7 +58,8 @@ export class EventService {
         firstName: 'John',
         lastName: 'Doe',
         description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
-        img: './src/app/assets/john-doe-avatar.png'
+        img: './src/app/assets/john-doe-avatar.png',
+        socialLink: 'johndoe'
       }
     },
     {
@@ -83,7 +85,8 @@ export class EventService {
         firstName: 'John',
         lastName: 'Doe',
         description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
-        img: ''
+        img: '',
+        socialLink: 'johndoe'
       }
     },
     {
@@ -109,7 +112,8 @@ export class EventService {
         firstName: 'Andre',
         lastName: 'Viallon',
         description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
-        img: ''
+        img: '',
+        socialLink: 'johndoe'
       }
     },
     {
@@ -135,7 +139,8 @@ export class EventService {
         firstName: 'Andre',
         description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
         lastName: 'Viallon',
-        img: ''
+        img: '',
+        socialLink: 'johndoe'
       }
     },
     {
@@ -161,7 +166,8 @@ export class EventService {
         firstName: 'Andre',
         lastName: 'Viallon',
         description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
-        img: ''
+        img: '',
+        socialLink: 'johndoe'
       }
     },
     {
@@ -187,7 +193,8 @@ export class EventService {
         firstName: 'Andre',
         lastName: 'Viallon',
         description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
-        img: ''
+        img: '',
+        socialLink: 'johndoe'
       }
     }
   ];

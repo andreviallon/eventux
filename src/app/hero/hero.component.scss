@@ -19,24 +19,6 @@
   -o-border-radius: 4px;
 }
 
-.svg-top {
-  width: 80px;
-  z-index: -1;
-  position: absolute;
-  top: -30px;
-  right: -35px;
-  fill: $lightGray;
-}
-
-.svg-bottom {
-  width: 80px;
-  z-index: -1;
-  position: absolute;
-  bottom: -35px;
-  left: -30px;
-  fill: $lightGray;
-}
-
 h1 {
   color: white;
   font-weight: 700;
