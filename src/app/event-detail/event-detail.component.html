@@ -1,57 +1,59 @@
-<section class="hero is-link is-bold">
-  <div class="hero-body">
-    <div class="container">
-      <div class="columns">
-        <div class="title-container column is-half">
-          <div>
-            <p class="title is-1 is-spaced">{{ event.title }}</p>
-            <p class="subtitle is-6 tutor">by {{ event.teacher.firstName }} {{ event.teacher.lastName }}</p>
-            <p class="subtitle is-5 location">{{ event.location.city }}, {{ event.location.country }}</p>
-          </div>
-        </div>
-        <div class="register-container column is-half">
-          <div class="card">
-            <div class="card-content">
-              <p class="title is-4">Date & Time</p>
-              <p class="date is-6">Saturday, Sep, 14 2019</p>
-              <p class="is-6"><strong>Starts at:</strong> 12.30</p>
-              <p class="is-6"><strong>Ends at:</strong> 14.30</p>
-              <a class="button is-link"><strong>Buy a ticket ({{ event.price | currency }})</strong></a>
+<div class="container">
+  <section class="hero is-medium">
+    <div class="img-container">
+      <div class="hero-body">
+        <div class="container">
+          <div class="columns">
+            <div class="title-container column is-half">
+              <h3 class="title is-1 is-spaced">{{ event.title }}</h3>
+              <div class="subtitle teacher">
+                <p>by {{ event.teacher.firstName }} {{ event.teacher.lastName }}</p>
+              </div>
+              <div class="subtitle location">
+                <p>{{ event.location.address }}</p>
+                <p>{{ event.location.city }}</p>
+                <p>{{event.location.zipcode}} {{ event.location.country }}</p>
+              </div>
             </div>
           </div>
         </div>
+        <a class="button is-link">
+          <strong>Book a sit now </strong>
+          <strong>for {{ event.price | currency : 'DKK' : 'symbol' : '1.0-0' }}</strong>
+        </a>
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<div class="event-content container">
-  <div class="columns is-variable is-8">
-    <div class="column is-7">
-      <div class="description-container">
-        <p class="title is-4">Description</p>
-        <p>{{ event.description }}</p>
+  <div class="event-content container">
+    <div class="columns is-variable is-8">
+      <div class="column is-7">
+        <div class="description-container">
+          <p class="title is-4">Description</p>
+          <p>{{ event.description }}</p>
+        </div>
       </div>
-    </div>
-    <div class="column is-5">
-      <div class="tutor-container">
-        <p class="title is-4">Meet you tutor</p>
-        <article class="media">
-          <figure class="media-left">
-            <p class="image is-64x64">
-              <img class="round-img" src="../../assets/john-doe-avatar.png">
-            </p>
-          </figure>
-          <div class="media-content">
-            <div class="content tutor-description">
-              <p><strong>John Doe</strong> <a><small> @johndoe</small></a></p>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque
-                tortor
-                vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+      <div class="column is-5">
+        <div class="tutor-container">
+          <p class="title is-4">Meet you tutor</p>
+          <article class="media">
+            <figure class="media-left">
+              <p class="image is-64x64">
+                <img class="round-img" src="../../assets/john-doe-avatar.png">
+              </p>
+            </figure>
+            <div class="media-content">
+              <div class="content tutor-description">
+                <p><strong>John Doe</strong> <a><small> @johndoe</small></a></p>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin ornare magna eros, eu pellentesque
+                  tortor
+                  vestibulum ut. Maecenas non massa sem. Etiam finibus odio quis feugiat facilisis.</p>
+              </div>
             </div>
-          </div>
-        </article>
+          </article>
+        </div>
       </div>
     </div>
   </div>
+
 </div>

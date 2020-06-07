@@ -11,6 +11,7 @@ export interface IEvent {
   tags: string[];
   img: string;
   location: {
+    name: string;
     address: string;
     city: string;
     zipcode: string;
@@ -44,6 +45,7 @@ export class EventService {
       img: './assets/event-image.png',
       tags: ['React', 'JavaScript', 'Frontend Dev'],
       location: {
+        name: 'Blank Venue & Pop-up',
         address: 'H. C. Andersens Blvd. 11, 1. th',
         city: 'Copenhagen',
         zipcode: '1553',
@@ -69,6 +71,7 @@ export class EventService {
       tags: ['React', 'JavaScript', 'Frontend Dev'],
       img: './assets/event-image.png',
       location: {
+        name: 'Blank Venue & Pop-up',
         address: 'H. C. Andersens Blvd. 11, 1. th',
         city: 'Copenhagen',
         zipcode: '1553',
@@ -94,6 +97,7 @@ export class EventService {
       tags: ['React', 'JavaScript', 'Frontend Dev'],
       img: './assets/event-image.png',
       location: {
+        name: 'Blank Venue & Pop-up',
         address: 'H. C. Andersens Blvd. 11, 1. th',
         city: 'Copenhagen',
         zipcode: '1553',
@@ -119,6 +123,7 @@ export class EventService {
       tags: ['React', 'JavaScript', 'Frontend Dev'],
       img: './assets/event-image.png',
       location: {
+        name: 'Blank Venue & Pop-up',
         address: 'H. C. Andersens Blvd. 11, 1. th',
         city: 'Copenhagen',
         zipcode: '1553',
@@ -144,6 +149,7 @@ export class EventService {
       tags: ['React', 'JavaScript', 'Frontend Dev'],
       img: './assets/event-image.png',
       location: {
+        name: 'Blank Venue & Pop-up',
         address: 'H. C. Andersens Blvd. 11, 1. th',
         city: 'Copenhagen',
         zipcode: '1553',
@@ -169,6 +175,7 @@ export class EventService {
       tags: ['React', 'JavaScript', 'Frontend Dev'],
       img: './assets/event-image.png',
       location: {
+        name: 'Blank Venue & Pop-up',
         address: 'H. C. Andersens Blvd. 11, 1. th',
         city: 'Copenhagen',
         zipcode: '1553',
