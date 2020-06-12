@@ -207,11 +207,15 @@ export class EventService {
 
   constructor() { }
 
-  public getEvents() {
+  public getEvents(): IEvent[] {
     return this.events;
   }
 
-  public getEvent(id) {
+  public getEvent(id): IEvent {
     return this.events.find(event => event._id === id);
+  }
+
+  public getRelatedEvents(): IEvent[] {
+    return this.events.slice(0, 6);
   }
 }

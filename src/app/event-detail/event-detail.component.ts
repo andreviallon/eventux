@@ -17,6 +17,8 @@ export class EventDetailComponent implements OnInit, OnDestroy {
   public faShare = faShare;
   public faTwitter = faTwitter;
   public faFacebook = faFacebookF;
+  public relatedEvents: IEvent[];
+
 
   private subscription = new Subscription();
 
@@ -26,6 +28,8 @@ export class EventDetailComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.route.params.subscribe(params => this.event = this.eventService.getEvent(params['id']))
     );
+
+    this.relatedEvents = this.eventService.getRelatedEvents();
   }
 
   ngOnDestroy(): void {
