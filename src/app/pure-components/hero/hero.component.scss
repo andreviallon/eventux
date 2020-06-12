@@ -1,4 +1,4 @@
-@import "../../styles.scss";
+@import "../../../styles.scss";
 
 .hero-body {
   padding: 3rem 3rem !important;
@@ -6,7 +6,7 @@
 
 .img-container {
   position: relative;
-  background-image: url('../../assets/eventux-img-background.png');
+  background-image: url('../../../assets/eventux-img-background.png');
   height: 50vh;
   background-repeat: no-repeat;
   background-position: center;

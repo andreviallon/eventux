@@ -6,19 +6,19 @@ import { AngularSvgIconModule } from 'angular-svg-icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './header/header.component';
-import { HeroComponent } from './hero/hero.component';
-import { UpcomingEventsComponent } from './upcoming-events/upcoming-events.component';
-import { EventCardComponent } from './event-card/event-card.component';
-import { EventsComponent } from './events/events.component';
-import { EventDetailComponent } from './event-detail/event-detail.component';
-import { ErrorPageComponent } from './error-page/error-page.component';
-import { CreateEventComponent } from './create-event/create-event.component';
-import { EventDetailPageComponent } from './event-detail-page/event-detail-page.component';
-import { HomePageComponent } from './home-page/home-page.component';
-import { EventsPageComponent } from './events-page/events-page.component';
-import { CreateEventPageComponent } from './create-event-page/create-event-page.component';
-import { FrontPageSearchComponent } from './front-page-search/front-page-search.component';
+import { HeaderComponent } from './connected-components/header/header.component';
+import { HeroComponent } from './pure-components/hero/hero.component';
+import { UpcomingEventsComponent } from './pure-components/upcoming-events/upcoming-events.component';
+import { EventCardComponent } from './pure-components/event-card/event-card.component';
+import { EventDetailComponent } from './pure-components/event-detail/event-detail.component';
+import { ErrorPageComponent } from './connected-components/error-page/error-page.component';
+import { CreateEventComponent } from './pure-components/create-event/create-event.component';
+import { EventDetailPageComponent } from './connected-components/event-detail-page/event-detail-page.component';
+import { HomePageComponent } from './connected-components/home-page/home-page.component';
+import { EventsPageComponent } from './connected-components/events-page/events-page.component';
+import { CreateEventPageComponent } from './connected-components/create-event-page/create-event-page.component';
+import { FrontPageSearchComponent } from './pure-components/front-page-search/front-page-search.component';
+
 
 
 @NgModule({
@@ -28,7 +28,6 @@ import { FrontPageSearchComponent } from './front-page-search/front-page-search.
     HeroComponent,
     UpcomingEventsComponent,
     EventCardComponent,
-    EventsComponent,
     EventDetailComponent,
     ErrorPageComponent,
     CreateEventComponent,
@@ -39,6 +38,11 @@ import { FrontPageSearchComponent } from './front-page-search/front-page-search.
     FrontPageSearchComponent,
   ],
   imports: [
+    // NgxsModule.forRoot([
+    //   EventState
+    // ]),
+    // NgxsReduxDevtoolsPluginModule.forRoot(),
+    // NgxsLoggerPluginModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,

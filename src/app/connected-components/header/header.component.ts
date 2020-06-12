@@ -1,4 +1,4 @@
-import { UserService, User, Permission } from './../user.service';
+import { UserService, User, Permission } from '../../user.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

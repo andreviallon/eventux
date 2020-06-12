@@ -23,9 +23,11 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
     "@fortawesome/free-brands-svg-icons": "^5.13.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
+    "@ngxs/store": "^3.6.2",
     "angular-svg-icon": "^9.2.0",
     "bulma": "^0.8.2",
     "ionicons": "^5.0.1",
+    "ngxs": "^2.0.0-rc.20",
     "rxjs": "~6.5.5",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
