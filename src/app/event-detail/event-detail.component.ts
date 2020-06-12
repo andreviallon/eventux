@@ -2,8 +2,8 @@ import { IEvent, EventService } from './../event.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
-import { faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
-
+import { faLongArrowAltRight, faShare } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter, faFacebookF } from '@fortawesome/free-brands-svg-icons';
 
 @Component({
   selector: 'app-event-detail',
@@ -14,13 +14,18 @@ export class EventDetailComponent implements OnInit, OnDestroy {
 
   public event: IEvent;
   public faLongArrowAltRight = faLongArrowAltRight;
+  public faShare = faShare;
+  public faTwitter = faTwitter;
+  public faFacebook = faFacebookF;
 
-  private subscription: Subscription;
+  private subscription = new Subscription();
 
   constructor(private route: ActivatedRoute, private eventService: EventService) { }
 
   ngOnInit() {
-    this.subscription = this.route.params.subscribe(params => this.event = this.eventService.getEvent(params['id']))
+    this.subscription.add(
+      this.route.params.subscribe(params => this.event = this.eventService.getEvent(params['id']))
+    );
   }
 
   ngOnDestroy(): void {

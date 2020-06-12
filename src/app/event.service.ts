@@ -28,6 +28,12 @@ export interface IEvent {
   }
 }
 
+const map = [
+  { lat: 55, long: 56},
+  { lat: 55, long: 56 },
+  { lat: 55, long: 56 },
+]
+
 @Injectable({
   providedIn: 'root'
 })
