@@ -1,5 +1,5 @@
-import { IEvent } from './../../event.service';
 import { Component, Input } from '@angular/core';
+import { IEvent } from '../../state/event.model';
 
 @Component({
   selector: 'app-upcoming-events',
@@ -9,4 +9,5 @@ import { Component, Input } from '@angular/core';
 export class UpcomingEventsComponent {
 
   @Input() events: IEvent[];
+
 }

@@ -1,9 +1,10 @@
-import { EventService, IEvent } from './../../event.service';
+import { EventService } from './../../event.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { faLongArrowAltRight, faShare } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faFacebookF } from '@fortawesome/free-brands-svg-icons';
+import { IEvent } from '../../state/event.model';
 
 @Component({
   selector: 'app-event-detail',

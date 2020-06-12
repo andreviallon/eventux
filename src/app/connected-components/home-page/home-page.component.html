@@ -1,4 +1,4 @@
 <div class="container">
   <app-hero></app-hero>
-  <app-upcoming-events [events]="events"></app-upcoming-events>
+  <app-upcoming-events [events]="events$ | async"></app-upcoming-events>
 </div>
