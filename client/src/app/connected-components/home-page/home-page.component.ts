@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EventState } from './../../state/event.state';
+import { EventState } from '../../state/event.state';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { IEvent } from 'src/app/state/event.model';

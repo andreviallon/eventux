@@ -1,4 +1,4 @@
-import { EventService } from './../event.service';
+import { EventService } from '../event.service';
 import { State, Selector, Action, StateContext } from '@ngxs/store';
 import { IEvent } from './event.model';
 import { InitEventState } from './event.actions';

@@ -22,7 +22,6 @@ export class UserService {
     _id: 'some id',
     firstName: 'John',
     lastName: 'Doe',
-    // avatar: '../../assets/john-doe-avatar.png',
     avatar: './assets/john-doe-avatar.png',
     permission: Permission.ADMIN
   }
