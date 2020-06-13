@@ -1,5 +1,5 @@
-export class InitState {
-  static readonly type = '[Event] InitState'
+export class InitEventState {
+  static readonly type = '[Event] InitEventState'
 
   constructor() { }
 }

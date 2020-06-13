@@ -3,7 +3,7 @@ import { EventState } from './../../state/event.state';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { IEvent } from 'src/app/state/event.model';
-import { InitState } from 'src/app/state/event.actions';
+import { InitEventState } from 'src/app/state/event.actions';
 
 @Component({
   selector: 'app-home-page',
@@ -17,6 +17,6 @@ export class HomePageComponent implements OnInit {
   constructor(private store: Store) { }
 
   ngOnInit(): void {
-    this.store.dispatch(new InitState());
+    this.store.dispatch(new InitEventState());
   }
 }

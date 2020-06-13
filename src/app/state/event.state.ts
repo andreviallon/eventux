@@ -1,7 +1,7 @@
 import { EventService } from './../event.service';
 import { State, Selector, Action, StateContext } from '@ngxs/store';
 import { IEvent } from './event.model';
-import { InitState } from './event.actions';
+import { InitEventState } from './event.actions';
 import { Injectable } from '@angular/core';
 
 export class EventStateModel {
@@ -23,8 +23,8 @@ export class EventState {
     return state.events;
   }
 
-  @Action(InitState)
-  initState({ patchState }: StateContext<EventStateModel>, { }: InitState) {
+  @Action(InitEventState)
+  initState({ patchState }: StateContext<EventStateModel>, { }: InitEventState) {
     const events = this.eventService.getEvents();
 
     patchState({
