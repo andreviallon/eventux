@@ -11,3 +11,15 @@ h3 {
   flex-wrap: wrap;
   padding: 2rem 0;
 }
+
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 5rem;
+}
+
+button {
+  font-weight: 600;
+}
