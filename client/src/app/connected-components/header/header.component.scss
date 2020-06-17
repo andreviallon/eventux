@@ -1,10 +1,9 @@
 @import "../../../styles.scss";
 
-.navbar {
+.flex-container {
   display: flex;
   justify-content: space-between;
   padding: 0 0.5rem;
-
 }
 
 h1 {
@@ -53,4 +52,8 @@ a {
   -moz-border-radius: 100px;
   -ms-border-radius: 100px;
   -o-border-radius: 100px;
+
+  @media only screen and (max-width: 1024px) {
+    display: none;
+  }
 }

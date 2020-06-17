@@ -8,6 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
+  public showMenu = false;
   public currentUser: User;
 
   constructor(private userService: UserService) {
@@ -16,6 +17,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.currentUser = this.userService.getUser();
+  }
+
+  public toggleMenu() {
+    this.showMenu = !this.showMenu;
   }
 
   public isAdmin() {

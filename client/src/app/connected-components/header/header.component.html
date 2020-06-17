@@ -1,13 +1,15 @@
 <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
-  <h1 class="navbar-item">Eventux</h1>
+  <div class="flex-container">
+    <h1 class="navbar-item">Eventux</h1>
 
-  <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="menu" data-target="navbarBasicExample">
-    <span aria-hidden="true"></span>
-    <span aria-hidden="true"></span>
-    <span aria-hidden="true"></span>
-  </a>
+    <a role="button" class="navbar-burger burger" (click)="toggleMenu()">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
 
-  <div class="navbar-menu">
+  <div class="navbar-menu" [ngClass]="{'is-active': showMenu}">
     <div class="navbar-start">
       <a routerLink="/" class="navbar-item">Home</a>
       <a routerLink="/events" class="navbar-item">All Events</a>
@@ -44,3 +46,4 @@
     </ng-template>
   </div>
 </nav>
+
