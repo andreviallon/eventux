@@ -25,7 +25,7 @@
       <div class="navbar-item has-dropdown is-hoverable">
         <img src="{{currentUser.avatar}}" class="avatar"/>
         <a class="navbar-link user-name">{{ currentUser.firstName }} {{ currentUser.lastName }}</a>
-        <div class="navbar-dropdown is-right">
+        <div class="navbar-dropdown is-boxed is-right">
           <ng-container *ngIf="isAdmin()">
             <a class="navbar-item">Manage Events</a>
             <a class="navbar-item">Manage Teachers</a>
