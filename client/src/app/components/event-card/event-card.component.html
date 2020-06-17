@@ -1,6 +1,6 @@
 <a [routerLink]="['/event', event._id]">
   <div class="card">
-    <div class="price">{{ event.price | currency : 'DKK' : 'symbol' : '1.0-0' }}</div>
+    <div class="price">{{ event.price | currency : 'USD' : 'symbol' : '1.0-0' }}</div>
     <div class="card-image">
       <figure class="image is-16by9">
         <img src={{event.img}} alt="Event image">
