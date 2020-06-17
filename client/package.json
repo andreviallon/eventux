@@ -24,6 +24,7 @@
     "@fortawesome/free-brands-svg-icons": "^5.13.0",
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@ngxs/logger-plugin": "^3.6.2-dev.master-eaa5d86",
+    "@ngxs/router-plugin": "^3.6.2",
     "@ngxs/store": "^3.6.2-dev.master-eaa5d86",
     "angular-svg-icon": "^9.2.0",
     "bulma": "^0.8.2",
