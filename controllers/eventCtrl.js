@@ -18,12 +18,12 @@ exports.addEvents = (req, res, next) => {
 // @route DELETE /api/v1/events:id
 // @access Public
 exports.deleteEvent = (req, res, next) => {
-    res.send('DELETE events');
+    res.send('DELETE event');
 }
 
 // @desc Update event
 // @route PATCH /api/v1/events/:id
 // @access Public
 exports.updateEvent = async (req, res, next) => {
-    res.send('PATCH events');
+    res.send('PATCH event');
 }

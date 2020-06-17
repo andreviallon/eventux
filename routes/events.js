@@ -10,6 +10,6 @@ router
 router
     .route('/:id')
     .patch(updateEvent)
-    .delete(deleteEvens);
+    .delete(deleteEvent);
 
 module.exports = router;
