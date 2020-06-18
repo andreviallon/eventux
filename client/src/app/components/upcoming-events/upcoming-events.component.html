@@ -1,11 +1,6 @@
 <div class="upcoming-events-container">
   <h3>Upcoming Events</h3>
-  <div class="columns">
-    <div class="column is-one-third" *ngFor="let event of events">
-      <app-event-card [event]="event"></app-event-card>
-    </div>
-  </div>
-
+  <app-event-list [events]="events"></app-event-list>
   <div class="flex-container">
     <button class="button is-link">See All Events</button>
   </div>

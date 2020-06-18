@@ -115,10 +115,6 @@
 
   <div class="related-events-container">
     <h3 class="title is-4">Related Events</h3>
-    <div class="columns">
-      <div class="column is-one-third" *ngFor="let event of relatedEvents">
-        <app-event-card [event]="event"></app-event-card>
-      </div>
-    </div>
+    <app-event-list [events]="relatedEvents"></app-event-list>
   </div>
 </div>

@@ -25,6 +25,8 @@ import { EventCardComponent } from './components/event-card/event-card.component
 import { EventDetailComponent } from './components/event-detail/event-detail.component';
 import { CreateEventComponent } from './components/create-event/create-event.component';
 import { FrontPageSearchComponent } from './components/front-page-search/front-page-search.component';
+import { EventListComponent } from './components/event-list/event-list.component';
+import { EventsFilterComponent } from './components/events-filter/events-filter.component';
 
 
 
@@ -43,6 +45,8 @@ import { FrontPageSearchComponent } from './components/front-page-search/front-p
     EventsPageComponent,
     CreateEventPageComponent,
     FrontPageSearchComponent,
+    EventListComponent,
+    EventsFilterComponent,
   ],
   imports: [
     NgxsModule.forRoot([
