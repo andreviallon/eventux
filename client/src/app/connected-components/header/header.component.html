@@ -2,17 +2,17 @@
   <div class="flex-container">
     <h1 class="navbar-item">Eventux</h1>
 
-    <a role="button" class="navbar-burger burger" (click)="toggleMenu()">
+    <a role="button" class="navbar-burger burger" (click)="toggleMobileMenu()">
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
       <span aria-hidden="true"></span>
     </a>
   </div>
 
-  <div class="navbar-menu" [ngClass]="{'is-active': showMenu}">
+  <div class="navbar-menu" [ngClass]="{'is-active': showMobileMenu}">
     <div class="navbar-start">
-      <a routerLink="/" class="navbar-item">Home</a>
-      <a routerLink="/events" class="navbar-item">All Events</a>
+      <a routerLink="/home" class="navbar-item" routerLinkActive="active">Home</a>
+      <a routerLink="/events" class="navbar-item" routerLinkActive="active">Events</a>
     </div>
 
     <div class="navbar-end">
@@ -22,7 +22,7 @@
     </div>
 
     <ng-template #logedIn>
-      <div class="navbar-item has-dropdown is-hoverable">
+      <div class="navbar-item has-dropdown" [ngClass]="{'is-active': showDesktopMenu}" (click)="toggleDesktopMenu()">
         <img src="{{currentUser.avatar}}" class="avatar"/>
         <a class="navbar-link user-name">{{ currentUser.firstName }} {{ currentUser.lastName }}</a>
         <div class="navbar-dropdown is-boxed is-right">
@@ -46,4 +46,3 @@
     </ng-template>
   </div>
 </nav>
-

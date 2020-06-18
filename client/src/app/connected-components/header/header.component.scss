@@ -8,11 +8,11 @@
 
 h1 {
   color: $black;
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: bold;
   letter-spacing: 2px;
-  align-self: baseline;
-  padding-top: 0.6rem;
+  padding-top: 0.4rem;
+text-transform: uppercase;
 }
 
 a {
@@ -32,6 +32,10 @@ a {
 .user-name {
   font-weight: 500;
   color: $black;
+}
+
+.has-dropdown {
+  cursor: pointer;
 }
 
 .navbar-dropdown {
@@ -64,4 +68,33 @@ a {
 
 button {
   font-weight: 600;
+}
+
+.navbar-start {
+
+  align-items: center;
+
+  .navbar-item {
+    display: inline-block;
+  }
+
+  .navbar-item::after {
+    content: "";
+    position: relative;
+    display: block;
+    width: 0;
+    z-index: -1;
+    height: 2.5px;
+    background: $black;
+    transition: width 0.3s;
+  }
+
+  .navbar-item:hover::after {
+	  width: 100%;
+	  transition: width 0.3s;
+  }
+}
+
+.active {
+  font-weight: bold;
 }

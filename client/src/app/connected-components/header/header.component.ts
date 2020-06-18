@@ -8,7 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  public showMenu = false;
+  public showMobileMenu: boolean = false;
+  public showDesktopMenu: boolean = false;
   public currentUser: User;
 
   constructor(private userService: UserService) {
@@ -19,8 +20,12 @@ export class HeaderComponent implements OnInit {
     this.currentUser = this.userService.getUser();
   }
 
-  public toggleMenu() {
-    this.showMenu = !this.showMenu;
+  public toggleMobileMenu() {
+    this.showMobileMenu = !this.showMobileMenu;
+  }
+
+  public toggleDesktopMenu() {
+    this.showDesktopMenu = !this.showDesktopMenu;
   }
 
   public isAdmin() {

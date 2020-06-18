@@ -12,12 +12,11 @@
 .img-container {
   position: relative;
   background-image: linear-gradient(rgba(0, 0, 0, 0.43), rgba(0, 0, 0, 0.43)), url('../../../assets/event-image.png');
-  height: 50vh;
+  height: 580px;
   background-repeat: no-repeat;
   background-position: center;
   margin: 3rem 0;
   background-size: cover;
-  min-height: 580px;
   border-radius: 4px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
@@ -45,7 +44,7 @@
   align-items: flex-start;
 
   .title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     font-weight: bold;
     color: white;
   }
@@ -202,7 +201,7 @@
   display: flex;
 
   .social-circle {
-    margin-right: 1rem;
+    margin-right: 1.2rem;
     cursor: pointer;
     background-color: #000000;
     color: white;
@@ -223,6 +222,7 @@
 
 .related-events-container {
   margin-top: 10rem;
+  margin-bottom: 5rem;
 
   .columns {
     flex-wrap: wrap;

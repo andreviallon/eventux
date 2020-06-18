@@ -7,7 +7,7 @@ import { CreateEventPageComponent } from './connected-components/create-event-pa
 import { ErrorPageComponent } from './connected-components/error-page/error-page.component';
 
 const routes: Routes = [
-  { path: '', component: HomePageComponent },
+  { path: 'home', component: HomePageComponent },
   { path: 'events', component: EventsPageComponent },
   { path: 'event/:id', component: EventDetailPageComponent },
   { path: 'create-event', component: CreateEventPageComponent },
