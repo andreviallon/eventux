@@ -26,6 +26,7 @@
     "@ngxs/logger-plugin": "^3.6.2-dev.master-eaa5d86",
     "@ngxs/router-plugin": "^3.6.2",
     "@ngxs/store": "^3.6.2-dev.master-eaa5d86",
+    "angular-mydatepicker": "^0.9.4",
     "angular-svg-icon": "^9.2.0",
     "bulma": "^0.8.2",
     "ionicons": "^5.0.1",

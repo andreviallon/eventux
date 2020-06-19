@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AngularSvgIconModule } from 'angular-svg-icon';
+import { AngularMyDatePickerModule } from 'angular-mydatepicker';
 
 import { NgxsModule } from '@ngxs/store';
 import { EventState } from './state/event.state';
@@ -27,8 +28,7 @@ import { CreateEventComponent } from './components/create-event/create-event.com
 import { FrontPageSearchComponent } from './components/front-page-search/front-page-search.component';
 import { EventListComponent } from './components/event-list/event-list.component';
 import { EventsFilterComponent } from './components/events-filter/events-filter.component';
-
-
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -59,7 +59,9 @@ import { EventsFilterComponent } from './components/events-filter/events-filter.
     AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,
-    AngularSvgIconModule.forRoot()
+    FormsModule,
+    AngularSvgIconModule.forRoot(),
+    AngularMyDatePickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,15 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
+import { IAngularMyDpOptions, IMyDateModel } from 'angular-mydatepicker';
 
 @Component({
   selector: 'app-events-filter',
   templateUrl: './events-filter.component.html',
-  styleUrls: ['./events-filter.component.scss']
+  styleUrls: ['./events-filter.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class EventsFilterComponent implements OnInit {
+export class EventsFilterComponent {
+
+  public myDpOptions: IAngularMyDpOptions = {
+    dateRange: false,
+    dateFormat: 'dd.mm.yyyy'
+    // other options are here...
+  };
+
+  public dateModel: IMyDateModel = {
+    isRange: false
+  };
 
   constructor() { }
 
-  ngOnInit(): void {
+  onDateChanged(event: IMyDateModel): void {
+    // date selected
   }
 
 }

@@ -1,7 +1,81 @@
-.container {
-  margin-top: 7rem;
-}
+@import "../../../styles.scss";
 
-select, .select {
-  width: 100%;
+#event-filter {
+  .container {
+    margin-top: 7rem;
+  }
+
+  select, .select {
+    width: 100%;
+  }
+
+  .date::placeholder {
+    color: $darkGray;
+    opacity: 1;
+  }
+
+  .ng-mydp * {
+    font-family: inherit;
+  }
+
+  .ng-mydp {
+    div {
+      top: unset !important;
+      left: unset !important;
+    }
+
+    .myDpMonthYearSelBar {
+      display: flex;
+      align-items: center;
+      height: 30px;
+      background-color: #3273dc;
+      color: white;
+      height: 40px;
+    }
+
+    .myDpPrevBtn {
+       &::after {
+        border: 3px solid transparent;
+        border-top-color: transparent;
+        border-top-style: solid;
+        border-top-width: 3px;
+        border-right-color: transparent;
+        border-right-style: solid;
+        border-right-width: 3px;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+        border-radius: 2px;
+        border-right: 0;
+        border-right-color: currentcolor;
+        border-top: 0;
+        border-top-color: currentcolor;
+        content: " ";
+        display: block;
+        height: 0.625em;
+        margin-top: -0.4375em;
+        pointer-events: none;
+        position: absolute;
+        transform: rotate(45deg);
+        transform-origin: center;
+        border-color: whtie;
+        width: 0.625em;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        -ms-border-radius: 2px;
+        -o-border-radius: 2px;
+        -webkit-transform: rotate(45deg);
+        -moz-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+        -o-transform: rotate(45deg);
+      }
+    }
+
+    .myDpHeaderBtn {
+      color: white;
+    }
+
+    .myDpIcon {
+      color: white;
+    }
+  }
 }
