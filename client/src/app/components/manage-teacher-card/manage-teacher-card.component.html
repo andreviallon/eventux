@@ -1,0 +1,15 @@
+<div class="card">
+  <div class="card-content">
+    <ul class="content flex-container">
+      <li *ngFor="let overview of teacherOverview.overview">
+        <p class="overview-title">{{ overview.title }}</p>
+        <p class="overview-content">{{ overview.content }}</p>
+      </li>
+      <li>
+        <button class="button is-white">
+          <fa-icon [icon]="faEllipsisV"></fa-icon>
+        </button>
+      </li>
+    </ul>
+  </div>
+</div>

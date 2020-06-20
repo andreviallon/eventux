@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 
 
@@ -7,17 +7,10 @@ import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './manage-event-card.component.html',
   styleUrls: ['./manage-event-card.component.scss']
 })
-export class ManageEventCardComponent implements OnInit {
+export class ManageEventCardComponent {
 
   @Input() eventOverview;
 
   public faEllipsisV = faEllipsisV;
-
-  constructor() { }
-
-  ngOnInit(): void {
-
-    console.log('eventOverview', this.eventOverview);
-  }
 
 }

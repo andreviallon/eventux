@@ -1,0 +1,10 @@
+<div class="container">
+  <app-manage-header [title]="title" [buttonName]="buttonName"></app-manage-header>
+  <div class="columns">
+    <div class="column is-full" *ngFor="let teacherOverview of teachersOverview">
+      <div class="teacher-card-container">
+        <app-manage-teacher-card [teacherOverview]="teacherOverview"></app-manage-teacher-card>
+      </div>
+    </div>
+  </div>
+</div>

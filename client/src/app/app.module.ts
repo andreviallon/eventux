@@ -35,6 +35,9 @@ import { ManageEventsPageComponent } from './connected-components/manage-events-
 import { ManageEventsComponent } from './components/manage-events/manage-events.component';
 import { ManageHeaderComponent } from './components/manage-header/manage-header.component';
 import { ManageEventCardComponent } from './components/manage-event-card/manage-event-card.component';
+import { ManageTeachersPageComponent } from './connected-components/manage-teachers-page/manage-teachers-page.component';
+import { ManageTeachersComponent } from './components/manage-teachers/manage-teachers.component';
+import { ManageTeacherCardComponent } from './components/manage-teacher-card/manage-teacher-card.component';
 
 @NgModule({
   declarations: [
@@ -58,6 +61,9 @@ import { ManageEventCardComponent } from './components/manage-event-card/manage-
     ManageEventsComponent,
     ManageHeaderComponent,
     ManageEventCardComponent,
+    ManageTeachersPageComponent,
+    ManageTeachersComponent,
+    ManageTeacherCardComponent,
   ],
   imports: [
     NgxsModule.forRoot([

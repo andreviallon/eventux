@@ -6,6 +6,7 @@ import { EventDetailPageComponent } from './connected-components/event-detail-pa
 import { CreateEventPageComponent } from './connected-components/create-event-page/create-event-page.component';
 import { ErrorPageComponent } from './connected-components/error-page/error-page.component';
 import { ManageEventsPageComponent } from './connected-components/manage-events-page/manage-events-page.component';
+import { ManageTeachersPageComponent } from './connected-components/manage-teachers-page/manage-teachers-page.component';
 
 
 const routes: Routes = [
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'event/:id', component: EventDetailPageComponent },
   { path: 'manage-events', component: ManageEventsPageComponent },
   { path: 'create-event', component: CreateEventPageComponent },
+  { path: 'manage-teachers', component: ManageTeachersPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: '**', component: ErrorPageComponent }
 ];
