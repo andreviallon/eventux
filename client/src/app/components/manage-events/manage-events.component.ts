@@ -7,35 +7,87 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageEventsComponent implements OnInit {
 
-  public title: string = 'Manage events';
+  public title: string = 'Manage Events';
 
   public buttonName: string = 'Add Event';
 
-  public eventOverview = {
-    _id: '1',
-    overview: [
-      {
-        title: 'name',
-        content: 'React context API and Hooks 101'
-      },
-      {
-        title: 'date',
-        content: '03/04/2020'
-      },
-      {
-        title: 'teacher',
-        content: 'John Doe'
-      },
-      {
-        title: 'venue',
-        content: 'Blank Venue & Pop-up'
-      },
-      {
-        title: 'city',
-        content: 'Copenhagen'
-      }
-    ]
-  };
+  public eventsOverview = [
+    {
+      _id: '1',
+      overview: [
+        {
+          title: 'name',
+          content: 'React context API and Hooks 101'
+        },
+        {
+          title: 'date',
+          content: '03/04/2020'
+        },
+        {
+          title: 'teacher',
+          content: 'John Doe'
+        },
+        {
+          title: 'venue',
+          content: 'Blank Venue & Pop-up'
+        },
+        {
+          title: 'city',
+          content: 'Copenhagen'
+        }
+      ]
+    },
+    {
+      _id: '1',
+      overview: [
+        {
+          title: 'name',
+          content: 'React context API and Hooks 101'
+        },
+        {
+          title: 'date',
+          content: '03/04/2020'
+        },
+        {
+          title: 'teacher',
+          content: 'John Doe'
+        },
+        {
+          title: 'venue',
+          content: 'Blank Venue & Pop-up'
+        },
+        {
+          title: 'city',
+          content: 'Copenhagen'
+        }
+      ]
+    },
+    {
+      _id: '1',
+      overview: [
+        {
+          title: 'name',
+          content: 'React context API and Hooks 101'
+        },
+        {
+          title: 'date',
+          content: '03/04/2020'
+        },
+        {
+          title: 'teacher',
+          content: 'John Doe'
+        },
+        {
+          title: 'venue',
+          content: 'Blank Venue & Pop-up'
+        },
+        {
+          title: 'city',
+          content: 'Copenhagen'
+        }
+      ]
+    }
+  ];
 
   constructor() { }
 

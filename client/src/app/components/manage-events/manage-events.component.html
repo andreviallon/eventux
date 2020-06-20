@@ -1,4 +1,10 @@
 <div class="container">
   <app-manage-header [title]="title" [buttonName]="buttonName"></app-manage-header>
-  <app-manage-event-card [eventOverview]="eventOverview"></app-manage-event-card>
+  <div class="columns">
+    <div class="column is-full" *ngFor="let eventOverview of eventsOverview">
+      <div class="event-card-container">
+        <app-manage-event-card [eventOverview]="eventOverview"></app-manage-event-card>
+      </div>
+    </div>
+  </div>
 </div>
