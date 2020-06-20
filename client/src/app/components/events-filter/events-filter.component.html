@@ -19,7 +19,7 @@
       </div>
 
       <div class="column">
-        <input class="input date" type="text" placeholder="Click to select a date" angular-mydatepicker #dp="angular-mydatepicker" name="mydate" [(ngModel)]="dateModel" [options]="myDpOptions" (click)="dp.toggleCalendar()" (dateChanged)="onDateChanged($event)" />
+        <app-date-picker></app-date-picker>
       </div>
 
       <div class="column">
