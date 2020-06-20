@@ -34,6 +34,7 @@ import { AngularMyDatePickerModule } from 'angular-mydatepicker';
 import { ManageEventsPageComponent } from './connected-components/manage-events-page/manage-events-page.component';
 import { ManageEventsComponent } from './components/manage-events/manage-events.component';
 import { ManageHeaderComponent } from './components/manage-header/manage-header.component';
+import { ManageEventCardComponent } from './manage-event-card/manage-event-card.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +57,7 @@ import { ManageHeaderComponent } from './components/manage-header/manage-header.
     ManageEventsPageComponent,
     ManageEventsComponent,
     ManageHeaderComponent,
+    ManageEventCardComponent,
   ],
   imports: [
     NgxsModule.forRoot([
