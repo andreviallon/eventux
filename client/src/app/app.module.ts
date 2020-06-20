@@ -31,6 +31,9 @@ import { DatePickerComponent } from './components/date-picker/date-picker.compon
 
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { AngularMyDatePickerModule } from 'angular-mydatepicker';
+import { ManageEventsPageComponent } from './connected-components/manage-events-page/manage-events-page.component';
+import { ManageEventsComponent } from './components/manage-events/manage-events.component';
+import { ManageHeaderComponent } from './components/manage-header/manage-header.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +53,9 @@ import { AngularMyDatePickerModule } from 'angular-mydatepicker';
     EventListComponent,
     EventsFilterComponent,
     DatePickerComponent,
+    ManageEventsPageComponent,
+    ManageEventsComponent,
+    ManageHeaderComponent,
   ],
   imports: [
     NgxsModule.forRoot([

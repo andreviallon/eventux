@@ -27,7 +27,7 @@
         <a class="navbar-link user-name">{{ currentUser.firstName }} {{ currentUser.lastName }}</a>
         <div class="navbar-dropdown is-boxed is-right">
           <ng-container *ngIf="isAdmin()">
-            <a class="navbar-item">Manage Events</a>
+            <a class="navbar-item" routerLink="/manage-events">Manage Events</a>
             <a class="navbar-item">Manage Teachers</a>
             <a class="navbar-item">Manage Venues</a>
           </ng-container>
