@@ -24,6 +24,11 @@
       left: unset !important;
     }
 
+    .myDpSelector {
+      padding: 0;
+      border: none;
+    }
+
     .myDpMonthYearSelBar {
       display: flex;
       align-items: center;
@@ -34,39 +39,80 @@
     }
 
     .myDpPrevBtn {
-       &::after {
-        border: 3px solid transparent;
-        border-top-color: transparent;
-        border-top-style: solid;
-        border-top-width: 3px;
-        border-right-color: transparent;
-        border-right-style: solid;
-        border-right-width: 3px;
-        border-bottom-color: transparent;
-        border-left-color: transparent;
-        border-radius: 2px;
-        border-right: 0;
-        border-right-color: currentcolor;
-        border-top: 0;
-        border-top-color: currentcolor;
-        content: " ";
-        display: block;
-        height: 0.625em;
-        margin-top: -0.4375em;
-        pointer-events: none;
-        position: absolute;
-        transform: rotate(45deg);
-        transform-origin: center;
-        border-color: whtie;
-        width: 0.625em;
-        -webkit-border-radius: 2px;
-        -moz-border-radius: 2px;
-        -ms-border-radius: 2px;
-        -o-border-radius: 2px;
-        -webkit-transform: rotate(45deg);
-        -moz-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        -o-transform: rotate(45deg);
+      button {
+        width: 20px;
+        height: 20px;
+        padding: 0.5rem;
+
+        &::before {
+          border: 3px solid white;
+          border-top-style: solid;
+          border-top-width: 3px;
+          border-right-style: solid;
+          border-right-width: 3px;
+          border-radius: 2px;
+          border-right: 0;
+          border-right-color: currentcolor;
+          border-top: 0;
+          border-top-color: currentcolor;
+          content: " ";
+          display: block;
+          height: 0.625em;
+          margin-top: -0.4375em;
+          pointer-events: none;
+          position: absolute;
+          transform: rotate(45deg);
+          transform-origin: center;
+          border-color: whtie;
+          width: 0.625em;
+          -webkit-border-radius: 2px;
+          -moz-border-radius: 2px;
+          -ms-border-radius: 2px;
+          -o-border-radius: 2px;
+          -webkit-transform: rotate(45deg);
+          -moz-transform: rotate(45deg);
+          -ms-transform: rotate(45deg);
+          -o-transform: rotate(45deg);
+        }
+      }
+    }
+
+    .myDpNextBtn {
+      button {
+        width: 20px;
+        height: 20px;
+        padding: 0.5rem;
+
+        &::before {
+          border: 3px solid white;
+          border-top-style: solid;
+          border-top-width: 3px;
+          border-right-style: solid;
+          border-right-width: 3px;
+          border-radius: 2px;
+          border-right: 0;
+          border-right-color: currentcolor;
+          border-top: 0;
+          border-top-color: currentcolor;
+          content: " ";
+          display: block;
+          height: 0.625em;
+          margin-top: -0.4375em;
+          pointer-events: none;
+          position: absolute;
+          transform: rotate(-135deg);
+          transform-origin: center;
+          border-color: whtie;
+          width: 0.625em;
+          -webkit-border-radius: 2px;
+          -moz-border-radius: 2px;
+          -ms-border-radius: 2px;
+          -o-border-radius: 2px;
+          -webkit-transform: rotate(-135deg);
+          -moz-transform: rotate(-135deg);
+          -ms-transform: rotate(-135deg);
+          -o-transform: rotate(-135deg);
+}
       }
     }
 
@@ -76,6 +122,53 @@
 
     .myDpIcon {
       color: white;
+    }
+
+    th {
+      text-align: center;
+      color: $lightGray;
+    }
+
+    td {
+      text-align: center;
+      border-radius: 200px;
+      -webkit-border-radius: 200px;
+      -moz-border-radius: 200px;
+      -ms-border-radius: 200px;
+      -o-border-radius: 200px;
+    }
+
+    tr {
+      height: 37px;
+    }
+
+    .myDpSelectedDay {
+      color: $mediumBlue;
+    }
+
+    .myDpSelectedDay, .myDpSelectedMonth, .myDpSelectedYear {
+      background-color: $mediumBlue;
+      color: white;
+    }
+
+    .myDpTableSingleDay:hover, .myDpTableSingleMonth:hover, .myDpTableSingleYear:hover {
+      background-color: $mediumBlue;
+
+      span {
+        color: white;
+      }
+    }
+
+    .myDpMarkCurrDay, .myDpMarkCurrMonth, .myDpMarkCurrYear {
+      border: 1px dotted $mediumBlue;
+      border-radius: 200px;
+      padding: 0.4rem;
+      color: $mediumBlue;
+      font-weight: 400;
+    }
+
+    .myDpHighlight {
+      color: inherit;
     }
   }
 }
