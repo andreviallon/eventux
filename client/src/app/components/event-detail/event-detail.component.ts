@@ -1,8 +1,5 @@
+import { Component, Input } from '@angular/core';
 import { IEvent } from './../../state/event.model';
-import { EventService } from '../../event.service';
-import { Component, OnInit, OnDestroy, Input } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
 import { faLongArrowAltRight, faShare } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faFacebookF } from '@fortawesome/free-brands-svg-icons';
 

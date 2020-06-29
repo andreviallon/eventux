@@ -1,6 +1,6 @@
+import { IEvent } from 'src/app/state/event.model';
 import { Component, Input } from '@angular/core';
 import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
-
 
 @Component({
   selector: 'app-manage-event-card',
@@ -9,8 +9,12 @@ import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
 })
 export class ManageEventCardComponent {
 
-  @Input() eventOverview;
+  @Input() eventOverview: IEvent;
 
   public faEllipsisV = faEllipsisV;
+  public showDropdown = false;
 
+  public toogleDropdown () {
+    this.showDropdown = !this.showDropdown;
+  }
 }
