@@ -25,7 +25,6 @@
     "@fortawesome/free-solid-svg-icons": "^5.13.0",
     "@ngxs-labs/immer-adapter": "^3.0.5",
     "@ngxs/logger-plugin": "^3.6.2-dev.master-eaa5d86",
-    "@ngxs/router-plugin": "^3.6.2",
     "@ngxs/store": "^3.6.2-dev.master-eaa5d86",
     "angular-mydatepicker": "^0.9.4",
     "angular-svg-icon": "^9.2.0",

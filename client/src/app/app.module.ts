@@ -71,7 +71,6 @@ import { ManageTeacherCardComponent } from './components/manage-teacher-card/man
     ]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),
-    NgxsRouterPluginModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
