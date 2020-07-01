@@ -1,18 +1,15 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-manage-header',
   templateUrl: './manage-header.component.html',
   styleUrls: ['./manage-header.component.scss']
 })
-export class ManageHeaderComponent implements OnInit {
+export class ManageHeaderComponent {
 
   @Input() title: string;
   @Input() buttonName: string;
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  @Output() create: EventEmitter<void> = new EventEmitter();
 
 }

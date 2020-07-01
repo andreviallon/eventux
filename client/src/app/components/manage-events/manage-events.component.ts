@@ -1,5 +1,6 @@
 import { Component, Output, EventEmitter, Input } from '@angular/core';
 import { IEventOverview } from 'src/app/state/event/event.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-manage-events',
@@ -9,6 +10,8 @@ import { IEventOverview } from 'src/app/state/event/event.model';
 export class ManageEventsComponent {
 
   @Input() events: IEventOverview[];
+
+  @Output() navigateToCreateEventPage: EventEmitter<void> = new EventEmitter();
   @Output() editEvent: EventEmitter<string> = new EventEmitter;
   @Output() deleteEvent: EventEmitter<string> = new EventEmitter;
 

@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
 import { InitEventState, DeleteEvent, EditEvent } from 'src/app/state/event/event.actions';
@@ -14,10 +15,14 @@ export class ManageEventsPageComponent {
 
   @Select(EventState.getEventsOverview) events$: Observable<IEventOverview[]>;
 
-  constructor(private store: Store) { }
+  constructor(private store: Store, private router: Router) { }
 
   ngOnInit(): void {
     this.store.dispatch(new InitEventState);
+  }
+
+  public navigateToCreateEventPage() {
+    this.router.navigate(['create-event']);
   }
 
   editEvent($event: string): void {
