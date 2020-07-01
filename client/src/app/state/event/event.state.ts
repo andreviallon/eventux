@@ -1,7 +1,7 @@
 import { EventService } from '../../event.service';
 import { State, Selector, Action, StateContext } from '@ngxs/store';
 import { IEvent, IEventOverview } from './event.model';
-import { InitEventState, DeleteEvent } from './event.actions';
+import { InitEventState, DeleteEvent, EditEvent } from './event.actions';
 import { Injectable } from '@angular/core';
 import { ImmutableContext } from '@ngxs-labs/immer-adapter';
 
@@ -63,6 +63,14 @@ export class EventState {
     patchState({
       events: events,
     })
+  }
+
+  @Action(EditEvent)
+  @ImmutableContext()
+  editEvent({ setState }: StateContext<EventStateModel>, { id }: EditEvent) {
+    setState((state: EventStateModel) => {
+      return state;
+    });
   }
 
   @Action(DeleteEvent)

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Store, Select } from '@ngxs/store';
-import { DeleteEvent, InitEventState } from 'src/app/state/event/event.actions';
+import { InitEventState, DeleteEvent, EditEvent } from 'src/app/state/event/event.actions';
 import { EventState } from 'src/app/state/event/event.state';
 import { Observable } from 'rxjs';
 import { IEventOverview } from 'src/app/state/event/event.model';
@@ -20,7 +20,11 @@ export class ManageEventsPageComponent {
     this.store.dispatch(new InitEventState);
   }
 
-  deleteEvent($event) {
+  editEvent($event: string): void {
+    this.store.dispatch(new EditEvent($event));
+  }
+
+  deleteEvent($event: string): void {
     this.store.dispatch(new DeleteEvent($event));
   }
 
