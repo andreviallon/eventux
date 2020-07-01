@@ -1,5 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { faEllipsisV } from '@fortawesome/free-solid-svg-icons';
+import { faEllipsisV, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { IEventOverview } from 'src/app/state/event/event.model';
 
 @Component({
@@ -10,16 +10,28 @@ import { IEventOverview } from 'src/app/state/event/event.model';
 export class ManageEventCardComponent {
 
   @Input() event: IEventOverview;
+  @Output() editEvent: EventEmitter<string> = new EventEmitter();
   @Output() deleteEvent: EventEmitter<string> = new EventEmitter();
 
-  public faEllipsisV = faEllipsisV;
-  public showDropdown = false;
+  public faEllipsisV: IconDefinition = faEllipsisV;
+  public showDropdown: boolean = false;
 
-  public toogleDropdown () {
+  public toogleDropdown(event): void {
+    event.stopPropagation();
     this.showDropdown = !this.showDropdown;
   }
 
-  public delete() {
+  public edit(): void {
+    event.stopPropagation();
+    this.editEvent.emit(this.event._id);
+  }
+
+  public delete(): void {
+    event.stopPropagation();
     this.deleteEvent.emit(this.event._id);
+  }
+
+  public stopPropagation(event: MouseEvent): void {
+    event.stopPropagation();
   }
 }

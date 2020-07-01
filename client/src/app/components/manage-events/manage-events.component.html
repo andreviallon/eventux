@@ -3,7 +3,7 @@
   <div class="columns">
     <div class="column is-full" *ngFor="let event of events">
       <div class="event-card-container">
-        <app-manage-event-card [event]="event" (deleteEvent)="delete($event)"></app-manage-event-card>
+        <app-manage-event-card [event]="event" (deleteEvent)="delete($event)" (editEvent)="edit($event)"></app-manage-event-card>
       </div>
     </div>
   </div>

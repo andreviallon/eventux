@@ -9,12 +9,17 @@ import { IEventOverview } from 'src/app/state/event/event.model';
 export class ManageEventsComponent {
 
   @Input() events: IEventOverview[];
+  @Output() editEvent: EventEmitter<string> = new EventEmitter;
   @Output() deleteEvent: EventEmitter<string> = new EventEmitter;
 
   public title: string = 'Manage Events';
   public buttonName: string = 'Add Event';
 
-  public delete(id) {
+  public edit(id: string): void {
+    this.editEvent.emit(id);
+  }
+
+  public delete(id: string): void {
     this.deleteEvent.emit(id);
   }
 }

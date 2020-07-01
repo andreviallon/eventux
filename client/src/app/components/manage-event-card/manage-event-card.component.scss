@@ -1,5 +1,9 @@
 @import "../../../styles.scss";
 
+.card {
+  cursor: pointer;
+}
+
 .flex-container {
   display: flex;
   justify-content: space-between;
