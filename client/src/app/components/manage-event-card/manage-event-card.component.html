@@ -1,11 +1,11 @@
 <div class="card" [routerLink]="['/event', event._id]">
   <div class="card-content">
       <ul class="content flex-container">
-        <li *ngFor="let eventProperty of event.properties">
+        <li *ngFor="let eventProperty of event.properties" class="list-item">
           <p class="overview-title">{{ eventProperty.title }}</p>
           <p class="overview-content">{{ eventProperty.content }}</p>
         </li>
-        <li>
+        <li class="list-ellipsis">
           <div class="dropdown is-right" [ngClass]="{'is-active': showDropdown}">
             <div class="dropdown-trigger">
             <button class="button is-white" (click)="toogleDropdown($event)">
