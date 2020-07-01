@@ -25,3 +25,13 @@ export interface IEvent {
     socialLink: string;
   }
 }
+
+export interface IEventOverview {
+  _id: string;
+  properties: IEventProperty[]
+}
+
+export interface IEventProperty {
+  title: string;
+  content: string;
+}

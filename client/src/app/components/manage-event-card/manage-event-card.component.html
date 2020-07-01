@@ -1,9 +1,9 @@
 <div class="card">
   <div class="card-content">
       <ul class="content flex-container">
-        <li *ngFor="let overview of eventOverview.overview">
-          <p class="overview-title">{{ overview.title }}</p>
-          <p class="overview-content">{{ overview.content }}</p>
+        <li *ngFor="let eventProperty of event.properties">
+          <p class="overview-title">{{ eventProperty.title }}</p>
+          <p class="overview-content">{{ eventProperty.content }}</p>
         </li>
         <li>
           <div class="dropdown is-right" [ngClass]="{'is-active': showDropdown}">
@@ -14,7 +14,7 @@
             </div>
             <div class="dropdown-menu" id="dropdown-menu" role="menu">
               <div class="dropdown-content">
-                <a href="#" class="dropdown-item">Delete Event</a>
+                <a class="dropdown-item" (click)="delete()">Delete Event</a>
               </div>
             </div>
           </div>

@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, Input } from '@angular/core';
 import { IAngularMyDpOptions, IMyDateModel } from 'angular-mydatepicker';
 
 @Component({
@@ -8,6 +8,9 @@ import { IAngularMyDpOptions, IMyDateModel } from 'angular-mydatepicker';
   encapsulation: ViewEncapsulation.None
 })
 export class DatePickerComponent {
+
+  @Input() placeholder: string;
+
   public myDpOptions: IAngularMyDpOptions = {
     dateRange: false,
     dateFormat: 'dd.mm.yyyy'

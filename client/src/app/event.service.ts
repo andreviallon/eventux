@@ -1,11 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IEvent } from './state/event.model';
-
-const map = [
-  { lat: 55, long: 56},
-  { lat: 55, long: 56 },
-  { lat: 55, long: 56 },
-]
+import { IEvent } from './state/event/event.model';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +7,7 @@ const map = [
 
 export class EventService {
 
-  events: IEvent[] = [
+  private events: IEvent[] = [
     {
       _id: '1',
       title: 'Reack context API and hooks 101',
@@ -178,13 +172,11 @@ export class EventService {
     }
   ];
 
-  constructor() { }
-
   public getEvents(): IEvent[] {
     return this.events;
   }
 
-  public getEvent(id): IEvent {
+  public getEvent(id: string): IEvent {
     return this.events.find(event => event._id === id);
   }
 

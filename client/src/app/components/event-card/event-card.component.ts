@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { IEvent } from '../../state/event.model';
+import { IEvent } from '../../state/event/event.model';
 
 @Component({
   selector: 'app-event-card',

@@ -1,4 +1,4 @@
-import { IEvent } from './../../state/event.model';
+import { IEvent } from '../../state/event/event.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';

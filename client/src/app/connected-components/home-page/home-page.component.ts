@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { EventState } from '../../state/event.state';
+import { EventState } from '../../state/event/event.state';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
-import { IEvent } from 'src/app/state/event.model';
-import { InitEventState } from 'src/app/state/event.actions';
+import { IEvent } from 'src/app/state/event/event.model';
+import { InitEventState } from 'src/app/state/event/event.actions';
 
 @Component({
   selector: 'app-home-page',

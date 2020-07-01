@@ -1,1 +1,1 @@
-<app-manage-events></app-manage-events>
+<app-manage-events [events]="events$ | async" (deleteEvent)="deleteEvent($event)"></app-manage-events>

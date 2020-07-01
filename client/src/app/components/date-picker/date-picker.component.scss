@@ -1,6 +1,11 @@
 @import "../../../styles.scss";
 
 #date-picker {
+
+  input {
+    cursor: pointer;
+  }
+
   .ng-mydp * {
     font-family: inherit;
   }
