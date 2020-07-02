@@ -1,0 +1,10 @@
+<div class="container">
+  <app-manage-header [title]="title" [buttonName]="buttonName" (create)="navigateToCreateEventPage()"></app-manage-header>
+  <div class="columns">
+    <div class="column is-full" *ngFor="let event of events$ | async">
+      <div class="event-card-container">
+        <app-manage-event-card [event]="event" (deleteEvent)="deleteEvent($event)" (editEvent)="editEvent($event)"></app-manage-event-card>
+      </div>
+    </div>
+  </div>
+</div>

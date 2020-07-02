@@ -1,0 +1,96 @@
+@import "src/styles.scss";
+
+.flex-container {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.5rem;
+}
+
+h1 {
+  color: $black;
+  font-size: 1.2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding-top: 0.4rem;
+text-transform: uppercase;
+}
+
+a {
+  color: $black;
+
+  &:hover {
+    background-color: unset;
+    color: $black;
+  }
+
+  &:focus {
+    background-color: unset;
+    color: $black;
+  }
+}
+
+.user-name {
+  font-weight: 500;
+  color: $black;
+}
+
+.has-dropdown {
+  cursor: pointer;
+}
+
+.navbar-dropdown {
+  margin-top: 0.5rem;
+}
+
+.avatar {
+  width: 35px;
+  height: 35px;
+  max-height: inherit;
+  align-self: center;
+  border-radius: 100px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  -ms-border-radius: 100px;
+  -o-border-radius: 100px;
+
+  @media only screen and (max-width: 1024px) {
+    display: none;
+  }
+}
+
+.buttons {
+  margin-right: 0.5rem;
+}
+
+button {
+  font-weight: 600;
+}
+
+.navbar-start {
+
+  align-items: center;
+
+  .navbar-item {
+    display: inline-block;
+  }
+
+  .navbar-item::after {
+    content: "";
+    position: relative;
+    display: block;
+    width: 0;
+    z-index: -1;
+    height: 2.5px;
+    background: $black;
+    transition: width 0.3s;
+  }
+
+  .navbar-item:hover::after {
+	  width: 100%;
+	  transition: width 0.3s;
+  }
+}
+
+.active {
+  font-weight: bold;
+}
