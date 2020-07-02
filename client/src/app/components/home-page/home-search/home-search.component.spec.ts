@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { FrontPageSearchComponent } from './front-page-search.component';
+import { HomeSearchComponent } from './home-search.component';
 
-describe('FrontPageSearchComponent', () => {
-  let component: FrontPageSearchComponent;
-  let fixture: ComponentFixture<FrontPageSearchComponent>;
+describe('HomeSearchComponent', () => {
+  let component: HomeSearchComponent;
+  let fixture: ComponentFixture<HomeSearchComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FrontPageSearchComponent ]
+      declarations: [ HomeSearchComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(FrontPageSearchComponent);
+    fixture = TestBed.createComponent(HomeSearchComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

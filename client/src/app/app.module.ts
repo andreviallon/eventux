@@ -22,11 +22,12 @@ import { ManageTeachersComponent } from './components/manage-teacher-page/manage
 import { ManageTeacherCardComponent } from './components/manage-teacher-page/manage-teacher-card/manage-teacher-card.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { AngularMyDatePickerModule } from 'angular-mydatepicker';
-import { FrontPageSearchComponent } from './components/home-page/front-page-search/front-page-search.component';
 import { DatePickerComponent } from './components/shared/date-picker/date-picker.component';
 import { EventCardComponent } from './components/shared/event-card/event-card.component';
 import { EventListComponent } from './components/shared/event-list/event-list.component';
 import { ManageHeaderComponent } from './components/shared/manage-header/manage-header.component';
+import { HomeSearchComponent } from './components/home-page/home-search/home-search.component';
+import { HomeComponent } from './components/home-page/home/home.component';
 
 
 @NgModule({
@@ -41,11 +42,12 @@ import { ManageHeaderComponent } from './components/shared/manage-header/manage-
     ManageEventCardComponent,
     ManageTeachersComponent,
     ManageTeacherCardComponent,
-    FrontPageSearchComponent,
     DatePickerComponent,
     EventCardComponent,
     EventListComponent,
-    ManageHeaderComponent
+    ManageHeaderComponent,
+    HomeSearchComponent,
+    HomeComponent
   ],
   imports: [
     NgxsModule.forRoot([
