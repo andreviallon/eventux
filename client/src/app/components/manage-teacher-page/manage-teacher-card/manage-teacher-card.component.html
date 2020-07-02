@@ -3,7 +3,7 @@
     <ul class="content flex-container">
       <li *ngFor="let overview of teacherOverview.overview">
         <p class="overview-title">{{ overview.title }}</p>
-        <p class="overview-content">{{ overview.content }}</p>
+        <p class="overview-content" [ngClass]="{'email': overview.title === 'email'}">{{ overview.content }}</p>
       </li>
       <li>
         <button class="button is-white">

@@ -46,3 +46,7 @@ body {
 .title {
   color: $black;
 }
+
+.email {
+  text-transform: lowercase !important;
+}
