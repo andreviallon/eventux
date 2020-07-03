@@ -9,6 +9,7 @@ export class ManageHeaderComponent {
 
   @Input() title: string;
   @Input() buttonName: string;
+  @Input() addButton: boolean;
 
   @Output() create: EventEmitter<void> = new EventEmitter();
 

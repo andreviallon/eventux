@@ -1,1 +1,95 @@
-<p>create-event works!</p>
+<div class="container">
+  <app-manage-header [title]="title" [addButton]="false"></app-manage-header>
+  <form [formGroup]="eventForm">
+    <section class="event-information">
+      <p class="section-title">Event Information</p>
+      <div class="columns">
+        <div class="column is-full">
+          <div class="field">
+            <label class="label">Name</label>
+            <div class="control">
+              <input class="input" type="text" formControlName="name">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column is-half">
+          <div class="field">
+            <label class="label">Date</label>
+            <div class="control">
+              <input class="input" type="text" formControlName="date">
+            </div>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="field">
+            <label class="label">Price</label>
+            <div class="field has-addons">
+              <p class="control"><a class="button is-static">$</a></p>
+              <div class="control price-input">
+                <input class="input" type="text" formControlName="price">
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column is-half">
+          <div class="field">
+            <label class="label">Start Time</label>
+            <div class="control">
+              <div class="select">
+                <select formControlName="startTime">
+                  <option *ngFor="let time of startTimes">{{ time }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="column is-half">
+          <div class="field">
+            <label class="label">End Time</label>
+            <div class="control">
+              <div class="select">
+                <select formControlName="startTime">
+                  <option *ngFor="let time of startTimes">{{ time }}</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column is-half">
+          <div class="field">
+            <label class="label">Topics</label>
+            <div class="control">
+              <input class="input" type="text" (keyup.enter)="addTag($event)" formControlName="tag">
+            </div>
+              <p class="help">Press enter to add a tag</p>
+          </div>
+        </div>
+        <div class="column is-half tags-container">
+          <div class="tags are-medium">
+            <span class="tag" *ngFor="let tag of tags; index as index">#{{ tag }} <a class="delete is-small" (click)="deleteTag(index)"></a> </span>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns">
+        <div class="column is-full">
+          <div class="field">
+            <label class="label">Description</label>
+            <textarea class="textarea" rows="6" formControlName="description"></textarea>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </form>
+</div>

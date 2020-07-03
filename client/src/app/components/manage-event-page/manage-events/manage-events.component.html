@@ -1,5 +1,5 @@
 <div class="container">
-  <app-manage-header [title]="title" [buttonName]="buttonName" (create)="navigateToCreateEventPage()"></app-manage-header>
+  <app-manage-header [title]="title" [buttonName]="buttonName" [addButton]="true" (create)="navigateToCreateEventPage()"></app-manage-header>
   <div class="columns">
     <div class="column is-full" *ngFor="let event of events$ | async">
       <div class="event-card-container">

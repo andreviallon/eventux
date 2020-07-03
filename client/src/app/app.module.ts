@@ -2,7 +2,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NgxsModule } from '@ngxs/store';
 import { EventState } from './state/event/event.state';
@@ -61,7 +61,8 @@ import { HomeComponent } from './components/home-page/home/home.component';
     HttpClientModule,
     FormsModule,
     AngularSvgIconModule.forRoot(),
-    AngularMyDatePickerModule
+    AngularMyDatePickerModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
