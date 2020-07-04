@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { times } from 'src/app/utils/times';
 
@@ -28,7 +28,7 @@ export class CreateEventComponent implements OnInit {
       endTime: ['', Validators.required],
       tag: [''],
       description: ['', Validators.required],
-      imageData: ['']
+      imageData: [File]
     });
 
     this.startTimes = times;
@@ -36,6 +36,7 @@ export class CreateEventComponent implements OnInit {
 
   public imageData($event: string): void {
     this.eventForm.get('imageData').setValue($event);
+    console.log('eventForm', this.eventForm)
   }
 
   public addTag(tag): void {

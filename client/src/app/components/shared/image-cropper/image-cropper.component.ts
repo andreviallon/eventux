@@ -1,29 +1,35 @@
-import { Component, ViewChild, ElementRef, Input, AfterViewInit, Output, EventEmitter } from '@angular/core';
-import Cropper from "cropperjs";
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { CropperOptions } from 'ngx-cropperjs-wrapper';
 
 @Component({
   selector: 'app-image-cropper',
   templateUrl: './image-cropper.component.html',
   styleUrls: ['./image-cropper.component.scss']
 })
-export class ImageCropperComponent implements AfterViewInit {
+export class ImageCropperComponent implements OnInit {
 
-  @ViewChild("image", { static: false }) imageElement: ElementRef;
+  @Output() imageData: EventEmitter<File> = new EventEmitter();
 
-  @Input("src") imageSource: string;
-  @Output() imageData: EventEmitter<string> = new EventEmitter();
+  public fileInput: File = null;
+  public options = {
+    scalable: false,
+    zoomable: false,
+    aspectRatio: 16 / 9,
+  } as CropperOptions;
 
-  private cropper: Cropper;
+  public ngOnInit(): void {
+  }
 
-  public ngAfterViewInit() {
-    this.cropper = new Cropper(this.imageElement.nativeElement, {
-      zoomable: false,
-      scalable: false,
-      aspectRatio: 16 / 9,
-      crop: () => {
-        const canvas = this.cropper.getCroppedCanvas();
-        this.imageData.emit(canvas.toDataURL("image/png"));
-      }
-    });
+  public filePick(event: any) {
+    this.fileInput = event.target.files.item(0);
+  }
+
+  public fileChange(file: File) {
+    this.imageData.emit(file);
+  }
+
+  public removeFile() {
+    this.fileInput = null;
+    this.imageData.emit(null);
   }
 }

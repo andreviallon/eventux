@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { NgxCropperJsModule } from 'ngx-cropperjs-wrapper';
 
 import { NgxsModule } from '@ngxs/store';
 import { EventState } from './state/event/event.state';
@@ -64,7 +65,8 @@ import { ImageCropperComponent } from './components/shared/image-cropper/image-c
     FormsModule,
     AngularSvgIconModule.forRoot(),
     AngularMyDatePickerModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxCropperJsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

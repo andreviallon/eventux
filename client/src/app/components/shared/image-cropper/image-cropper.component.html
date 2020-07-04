@@ -1,21 +1,16 @@
 <div class="flex-container">
   <div class="img-container">
-    <ng-container *ngIf="imageSource; then showImage; else noImage"></ng-container>
-    <ng-template #showImage>
-      <img #image [src]="imageSource" crossorigin>
-    </ng-template>
-    <ng-template #noImage>
-      <p>No Image Selected</p>
-    </ng-template>
+    <lib-cropper [imageFile]="fileInput" [options]="options" (fileChange)="fileChange($event)"></lib-cropper>
+    <p *ngIf="!fileInput" class="no-image">No Image Selected</p>
   </div>
 
-  <div class="buttons">
+  <div class="file is-link">
+    <label class="file-label">
+      <input class="file-input" type="file" (change)="filePick($event)" accept="image/*" />
       <span class="file-cta">
-        <button class="button is-link">
-          Upload File
-        <input class="file-input" type="file" name="resume">
-      </button>
+        <span class="file-label">Upload Image</span>
       </span>
-    <button class="button is-light">Remove</button>
+      <button class="button is-light" (click)="removeFile()">Remove</button>
+    </label>
   </div>
 </div>
