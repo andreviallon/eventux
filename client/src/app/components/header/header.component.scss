@@ -12,7 +12,7 @@ h1 {
   font-weight: bold;
   letter-spacing: 2px;
   padding-top: 0.4rem;
-text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 a {
@@ -93,4 +93,13 @@ button {
 
 .active {
   font-weight: bold;
+}
+
+@media only screen and (max-width: 1024px) {
+  .nav-start {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: baseline;
+  }
 }

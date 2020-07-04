@@ -89,6 +89,15 @@
         </div>
       </div>
 
+      <div class="columns">
+        <div class="column is-full">
+          <div class="field">
+            <label class="label">Image</label>
+            <app-image-cropper src="../../../assets/event-image.png" (imageData)="imageData($event)"></app-image-cropper>
+          </div>
+        </div>
+      </div>
+
     </section>
 
   </form>

@@ -28,6 +28,7 @@ import { EventListComponent } from './components/shared/event-list/event-list.co
 import { ManageHeaderComponent } from './components/shared/manage-header/manage-header.component';
 import { HomeSearchComponent } from './components/home-page/home-search/home-search.component';
 import { HomeComponent } from './components/home-page/home/home.component';
+import { ImageCropperComponent } from './components/shared/image-cropper/image-cropper.component';
 
 
 @NgModule({
@@ -47,7 +48,8 @@ import { HomeComponent } from './components/home-page/home/home.component';
     EventListComponent,
     ManageHeaderComponent,
     HomeSearchComponent,
-    HomeComponent
+    HomeComponent,
+    ImageCropperComponent
   ],
   imports: [
     NgxsModule.forRoot([

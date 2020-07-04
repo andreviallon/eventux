@@ -29,6 +29,7 @@
     "angular-mydatepicker": "^0.9.4",
     "angular-svg-icon": "^9.2.0",
     "bulma": "^0.8.2",
+    "cropperjs": "^1.5.7",
     "immer": "^7.0.5",
     "ionicons": "^5.0.1",
     "ngxs": "^2.0.0-rc.20",

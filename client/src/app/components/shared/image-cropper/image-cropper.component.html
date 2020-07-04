@@ -1,0 +1,21 @@
+<div class="flex-container">
+  <div class="img-container">
+    <ng-container *ngIf="imageSource; then showImage; else noImage"></ng-container>
+    <ng-template #showImage>
+      <img #image [src]="imageSource" crossorigin>
+    </ng-template>
+    <ng-template #noImage>
+      <p>No Image Selected</p>
+    </ng-template>
+  </div>
+
+  <div class="buttons">
+      <span class="file-cta">
+        <button class="button is-link">
+          Upload File
+        <input class="file-input" type="file" name="resume">
+      </button>
+      </span>
+    <button class="button is-light">Remove</button>
+  </div>
+</div>
