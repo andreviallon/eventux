@@ -1,3 +1,4 @@
+import { VenueState } from 'src/app/state/venue/venue.state';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -30,6 +31,7 @@ import { ManageHeaderComponent } from './components/shared/manage-header/manage-
 import { HomeSearchComponent } from './components/home-page/home-search/home-search.component';
 import { HomeComponent } from './components/home-page/home/home.component';
 import { ImageCropperComponent } from './components/shared/image-cropper/image-cropper.component';
+import { EventFormComponent } from './components/event-form/event-form.component';
 
 
 @NgModule({
@@ -50,11 +52,13 @@ import { ImageCropperComponent } from './components/shared/image-cropper/image-c
     ManageHeaderComponent,
     HomeSearchComponent,
     HomeComponent,
-    ImageCropperComponent
+    ImageCropperComponent,
+    EventFormComponent
   ],
   imports: [
     NgxsModule.forRoot([
-      EventState
+      EventState,
+      VenueState
     ]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),

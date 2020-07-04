@@ -1,6 +1,9 @@
+import { IVenue } from './../../state/venue/venue.model';
+import { VenueState } from './../../state/venue/venue.state';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { times } from 'src/app/utils/times';
+import { Select, Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { InitVenueState } from 'src/app/state/venue/venue.actions';
 
 @Component({
   selector: 'app-create-event',
@@ -10,42 +13,15 @@ import { times } from 'src/app/utils/times';
 export class CreateEventComponent implements OnInit {
 
   public title: string = 'Add event';
-  public tags: string[] = [];
-  public startTimes: string[] = [];
 
-  public eventForm: FormGroup;
+  @Select(VenueState.getVenues) venues$: Observable<IVenue[]>;
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private store: Store) {
 
   }
 
   public ngOnInit(): void {
-    this.eventForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      date: ['', Validators.required],
-      price: [100, Validators.required],
-      startTime: ['', Validators.required],
-      endTime: ['', Validators.required],
-      tag: [''],
-      description: ['', Validators.required],
-      imageData: [File]
-    });
-
-    this.startTimes = times;
-  }
-
-  public imageData($event: string): void {
-    this.eventForm.get('imageData').setValue($event);
-    console.log('eventForm', this.eventForm)
-  }
-
-  public addTag(tag): void {
-    this.tags.push(tag.target.value);
-    this.eventForm.get('tag').setValue('');
-  }
-
-  public deleteTag(index: number): void {
-    this.tags.splice(index, 1);
+    this.store.dispatch(new InitVenueState());
   }
 
 }
