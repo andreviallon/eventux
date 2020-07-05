@@ -1,4 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { IEvent } from './../../state/event/event.model';
+import { ITeacher } from './../../state/teacher/teacher.model';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { times } from 'src/app/utils/times';
 import { IVenue } from './../../state/venue/venue.model';
@@ -12,13 +14,16 @@ import { faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
 export class EventFormComponent implements OnInit {
 
   @Input() venues: IVenue[];
+  @Input() teachers: ITeacher[];
+
+  @Output() submitForm: EventEmitter<IEvent> = new EventEmitter();
 
   public title: string = 'Add event';
   public tags: string[] = [];
   public startTimes: string[] = [];
   public selectedVenue: IVenue;
+  public selectedTeacher: ITeacher;
   public faLongArrowAltRight = faLongArrowAltRight;
-
 
   public eventForm: FormGroup;
 
@@ -37,9 +42,12 @@ export class EventFormComponent implements OnInit {
       description: ['', Validators.required],
       imageData: [File],
       venueId: ['', Validators.required],
+      teacherId: ['', Validators.required],
     });
 
     this.selectVenue(this.venues[0]._id);
+    this.selectTeacher(this.teachers[0]._id);
+
     this.startTimes = times;
   }
 
@@ -61,4 +69,15 @@ export class EventFormComponent implements OnInit {
     this.selectedVenue = this.venues.find(venue => venue._id === venueId);
   }
 
+  public selectTeacher(teacherId: string): void {
+    this.eventForm.get('teacherId').setValue(teacherId);
+    this.selectedTeacher = this.teachers.find(teacher => teacher._id === teacherId);
+  }
+
+  public submitEventForm() {
+    // const form: IEvent = {
+
+    // }
+    // this.submitForm.emit(form);
+  }
 }

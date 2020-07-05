@@ -1,3 +1,4 @@
+import { TeacherState } from './state/teacher/teacher.state';
 import { VenueState } from 'src/app/state/venue/venue.state';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserModule } from '@angular/platform-browser';
@@ -58,7 +59,8 @@ import { EventFormComponent } from './components/event-form/event-form.component
   imports: [
     NgxsModule.forRoot([
       EventState,
-      VenueState
+      VenueState,
+      TeacherState
     ]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot(),

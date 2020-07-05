@@ -32,7 +32,6 @@ export class VenueService {
   ]
 
   public getVenues(): IVenue[] {
-    console.log('getVenues service', this.venues);
     return this.venues;
   }
 

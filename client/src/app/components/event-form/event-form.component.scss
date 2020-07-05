@@ -46,3 +46,28 @@
 .website-link {
   margin-top: 1rem;
 }
+
+.teacher-image {
+  margin-right: 1rem;
+  width: 100px;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+}
+
+.teacher-flex-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.buttons {
+  justify-content: flex-end;
+  margin-top: 3rem;
+}
+
+.button {
+  font-weight: 600;
+}

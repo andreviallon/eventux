@@ -1,5 +1,5 @@
 <form [formGroup]="eventForm">
-  <section class="event-information">
+  <section>
     <p class="section-title">Event Information</p>
     <div class="columns">
       <div class="column is-full">
@@ -98,40 +98,81 @@
     </div>
   </section>
 
-  <section class="event-information">
-    <p class="section-title">Event Location</p>
-    <div class="columns">
-      <div class="column is-full">
-        <div class="field">
-          <label class="label">Venue</label>
-          <div class="control">
-            <div class="select">
-              <select formControlName="startTime" formControlName="venueId">
-                <ng-container *ngIf="venues">
-                  <option *ngFor="let venue of venues" [ngValue]="venue._id" (click)="selectVenue(venue._id)">{{venue.name}}</option>
-                </ng-container>
-              </select>
+  <section>
+      <p class="section-title">Event Location</p>
+      <div class="columns">
+        <div class="column is-full">
+          <div class="field">
+            <label class="label">Venue</label>
+            <div class="control">
+              <div class="select">
+                <select formControlName="venueId">
+                  <ng-container *ngIf="venues">
+                    <option *ngFor="let venue of venues" [ngValue]="venue._id" (click)="selectVenue(venue._id)">{{venue.name}}</option>
+                  </ng-container>
+                </select>
+              </div>
             </div>
           </div>
         </div>
       </div>
+
+      <div class="columns" *ngIf="selectedVenue">
+        <div class="column is-full">
+          <div class="field">
+            <label class="label">Venue details</label>
+            <div class="flex-container">
+              <img src="../../../assets/venue-img.png" alt="venue image" class="venue-image">
+              <div class="venue-flex-container">
+                <span>{{ selectedVenue.address }}</span>
+                <span>{{ selectedVenue.zipcode }} {{ selectedVenue.city }}</span>
+                <span>{{ selectedVenue.phoneNumber }}</span>
+                <a class="website-link" [href]="selectedVenue.website" target="_blank">Venue's website <fa-icon [icon]="faLongArrowAltRight"></fa-icon></a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <p class="section-title">Event Teacher</p>
+      <div class="columns">
+        <div class="column is-full">
+          <div class="field">
+            <label class="label">Teacher</label>
+            <div class="control">
+              <div class="select">
+                <select formControlName="teacherId">
+                  <ng-container *ngIf="teachers">
+                    <option *ngFor="let teacher of teachers" [ngValue]="teacher._id" (click)="selectTeacher(teacher._id)">{{ teacher.firstName }} {{ teacher.lastName }}</option>
+                  </ng-container>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="columns" *ngIf="selectedTeacher">
+        <div class="column is-full">
+          <div class="field">
+            <label class="label">Teacher details</label>
+            <div class="flex-container">
+              <img src="../../../assets//john-doe-avatar.png" alt="teacher image" class="teacher-image">
+              <div class="teacher-flex-container">
+                <span>{{ selectedTeacher.email }}</span>
+                <span>{{ selectedTeacher.phoneNumber }}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="buttons">
+      <button class="button is-white">Cancel</button>
+      <button class="button is-link" (click)="submitEventForm()">Create Event</button>
     </div>
 
-    <div class="columns" *ngIf="selectedVenue">
-      <div class="column is-full">
-        <div class="field">
-          <label class="label">Venue details</label>
-          <div class="flex-container">
-            <img src="../../../assets/venue-img.png" alt="venue image" class="venue-image">
-            <div class="venue-flex-container">
-              <span>{{ selectedVenue.address }}</span>
-              <span>{{ selectedVenue.zipcode }} {{ selectedVenue.city }}</span>
-              <span>{{ selectedVenue.phoneNumber }}</span>
-              <a class="website-link" [href]="selectedVenue.website" target="_blank">Venue's website <fa-icon [icon]="faLongArrowAltRight"></fa-icon></a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    </section>
 </form>
