@@ -1,8 +1,8 @@
-import { Subscription } from 'rxjs';
-import { IVenue } from './../../state/venue/venue.model';
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { times } from 'src/app/utils/times';
+import { IVenue } from './../../state/venue/venue.model';
+import { faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-event-form',
@@ -16,6 +16,9 @@ export class EventFormComponent implements OnInit {
   public title: string = 'Add event';
   public tags: string[] = [];
   public startTimes: string[] = [];
+  public selectedVenue: IVenue;
+  public faLongArrowAltRight = faLongArrowAltRight;
+
 
   public eventForm: FormGroup;
 
@@ -33,9 +36,10 @@ export class EventFormComponent implements OnInit {
       tag: [''],
       description: ['', Validators.required],
       imageData: [File],
-      venue: ['', Validators.required]
+      venueId: ['', Validators.required],
     });
 
+    this.selectVenue(this.venues[0]._id);
     this.startTimes = times;
   }
 
@@ -50,6 +54,11 @@ export class EventFormComponent implements OnInit {
 
   public deleteTag(index: number): void {
     this.tags.splice(index, 1);
+  }
+
+  public selectVenue(venueId: string): void {
+    this.eventForm.get('venueId').setValue(venueId);
+    this.selectedVenue = this.venues.find(venue => venue._id === venueId);
   }
 
 }

@@ -106,11 +106,28 @@
           <label class="label">Venue</label>
           <div class="control">
             <div class="select">
-              <select formControlName="startTime">
+              <select formControlName="startTime" formControlName="venueId">
                 <ng-container *ngIf="venues">
-                  <option *ngFor="let venue of venues">{{ venue.name }}</option>
+                  <option *ngFor="let venue of venues" [ngValue]="venue._id" (click)="selectVenue(venue._id)">{{venue.name}}</option>
                 </ng-container>
               </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="columns" *ngIf="selectedVenue">
+      <div class="column is-full">
+        <div class="field">
+          <label class="label">Venue details</label>
+          <div class="flex-container">
+            <img src="../../../assets/venue-img.png" alt="venue image" class="venue-image">
+            <div class="venue-flex-container">
+              <span>{{ selectedVenue.address }}</span>
+              <span>{{ selectedVenue.zipcode }} {{ selectedVenue.city }}</span>
+              <span>{{ selectedVenue.phoneNumber }}</span>
+              <a class="website-link" [href]="selectedVenue.website" target="_blank">Venue's website <fa-icon [icon]="faLongArrowAltRight"></fa-icon></a>
             </div>
           </div>
         </div>

@@ -8,7 +8,7 @@ export class VenueService {
 
   private venues: IVenue[] = [
     {
-      _id: '1',
+      _id: '123',
       name: 'Blank Venue & Pop-up',
       address: 'H. C. Andersens Blvd. 11, 1. th',
       city: 'Copenhagen',
@@ -19,15 +19,15 @@ export class VenueService {
       website: 'https://blank-venue.dk/'
     },
     {
-      _id: '2',
-      name: 'Blank Venue & Pop-up',
-      address: 'H. C. Andersens Blvd. 11, 1. th',
-      city: 'Copenhagen',
-      zipcode: '1553',
+      _id: '456',
+      name: 'Hotel Oasia',
+      address: 'Kriegersvej 27',
+      city: 'Aarhus',
+      zipcode: '8000',
       country: 'Denmark',
-      phoneNumber: 30303030,
+      phoneNumber: 87323715,
       img: 'imgUrl',
-      website: 'https://blank-venue.dk/'
+      website: 'https://www.hoteloasia.com/business/meeting-and-conference-rooms/'
     }
   ]
 
@@ -39,5 +39,4 @@ export class VenueService {
   public getVenue(id: string): IVenue {
     return this.venues.find(event => event._id === id);
   }
-
 }
