@@ -1,7 +1,7 @@
 <div class="card" [routerLink]="['/event', event._id]">
   <div class="card-content">
       <ul class="content flex-container">
-        <!-- <li *ngFor="let eventProperty of event.properties" class="list-item">
+        <li *ngFor="let eventProperty of event.properties" class="list-item">
           <p class="overview-title">{{ eventProperty.title }}</p>
           <p class="overview-content">{{ eventProperty.content }}</p>
         </li>
@@ -19,7 +19,7 @@
               </div>
             </div>
           </div>
-        </li> -->
+        </li>
       </ul>
   </div>
 </div>

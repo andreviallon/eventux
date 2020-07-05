@@ -1,3 +1,4 @@
+import { IEventOverview } from 'src/app/state/event/event.model';
 import { EventService } from '../../event.service';
 import { State, Selector, Action, StateContext, createSelector, StateToken } from '@ngxs/store';
 import { IEvent } from './event.model';
@@ -6,6 +7,7 @@ import { Injectable } from '@angular/core';
 
 export class EventStateModel {
   events: IEvent[];
+  eventsOverview: IEventOverview[];
   relatedEvents: IEvent[];
 }
 
@@ -26,6 +28,11 @@ export class EventState {
   }
 
   @Selector()
+  static getEventsOverview(state: EventStateModel) {
+    return state.eventsOverview;
+  }
+
+  @Selector()
   static getRelatedEvent(state: EventStateModel) {
     return state.relatedEvents;
   }
@@ -43,9 +50,11 @@ export class EventState {
   @Action(InitEventState)
   initState({ patchState }: StateContext<EventStateModel>, { }: InitEventState) {
     const events = this.eventService.getEvents();
+    const eventsOverview = this.eventService.getEventsOverview();
 
     patchState({
       events: events,
+      eventsOverview: eventsOverview,
       relatedEvents: events
     })
   }

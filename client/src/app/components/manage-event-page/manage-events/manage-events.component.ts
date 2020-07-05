@@ -1,6 +1,6 @@
 import { Observable } from 'rxjs';
 import { Component } from '@angular/core';
-import { IEvent } from 'src/app/state/event/event.model';
+import { IEvent, IEventOverview } from 'src/app/state/event/event.model';
 import { Router } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { EventState } from 'src/app/state/event/event.state';
@@ -15,14 +15,11 @@ export class ManageEventsComponent {
 
   public title: string = 'Manage events';
   public buttonName: string = 'Add Event';
+  public eventsOverview: IEventOverview[];
 
-  @Select(EventState.getEvents) events$: Observable<IEvent[]>;
+  @Select(EventState.getEventsOverview) eventsOverview$: Observable<IEventOverview[]>;
 
   constructor(private store: Store, private router: Router) { }
-
-  ngOnInit(): void {
-    this.store.dispatch(new InitEventState);
-  }
 
   public navigateToCreateEventPage() {
     this.router.navigate(['create-event']);

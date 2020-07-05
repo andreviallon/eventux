@@ -1,3 +1,4 @@
+import { IEventOverview } from 'src/app/state/event/event.model';
 import { Injectable } from '@angular/core';
 import { IEvent } from './state/event/event.model';
 
@@ -196,12 +197,69 @@ export class EventService {
     }
   ];
 
+  private eventsOverview: IEventOverview[] = [
+    {
+      _id: '123',
+      properties: [
+        {
+          title: 'name',
+          content: 'React context and hooks'
+        },
+        {
+          title: 'date',
+          content: '03/04/2020'
+        },
+        {
+          title: 'teacher',
+          content: 'John Doe'
+        },
+        {
+          title: 'venue',
+          content: 'Blank Venue & Pop-up'
+        },
+        {
+          title: 'city',
+          content: 'Copenhagen'
+        }
+      ]
+    },
+    {
+      _id: '456',
+      properties: [
+        {
+          title: 'name',
+          content: 'Another Event'
+        },
+        {
+          title: 'date',
+          content: '15/05/2020'
+        },
+        {
+          title: 'teacher',
+          content: 'Jane Doe'
+        },
+        {
+          title: 'venue',
+          content: 'Hotel Oasia'
+        },
+        {
+          title: 'city',
+          content: 'Aarhus'
+        }
+      ]
+    }
+  ];
+
   public getEvents(): IEvent[] {
     return this.events;
   }
 
   public getEvent(id: string): IEvent {
     return this.events.find(event => event._id === id);
+  }
+
+  public getEventsOverview(): IEventOverview[] {
+    return this.eventsOverview;
   }
 
   public getRelatedEvents(): IEvent[] {

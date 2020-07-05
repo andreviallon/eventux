@@ -12,5 +12,15 @@ export interface IEvent {
   tags: string[];
   img: string;
   venue: IVenue;
-  teacher: ITeacher;
+  teacher: ITeacher
+}
+
+export interface IEventOverview {
+  _id: string;
+  properties: IEventProperty[]
+}
+
+export interface IEventProperty {
+  title: string;
+  content: string;
 }
