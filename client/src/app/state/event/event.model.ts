@@ -8,30 +8,6 @@ export interface IEvent {
   price: number;
   tags: string[];
   img: string;
-  location: {
-    name: string;
-    address: string;
-    city: string;
-    zipcode: string;
-    country: string;
-    phoneNumber: number;
-  }
-  teacher: {
-    _id: string;
-    firstName: string;
-    lastName: string;
-    description: string;
-    img: string;
-    socialLink: string;
-  }
-}
-
-export interface IEventOverview {
-  _id: string;
-  properties: IEventProperty[]
-}
-
-export interface IEventProperty {
-  title: string;
-  content: string;
+  venueId: string;
+  teacherId: string;
 }

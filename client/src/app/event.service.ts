@@ -18,22 +18,8 @@ export class EventService {
       price: 120,
       img: './assets/event-image.png',
       tags: ['React', 'JavaScript', 'Frontend Dev'],
-      location: {
-        name: 'Blank Venue & Pop-up',
-        address: 'H. C. Andersens Blvd. 11, 1. th',
-        city: 'Copenhagen',
-        zipcode: '1553',
-        country: 'Denmark',
-        phoneNumber: 30303030
-      },
-      teacher: {
-        _id: '123',
-        firstName: 'John',
-        lastName: 'Doe',
-        description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
-        img: './src/app/assets/john-doe-avatar.png',
-        socialLink: 'johndoe'
-      }
+      venueId: '123',
+      teacherId: '123'
     },
     {
       _id: '2',
@@ -45,22 +31,8 @@ export class EventService {
       price: 100,
       tags: ['React', 'JavaScript', 'Frontend Dev'],
       img: './assets/event-image.png',
-      location: {
-        name: 'Blank Venue & Pop-up',
-        address: 'H. C. Andersens Blvd. 11, 1. th',
-        city: 'Copenhagen',
-        zipcode: '1553',
-        country: 'Denmark',
-        phoneNumber: 30303030
-      },
-      teacher: {
-        _id: '123',
-        firstName: 'John',
-        lastName: 'Doe',
-        description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
-        img: '',
-        socialLink: 'johndoe'
-      }
+      venueId: '123',
+      teacherId: '123',
     },
     {
       _id: '3',
@@ -72,22 +44,8 @@ export class EventService {
       price: 100,
       tags: ['React', 'JavaScript', 'Frontend Dev'],
       img: './assets/event-image.png',
-      location: {
-        name: 'Blank Venue & Pop-up',
-        address: 'H. C. Andersens Blvd. 11, 1. th',
-        city: 'Copenhagen',
-        zipcode: '1553',
-        country: 'Denmark',
-        phoneNumber: 30303030
-      },
-      teacher: {
-        _id: '456',
-        firstName: 'Andre',
-        lastName: 'Viallon',
-        description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
-        img: '',
-        socialLink: 'johndoe'
-      }
+      venueId: '123',
+      teacherId: '123',
     },
     {
       _id: '4',
@@ -99,22 +57,8 @@ export class EventService {
       price: 90,
       tags: ['React', 'JavaScript', 'Frontend Dev'],
       img: './assets/event-image.png',
-      location: {
-        name: 'Blank Venue & Pop-up',
-        address: 'H. C. Andersens Blvd. 11, 1. th',
-        city: 'Copenhagen',
-        zipcode: '1553',
-        country: 'Denmark',
-        phoneNumber: 30303030
-      },
-      teacher: {
-        _id: '456',
-        firstName: 'Andre',
-        description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
-        lastName: 'Viallon',
-        img: '',
-        socialLink: 'johndoe'
-      }
+      venueId: '456',
+      teacherId: '456'
     },
     {
       _id: '5',
@@ -126,22 +70,8 @@ export class EventService {
       price: 90,
       tags: ['React', 'JavaScript', 'Frontend Dev'],
       img: './assets/event-image.png',
-      location: {
-        name: 'Blank Venue & Pop-up',
-        address: 'H. C. Andersens Blvd. 11, 1. th',
-        city: 'Copenhagen',
-        zipcode: '1553',
-        country: 'Denmark',
-        phoneNumber: 30303030
-      },
-      teacher: {
-        _id: '456',
-        firstName: 'Andre',
-        lastName: 'Viallon',
-        description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
-        img: '',
-        socialLink: 'johndoe'
-      }
+      venueId: '456',
+      teacherId: '456'
     },
     {
       _id: '6',
@@ -153,22 +83,8 @@ export class EventService {
       price: 90,
       tags: ['React', 'JavaScript', 'Frontend Dev'],
       img: './assets/event-image.png',
-      location: {
-        name: 'Blank Venue & Pop-up',
-        address: 'H. C. Andersens Blvd. 11, 1. th',
-        city: 'Copenhagen',
-        zipcode: '1553',
-        country: 'Denmark',
-        phoneNumber: 30303030
-      },
-      teacher: {
-        _id: '456',
-        firstName: 'Andre',
-        lastName: 'Viallon',
-        description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
-        img: '',
-        socialLink: 'johndoe'
-      }
+      venueId: '456',
+      teacherId: '456'
     }
   ];
 

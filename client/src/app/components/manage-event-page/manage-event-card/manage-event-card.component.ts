@@ -1,6 +1,6 @@
+import { IEvent } from './../../../state/event/event.model';
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { faEllipsisV, IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import { IEventOverview } from 'src/app/state/event/event.model';
 
 @Component({
   selector: 'app-manage-event-card',
@@ -9,7 +9,7 @@ import { IEventOverview } from 'src/app/state/event/event.model';
 })
 export class ManageEventCardComponent {
 
-  @Input() event: IEventOverview;
+  @Input() event: IEvent;
   @Output() editEvent: EventEmitter<string> = new EventEmitter();
   @Output() deleteEvent: EventEmitter<string> = new EventEmitter();
 

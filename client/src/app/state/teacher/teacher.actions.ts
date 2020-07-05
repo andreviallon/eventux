@@ -3,3 +3,9 @@ export class InitTeacherState {
 
   constructor() { }
 }
+
+export class SelectTeacher {
+  static readonly type = '[Teacher] Select Teacher'
+
+  constructor(public teacherId: string) { }
+}

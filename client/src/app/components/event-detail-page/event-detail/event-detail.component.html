@@ -12,12 +12,12 @@
           <div class="title-container column is-half">
             <h3 class="title is-1 is-spaced">{{ event.title }}</h3>
             <div class="subtitle teacher">
-              <p>by {{ event.teacher.firstName }} {{ event.teacher.lastName }}</p>
+              <p>by {{ teacher.firstName }} {{ teacher.lastName }}</p>
             </div>
             <div class="subtitle location">
-              <p>{{ event.location.name }}</p>
-              <p>{{ event.location.address }}</p>
-              <p>{{event.location.zipcode}} {{ event.location.city }}</p>
+              <p>{{ venue.name }}</p>
+              <p>{{ venue.address }}</p>
+              <p>{{venue.zipcode}} {{ venue.city }}</p>
             </div>
           </div>
         </div>
@@ -52,11 +52,10 @@
               </figure>
               <div class="media-content">
                 <p><strong>John Doe</strong></p>
-                <a>@{{ event.teacher.socialLink }}</a>
               </div>
             </div>
             <div class="description">
-              <p>{{ event.teacher.description }}</p>
+              <p>{{ teacher.description }}</p>
             </div>
           </article>
         </div>
@@ -80,11 +79,11 @@
               </div>
               <img/>
             </div>
-            <p class="venue-name">{{ event.location.name }}</p>
-            <p>{{ event.location.address }}</p>
-            <p>{{ event.location.zipcode }} {{ event.location.city }}</p>
-            <p>{{ event.location.phoneNumber }}</p>
-            <a href="#" class="venue-website">Go to venue's website <fa-icon [icon]="faLongArrowAltRight"></fa-icon></a>
+            <p class="venue-name">{{ venue.name }}</p>
+            <p>{{ venue.address }}</p>
+            <p>{{ venue.zipcode }} {{ venue.city }}</p>
+            <p>{{ venue.phoneNumber }}</p>
+            <a [href]="venue.website" target="_blank" class="venue-website">Go to venue's website <fa-icon [icon]="faLongArrowAltRight"></fa-icon></a>
           </div>
         </div>
 

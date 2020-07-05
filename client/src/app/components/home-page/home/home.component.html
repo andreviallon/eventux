@@ -18,7 +18,7 @@
   </section>
   <div class="upcoming-events-container">
     <h3>Upcoming Events</h3>
-    <app-event-list [events]="events"></app-event-list>
+    <app-event-list [events]="events$ | async"></app-event-list>
     <div class="flex-container">
       <button class="button is-link">See All Events</button>
     </div>

@@ -28,7 +28,6 @@ export class TeacherService {
   ]
 
   public getTeachers(): ITeacher[] {
-    console.log('teachers', this.teachers);
     return this.teachers;
   }
 

@@ -1,12 +1,13 @@
 import { EventService } from '../../event.service';
 import { State, Selector, Action, StateContext } from '@ngxs/store';
-import { IEvent, IEventOverview } from './event.model';
-import { InitEventState, DeleteEvent, EditEvent } from './event.actions';
+import { IEvent } from './event.model';
+import { InitEventState, DeleteEvent, EditEvent, SelectEvent } from './event.actions';
 import { Injectable } from '@angular/core';
-import { ImmutableContext } from '@ngxs-labs/immer-adapter';
 
 export class EventStateModel {
   events: IEvent[];
+  relatedEvents: IEvent[];
+  event: IEvent;
 }
 
 @State<EventStateModel>({
@@ -24,37 +25,15 @@ export class EventState {
   }
 
   @Selector()
-  static getEventsOverview(state: EventStateModel): IEventOverview[] {
-    let eventsOverview: IEventOverview[] = [];
-    eventsOverview = state.events.map(event => {
-      return {
-        _id: event._id,
-        properties: [
-          {
-            title: 'name',
-            content: event.title
-          },
-          {
-            title: 'date',
-            content: event.date
-          },
-          {
-            title: 'teacher',
-            content: `${event.teacher.firstName} ${event.teacher.lastName}`
-          },
-          {
-            title: 'venue',
-            content: event.location.name
-          },
-          {
-            title: 'city',
-            content: event.location.city
-          }
-        ]
-      }
-    })
-    return eventsOverview;
+  static getEvent(state: EventStateModel) {
+    return state.event;
   }
+
+  @Selector()
+  static getRelatedEvent(state: EventStateModel) {
+    return state.relatedEvents;
+  }
+
 
   @Action(InitEventState)
   initState({ patchState }: StateContext<EventStateModel>, { }: InitEventState) {
@@ -62,22 +41,29 @@ export class EventState {
 
     patchState({
       events: events,
+      relatedEvents: events
     })
   }
 
+  @Action(SelectEvent)
+  selectEvent({ patchState }: StateContext<EventStateModel>, { eventId }: SelectEvent) {
+    const event = this.eventService.getEvent(eventId);
+
+    patchState({
+      event: event
+    })
+  }
+
+
   @Action(EditEvent)
-  @ImmutableContext()
-  editEvent({ setState }: StateContext<EventStateModel>, { id }: EditEvent) {
-    setState((state: EventStateModel) => {
-      return state;
-    });
+  editEvent({ patchState }: StateContext<EventStateModel>, { id }: EditEvent) {
+    patchState({
+    })
   }
 
   @Action(DeleteEvent)
-  @ImmutableContext()
-  deleteEvent({ setState }: StateContext<EventStateModel>, { id }: DeleteEvent) {
-    setState((state: EventStateModel) => {
-      return state;
-    });
+  deleteEvent({ patchState }: StateContext<EventStateModel>, { id }: DeleteEvent) {
+    patchState({
+    })
   }
 }

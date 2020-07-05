@@ -4,6 +4,12 @@ export class InitEventState {
   constructor() { }
 }
 
+export class SelectEvent {
+  static readonly type = '[Event] Select Event'
+
+  constructor(public eventId: string) { }
+}
+
 export class EditEvent {
   static readonly type = '[Event] Edit Event'
 

@@ -3,3 +3,9 @@ export class InitVenueState {
 
   constructor() { }
 }
+
+export class SelectVenue {
+  static readonly type = '[Venue] Select Venue'
+
+  constructor(public venueId: string) { }
+}
