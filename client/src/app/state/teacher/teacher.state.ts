@@ -19,14 +19,12 @@ export class TeacherState {
 
   @Selector()
   static getTeachers(state: TeacherStateModel) {
-    console.log('state', state.teachers);
     return state.teachers;
   }
 
   @Action(InitTeacherState)
   initState({ patchState }: StateContext<TeacherStateModel>, { }: InitTeacherState) {
     const teachers = this.teacherService.getTeachers();
-    console.log('init teachers', teachers);
 
     patchState({
       teachers: teachers
