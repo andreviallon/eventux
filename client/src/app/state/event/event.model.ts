@@ -1,3 +1,6 @@
+import { ITeacher } from './../teacher/teacher.model';
+import { IVenue } from './../venue/venue.model';
+
 export interface IEvent {
   _id: string;
   title: string;
@@ -8,6 +11,6 @@ export interface IEvent {
   price: number;
   tags: string[];
   img: string;
-  venueId: string;
-  teacherId: string;
+  venue: IVenue;
+  teacher: ITeacher;
 }

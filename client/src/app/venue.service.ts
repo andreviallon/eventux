@@ -36,6 +36,6 @@ export class VenueService {
   }
 
   public getVenue(id: string): IVenue {
-    return this.venues.find(event => event._id === id);
+    return this.venues.find(venue => venue._id === id);
   }
 }

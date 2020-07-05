@@ -1,12 +1,11 @@
 import { TeacherService } from './../../teacher.service';
-import { InitTeacherState, SelectTeacher } from './teacher.actions';
+import { InitTeacherState } from './teacher.actions';
 import { ITeacher } from './teacher.model';
-import { State, Selector, Action, StateContext } from '@ngxs/store';
+import { State, Selector, Action, StateContext, createSelector } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 
 export class TeacherStateModel {
   teachers: ITeacher[];
-  teacher: ITeacher;
 }
 
 @State<TeacherStateModel>({
@@ -23,9 +22,13 @@ export class TeacherState {
     return state.teachers;
   }
 
-  @Selector()
-  static getTeacher(state: TeacherStateModel) {
-    return state.teacher;
+  static getTeacher(id: string) {
+    return createSelector(
+      ['teacher'],
+      (state: TeacherStateModel): ITeacher => {
+        return state.teachers.find(teacher => teacher._id === id);
+      }
+    );
   }
 
 
@@ -35,16 +38,6 @@ export class TeacherState {
 
     patchState({
       teachers: teachers,
-      teacher: undefined
-    })
-  }
-
-  @Action(SelectTeacher)
-  selectTeacher({ patchState }: StateContext<TeacherStateModel>, { teacherId }: SelectTeacher) {
-    const teacher = this.teacherService.getTeacher(teacherId);
-
-    patchState({
-      teacher: teacher
     })
   }
 }

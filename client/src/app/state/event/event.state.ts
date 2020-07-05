@@ -1,17 +1,18 @@
 import { EventService } from '../../event.service';
-import { State, Selector, Action, StateContext } from '@ngxs/store';
+import { State, Selector, Action, StateContext, createSelector, StateToken } from '@ngxs/store';
 import { IEvent } from './event.model';
-import { InitEventState, DeleteEvent, EditEvent, SelectEvent } from './event.actions';
+import { InitEventState, DeleteEvent, EditEvent } from './event.actions';
 import { Injectable } from '@angular/core';
 
 export class EventStateModel {
   events: IEvent[];
   relatedEvents: IEvent[];
-  event: IEvent;
 }
 
+export const EVENT_STATE = new StateToken<EventStateModel>('eventState');
+
 @State<EventStateModel>({
-  name: 'events'
+  name: EVENT_STATE
 })
 
 @Injectable()
@@ -25,13 +26,17 @@ export class EventState {
   }
 
   @Selector()
-  static getEvent(state: EventStateModel) {
-    return state.event;
-  }
-
-  @Selector()
   static getRelatedEvent(state: EventStateModel) {
     return state.relatedEvents;
+  }
+
+  static getEvent(id: string) {
+    return createSelector(
+      [EVENT_STATE],
+      (state: EventStateModel): IEvent => {
+        return state.events.find(event => event._id === id);
+      }
+    );
   }
 
 
@@ -44,16 +49,6 @@ export class EventState {
       relatedEvents: events
     })
   }
-
-  @Action(SelectEvent)
-  selectEvent({ patchState }: StateContext<EventStateModel>, { eventId }: SelectEvent) {
-    const event = this.eventService.getEvent(eventId);
-
-    patchState({
-      event: event
-    })
-  }
-
 
   @Action(EditEvent)
   editEvent({ patchState }: StateContext<EventStateModel>, { id }: EditEvent) {

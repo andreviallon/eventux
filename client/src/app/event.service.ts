@@ -18,8 +18,26 @@ export class EventService {
       price: 120,
       img: './assets/event-image.png',
       tags: ['React', 'JavaScript', 'Frontend Dev'],
-      venueId: '123',
-      teacherId: '123'
+      venue: {
+        _id: '123',
+        name: 'Blank Venue & Pop-up',
+        address: 'H. C. Andersens Blvd. 11, 1. th',
+        city: 'Copenhagen',
+        zipcode: '1553',
+        country: 'Denmark',
+        phoneNumber: 30303030,
+        img: 'imgUrl',
+        website: 'https://blank-venue.dk/'
+      },
+      teacher: {
+        _id: '123',
+        firstName: 'John',
+        lastName: 'Doe',
+        description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
+        img: './src/app/assets/john-doe-avatar.png',
+        email: 'johndoe@gmail.com',
+        phoneNumber: 30303030
+      }
     },
     {
       _id: '2',
@@ -31,8 +49,26 @@ export class EventService {
       price: 100,
       tags: ['React', 'JavaScript', 'Frontend Dev'],
       img: './assets/event-image.png',
-      venueId: '123',
-      teacherId: '123',
+      venue: {
+        _id: '123',
+        name: 'Blank Venue & Pop-up',
+        address: 'H. C. Andersens Blvd. 11, 1. th',
+        city: 'Copenhagen',
+        zipcode: '1553',
+        country: 'Denmark',
+        phoneNumber: 30303030,
+        img: 'imgUrl',
+        website: 'https://blank-venue.dk/'
+      },
+      teacher: {
+        _id: '123',
+        firstName: 'John',
+        lastName: 'Doe',
+        description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
+        img: './src/app/assets/john-doe-avatar.png',
+        email: 'johndoe@gmail.com',
+        phoneNumber: 30303030
+      }
     },
     {
       _id: '3',
@@ -44,8 +80,26 @@ export class EventService {
       price: 100,
       tags: ['React', 'JavaScript', 'Frontend Dev'],
       img: './assets/event-image.png',
-      venueId: '123',
-      teacherId: '123',
+      venue: {
+        _id: '123',
+        name: 'Blank Venue & Pop-up',
+        address: 'H. C. Andersens Blvd. 11, 1. th',
+        city: 'Copenhagen',
+        zipcode: '1553',
+        country: 'Denmark',
+        phoneNumber: 30303030,
+        img: 'imgUrl',
+        website: 'https://blank-venue.dk/'
+      },
+      teacher: {
+        _id: '123',
+        firstName: 'John',
+        lastName: 'Doe',
+        description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
+        img: './src/app/assets/john-doe-avatar.png',
+        email: 'johndoe@gmail.com',
+        phoneNumber: 30303030
+      }
     },
     {
       _id: '4',
@@ -57,8 +111,26 @@ export class EventService {
       price: 90,
       tags: ['React', 'JavaScript', 'Frontend Dev'],
       img: './assets/event-image.png',
-      venueId: '456',
-      teacherId: '456'
+      venue: {
+        _id: '456',
+        name: 'Hotel Oasia',
+        address: 'Kriegersvej 27',
+        city: 'Aarhus',
+        zipcode: '8000',
+        country: 'Denmark',
+        phoneNumber: 87323715,
+        img: 'imgUrl',
+        website: 'https://www.hoteloasia.com/business/meeting-and-conference-rooms/'
+      },
+      teacher: {
+        _id: '456',
+        firstName: 'Jane',
+        lastName: 'Doe',
+        description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
+        img: './src/app/assets/john-doe-avatar.png',
+        email: 'janedoe@gmail.com',
+        phoneNumber: 30303030
+      }
     },
     {
       _id: '5',
@@ -70,8 +142,26 @@ export class EventService {
       price: 90,
       tags: ['React', 'JavaScript', 'Frontend Dev'],
       img: './assets/event-image.png',
-      venueId: '456',
-      teacherId: '456'
+      venue: {
+        _id: '456',
+        name: 'Hotel Oasia',
+        address: 'Kriegersvej 27',
+        city: 'Aarhus',
+        zipcode: '8000',
+        country: 'Denmark',
+        phoneNumber: 87323715,
+        img: 'imgUrl',
+        website: 'https://www.hoteloasia.com/business/meeting-and-conference-rooms/'
+      },
+      teacher: {
+        _id: '456',
+        firstName: 'Jane',
+        lastName: 'Doe',
+        description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
+        img: './src/app/assets/john-doe-avatar.png',
+        email: 'janedoe@gmail.com',
+        phoneNumber: 30303030
+      }
     },
     {
       _id: '6',
@@ -83,8 +173,26 @@ export class EventService {
       price: 90,
       tags: ['React', 'JavaScript', 'Frontend Dev'],
       img: './assets/event-image.png',
-      venueId: '456',
-      teacherId: '456'
+      venue: {
+        _id: '456',
+        name: 'Hotel Oasia',
+        address: 'Kriegersvej 27',
+        city: 'Aarhus',
+        zipcode: '8000',
+        country: 'Denmark',
+        phoneNumber: 87323715,
+        img: 'imgUrl',
+        website: 'https://www.hoteloasia.com/business/meeting-and-conference-rooms/'
+      },
+      teacher: {
+        _id: '456',
+        firstName: 'Jane',
+        lastName: 'Doe',
+        description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores.',
+        img: './src/app/assets/john-doe-avatar.png',
+        email: 'janedoe@gmail.com',
+        phoneNumber: 30303030
+    }
     }
   ];
 
