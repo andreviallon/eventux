@@ -26,7 +26,7 @@ export class ManageEventsComponent {
   }
 
   editEvent($event: string): void {
-    this.store.dispatch(new EditEvent($event));
+    this.router.navigate(['edit-event', $event]);
   }
 
   deleteEvent($event: string): void {

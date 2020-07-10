@@ -7,8 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { InitVenueState } from 'src/app/state/venue/venue.actions';
-import { IEventForm } from 'src/app/state/event/event.model';
-import { Router } from '@angular/router';
+import { IEventForm, IEvent } from 'src/app/state/event/event.model';
 
 @Component({
   selector: 'app-create-event',
@@ -19,6 +18,18 @@ export class CreateEventComponent implements OnInit {
 
   public title = 'Add Event';
   public submitFormBtnText = 'Create Event';
+  public defaultEvent: IEventForm = {
+    title: '',
+    description: '',
+    date: '',
+    startTime: '',
+    endTime: '',
+    price: 0,
+    tags: [],
+    img: '',
+    venueId: '',
+    teacherId: ''
+  };
 
   @Select(VenueState.getVenues) venues$: Observable<IVenue[]>;
   @Select(TeacherState.getTeachers) teachers$: Observable<ITeacher[]>;

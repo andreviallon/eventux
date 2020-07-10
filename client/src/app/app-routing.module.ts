@@ -1,3 +1,4 @@
+import { EditEventComponent } from './components/edit-event/edit-event.component';
 import { EventDetailPageComponent } from './components/event-detail-page/event-detail-page/event-detail-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -14,6 +15,7 @@ const routes: Routes = [
   { path: 'event/:id', component: EventDetailPageComponent },
   { path: 'manage-events', component: ManageEventsComponent },
   { path: 'create-event', component: CreateEventComponent },
+  { path: 'edit-event/:id', component: EditEventComponent },
   { path: 'manage-teachers', component: ManageTeachersComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];

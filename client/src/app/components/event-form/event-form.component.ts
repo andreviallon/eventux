@@ -13,6 +13,7 @@ import { faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
 })
 export class EventFormComponent implements OnInit {
 
+  @Input() event: IEventForm;
   @Input() venues: IVenue[];
   @Input() teachers: ITeacher[];
   @Input() submitFormBtnText: string;
@@ -33,21 +34,32 @@ export class EventFormComponent implements OnInit {
   }
 
   public ngOnInit(): void {
+    console.log('this.event', this.event);
     this.eventForm = this.formBuilder.group({
-      title: ['', Validators.required],
-      date: ['', Validators.required],
-      price: [100, Validators.required],
-      startTime: [''],
-      endTime: [''],
+      title: [this.event.title, Validators.required],
+      date: [this.event.date, Validators.required],
+      price: [this.event.price, Validators.required],
+      startTime: [this.event.startTime],
+      endTime: [this.event.endTime],
       tag: [''],
-      description: [''],
-      imageData: [Blob],
-      venueId: ['', Validators.required],
-      teacherId: ['', Validators.required],
+      description: [this.event.description],
+      imageData: [this.event.img],
+      venueId: [this.event.venueId, Validators.required],
+      teacherId: [this.event.teacherId, Validators.required],
     });
+    console.log('this.eventForm', this.eventForm);
 
-    this.selectVenue(this.venues[0]._id);
-    this.selectTeacher(this.teachers[0]._id);
+    this.tags = this.event.tags;
+    if (!this.eventForm.get('venueId').value && !this.eventForm.get('teacherId').value) {
+      this.selectVenue(this.venues[0]._id);
+      this.selectTeacher(this.teachers[0]._id);
+    } else {
+      const venue = this.venues.find(v => v._id === this.event.venueId);
+      this.selectVenue(venue._id);
+
+      const teacher = this.teachers.find(t => t._id === this.event.teacherId);
+      this.selectTeacher(teacher._id);
+    }
 
     this.startTimes = times;
   }
