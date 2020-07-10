@@ -47,7 +47,6 @@ export class EditEventComponent implements OnInit {
           venueId: event.venue._id,
           ...event
         };
-        console.log('eventForm', eventForm);
         this.event = eventForm;
       })
     );

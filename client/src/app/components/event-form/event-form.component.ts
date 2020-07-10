@@ -34,7 +34,6 @@ export class EventFormComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    console.log('this.event', this.event);
     this.eventForm = this.formBuilder.group({
       title: [this.event.title, Validators.required],
       date: [this.event.date, Validators.required],
@@ -47,7 +46,6 @@ export class EventFormComponent implements OnInit {
       venueId: [this.event.venueId, Validators.required],
       teacherId: [this.event.teacherId, Validators.required],
     });
-    console.log('this.eventForm', this.eventForm);
 
     this.tags = this.event.tags;
     if (!this.eventForm.get('venueId').value && !this.eventForm.get('teacherId').value) {
