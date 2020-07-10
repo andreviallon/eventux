@@ -13,6 +13,7 @@ import { InitEventState } from 'src/app/state/event/event.actions';
 })
 export class EventsComponent implements OnInit, OnDestroy {
 
+  public title: string = 'Events';
   public events: IEvent[];
 
   private subscription = new Subscription();

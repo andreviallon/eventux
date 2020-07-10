@@ -1,10 +1,10 @@
 import { Observable } from 'rxjs';
 import { Component } from '@angular/core';
-import { IEvent, IEventOverview } from 'src/app/state/event/event.model';
+import { IEventOverview } from 'src/app/state/event/event.model';
 import { Router } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { EventState } from 'src/app/state/event/event.state';
-import { InitEventState, EditEvent, DeleteEvent } from 'src/app/state/event/event.actions';
+import { EditEvent, DeleteEvent } from 'src/app/state/event/event.actions';
 
 @Component({
   selector: 'app-manage-events',
@@ -13,8 +13,8 @@ import { InitEventState, EditEvent, DeleteEvent } from 'src/app/state/event/even
 })
 export class ManageEventsComponent {
 
-  public title: string = 'Manage events';
-  public buttonName: string = 'Add Event';
+  public title = 'Manage Events';
+  public buttonName = 'Add Event';
   public eventsOverview: IEventOverview[];
 
   @Select(EventState.getEventsOverview) eventsOverview$: Observable<IEventOverview[]>;

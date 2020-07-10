@@ -10,7 +10,6 @@ import { NgxCropperJsModule } from 'ngx-cropperjs-wrapper';
 import { NgxsModule } from '@ngxs/store';
 import { EventState } from './state/event/event.state';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
-import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,13 +27,12 @@ import { AngularMyDatePickerModule } from 'angular-mydatepicker';
 import { DatePickerComponent } from './components/shared/date-picker/date-picker.component';
 import { EventCardComponent } from './components/shared/event-card/event-card.component';
 import { EventListComponent } from './components/shared/event-list/event-list.component';
-import { ManageHeaderComponent } from './components/shared/manage-header/manage-header.component';
+import { PageHeaderComponent } from './components/shared/page-header/page-header.component';
 import { HomeSearchComponent } from './components/home-page/home-search/home-search.component';
 import { HomeComponent } from './components/home-page/home/home.component';
 import { ImageCropperComponent } from './components/shared/image-cropper/image-cropper.component';
 import { EventFormComponent } from './components/event-form/event-form.component';
 import { EventDetailPageComponent } from './components/event-detail-page/event-detail-page/event-detail-page.component';
-
 
 @NgModule({
   declarations: [
@@ -51,12 +49,12 @@ import { EventDetailPageComponent } from './components/event-detail-page/event-d
     DatePickerComponent,
     EventCardComponent,
     EventListComponent,
-    ManageHeaderComponent,
+    PageHeaderComponent,
     HomeSearchComponent,
     HomeComponent,
     ImageCropperComponent,
     EventFormComponent,
-    EventDetailPageComponent
+    EventDetailPageComponent,
   ],
   imports: [
     NgxsModule.forRoot([
@@ -65,7 +63,6 @@ import { EventDetailPageComponent } from './components/event-detail-page/event-d
       TeacherState
     ]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
-    NgxsLoggerPluginModule.forRoot(),
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,

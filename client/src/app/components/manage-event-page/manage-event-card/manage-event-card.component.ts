@@ -14,7 +14,7 @@ export class ManageEventCardComponent {
   @Output() deleteEvent: EventEmitter<string> = new EventEmitter();
 
   public faEllipsisV: IconDefinition = faEllipsisV;
-  public showDropdown: boolean = false;
+  public showDropdown = false;
 
   public toogleDropdown(event): void {
     event.stopPropagation();

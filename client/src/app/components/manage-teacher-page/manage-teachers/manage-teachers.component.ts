@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
 })
 export class ManageTeachersComponent {
 
-  public title: string = 'Manage Teachers';
+  public title = 'Manage Teachers';
 
-  public buttonName: string = 'Add Teacher';
+  public buttonName = 'Add Teacher';
 
   public teachersOverview = [
     {

@@ -15,7 +15,7 @@
   width: 100%;
 }
 
-.help {
+.tag-help {
   color: $mediumGray;
 }
 
@@ -43,8 +43,13 @@
   flex-direction: column;
 }
 
+p {
+  margin-bottom: 0.3rem;
+}
+
 .website-link {
   margin-top: 1rem;
+  font-weight: 600;
 }
 
 .teacher-image {

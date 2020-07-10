@@ -23,14 +23,14 @@ export class EventDetailPageComponent implements OnInit, OnDestroy {
 
   public ngOnInit() {
     this.subscription.add(
-      this.route.params.subscribe(params => this.eventId = params['id'])
+      this.route.params.subscribe(params => this.eventId = params[`id`])
     );
 
     this.subscription.add(
       this.store.select(EventState.getEvent(this.eventId)).subscribe(event => {
-        this.event = event
+        this.event = event;
       })
-    )
+    );
   }
 
   public ngOnDestroy(): void {

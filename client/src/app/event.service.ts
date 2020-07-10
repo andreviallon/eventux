@@ -199,7 +199,7 @@ export class EventService {
 
   private eventsOverview: IEventOverview[] = [
     {
-      _id: '123',
+      _id: '1',
       properties: [
         {
           title: 'name',
@@ -224,7 +224,7 @@ export class EventService {
       ]
     },
     {
-      _id: '456',
+      _id: '2',
       properties: [
         {
           title: 'name',

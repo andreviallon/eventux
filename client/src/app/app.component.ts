@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { InitEventState } from './state/event/event.actions';
 import { InitVenueState } from './state/venue/venue.actions';
@@ -8,7 +8,7 @@ import { InitVenueState } from './state/venue/venue.actions';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
 
   constructor(private store: Store) {
 

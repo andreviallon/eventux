@@ -53,21 +53,21 @@ export class EventState {
     const eventsOverview = this.eventService.getEventsOverview();
 
     patchState({
-      events: events,
-      eventsOverview: eventsOverview,
+      events,
+      eventsOverview,
       relatedEvents: events
-    })
+    });
   }
 
   @Action(EditEvent)
   editEvent({ patchState }: StateContext<EventStateModel>, { id }: EditEvent) {
     patchState({
-    })
+    });
   }
 
   @Action(DeleteEvent)
   deleteEvent({ patchState }: StateContext<EventStateModel>, { id }: DeleteEvent) {
     patchState({
-    })
+    });
   }
 }

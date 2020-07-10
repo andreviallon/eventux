@@ -1,4 +1,4 @@
-import { IEvent } from './../../state/event/event.model';
+import { IEventForm } from './../../state/event/event.model';
 import { ITeacher } from './../../state/teacher/teacher.model';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -15,10 +15,11 @@ export class EventFormComponent implements OnInit {
 
   @Input() venues: IVenue[];
   @Input() teachers: ITeacher[];
+  @Input() submitFormBtnText: string;
 
-  @Output() submitForm: EventEmitter<IEvent> = new EventEmitter();
+  @Output() submitForm: EventEmitter<IEventForm> = new EventEmitter();
 
-  public title: string = 'Add event';
+  public title = 'Add event';
   public tags: string[] = [];
   public startTimes: string[] = [];
   public selectedVenue: IVenue;
@@ -33,7 +34,7 @@ export class EventFormComponent implements OnInit {
 
   public ngOnInit(): void {
     this.eventForm = this.formBuilder.group({
-      name: ['', Validators.required],
+      title: ['', Validators.required],
       date: ['', Validators.required],
       price: [100, Validators.required],
       startTime: ['', Validators.required],
@@ -75,9 +76,19 @@ export class EventFormComponent implements OnInit {
   }
 
   public submitEventForm() {
-    // const form: IEvent = {
+    const form: IEventForm = {
+      title: this.eventForm.value.title.trim(),
+      description: this.eventForm.value.description,
+      date: this.eventForm.value.date,
+      startTime: this.eventForm.value.startTime,
+      endTime: this.eventForm.value.endTime,
+      price: this.eventForm.value.price,
+      tags: this.tags,
+      img: this.eventForm.value.imageData,
+      venueId: this.eventForm.value.venueId,
+      teacherId: this.eventForm.value.teacherId
+    };
 
-    // }
-    // this.submitForm.emit(form);
+    this.submitForm.emit(form);
   }
 }

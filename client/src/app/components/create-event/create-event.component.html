@@ -1,4 +1,4 @@
 <div class="container">
-  <app-manage-header [title]="title" [addButton]="false"></app-manage-header>
-  <app-event-form [venues]="venues$ | async" [teachers]="teachers$ | async"></app-event-form>
+  <app-page-header [title]="title" [addButton]="false"></app-page-header>
+  <app-event-form [venues]="venues$ | async" [teachers]="teachers$ | async" [submitFormBtnText]="submitFormBtnText" (submitForm)="createEvent($event)"></app-event-form>
 </div>

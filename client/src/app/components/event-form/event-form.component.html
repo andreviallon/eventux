@@ -4,10 +4,11 @@
     <div class="columns">
       <div class="column is-full">
         <div class="field">
-          <label class="label">Name</label>
+          <label class="label">Title</label>
           <div class="control">
-            <input class="input" type="text" formControlName="name">
+            <input class="input" type="text" formControlName="title">
           </div>
+          <p *ngIf="eventForm.get('title').invalid && eventForm.get('title').touched" class="help is-danger">Title is required</p>
         </div>
       </div>
     </div>
@@ -19,6 +20,7 @@
           <div class="control">
             <input class="input" type="text" formControlName="date">
           </div>
+          <p *ngIf="eventForm.get('date').invalid && eventForm.get('date').touched" class="help is-danger">Date is required</p>
         </div>
       </div>
       <div class="column is-half">
@@ -28,6 +30,7 @@
             <p class="control"><a class="button is-static">$</a></p>
             <div class="control price-input">
               <input class="input" type="text" formControlName="price">
+              <p *ngIf="eventForm.get('price').invalid && eventForm.get('price').touched" class="help is-danger">Price is required</p>
             </div>
           </div>
         </div>
@@ -68,7 +71,7 @@
           <div class="control">
             <input class="input" type="text" (keyup.enter)="addTag($event)" formControlName="tag">
           </div>
-          <p class="help">Press enter to add a tag</p>
+          <p class="tag-help">Press enter to add a tag</p>
         </div>
       </div>
       <div class="column is-half tags-container">
@@ -124,9 +127,9 @@
             <div class="flex-container">
               <img src="../../../assets/venue-img.png" alt="venue image" class="venue-image">
               <div class="venue-flex-container">
-                <span>{{ selectedVenue.address }}</span>
-                <span>{{ selectedVenue.zipcode }} {{ selectedVenue.city }}</span>
-                <span>{{ selectedVenue.phoneNumber }}</span>
+                <p>{{ selectedVenue.address }}</p>
+                <p>{{ selectedVenue.zipcode }} {{ selectedVenue.city }}</p>
+                <p>{{ selectedVenue.phoneNumber }}</p>
                 <a class="website-link" [href]="selectedVenue.website" target="_blank">Venue's website <fa-icon [icon]="faLongArrowAltRight"></fa-icon></a>
               </div>
             </div>
@@ -161,8 +164,8 @@
             <div class="flex-container">
               <img src="../../../assets//john-doe-avatar.png" alt="teacher image" class="teacher-image">
               <div class="teacher-flex-container">
-                <span>{{ selectedTeacher.email }}</span>
-                <span>{{ selectedTeacher.phoneNumber }}</span>
+                <p>{{ selectedTeacher.email }}</p>
+                <p>{{ selectedTeacher.phoneNumber }}</p>
               </div>
             </div>
           </div>
@@ -172,7 +175,7 @@
 
     <div class="buttons">
       <button class="button is-white" routerLink="/manage-events">Cancel</button>
-      <button class="button is-link" (click)="submitEventForm()">Create Event</button>
+      <button class="button is-link" [disabled]="!eventForm.valid" (click)="submitEventForm()">{{ submitFormBtnText }}</button>
     </div>
 
 </form>

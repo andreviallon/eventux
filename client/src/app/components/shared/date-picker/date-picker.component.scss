@@ -166,9 +166,8 @@
     }
 
     .myDpMarkCurrDay, .myDpMarkCurrMonth, .myDpMarkCurrYear {
-      border: 1px dotted $mediumBlue;
-      border-radius: 200px;
-      padding: 0.4rem;
+      border-bottom: #3273DC 2px solid;
+      padding: 0.2rem;
       color: $mediumBlue;
       font-weight: 400;
     }

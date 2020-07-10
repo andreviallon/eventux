@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { InitVenueState } from 'src/app/state/venue/venue.actions';
+import { IEventForm } from 'src/app/state/event/event.model';
 
 @Component({
   selector: 'app-create-event',
@@ -15,7 +16,8 @@ import { InitVenueState } from 'src/app/state/venue/venue.actions';
 })
 export class CreateEventComponent implements OnInit {
 
-  public title: string = 'Add event';
+  public title = 'Add Event';
+  public submitFormBtnText = 'Create Event';
 
   @Select(VenueState.getVenues) venues$: Observable<IVenue[]>;
   @Select(TeacherState.getTeachers) teachers$: Observable<ITeacher[]>;
@@ -29,4 +31,7 @@ export class CreateEventComponent implements OnInit {
     this.store.dispatch(new InitTeacherState());
   }
 
+  public createEvent(event: IEventForm): void {
+    console.log(event);
+  }
 }
