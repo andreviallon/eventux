@@ -13,7 +13,7 @@ import { InitEventState } from 'src/app/state/event/event.actions';
 })
 export class EventsComponent implements OnInit, OnDestroy {
 
-  public title: string = 'Events';
+  public title = 'Events';
   public events: IEvent[];
 
   private subscription = new Subscription();
@@ -27,7 +27,7 @@ export class EventsComponent implements OnInit, OnDestroy {
 
     this.subscription.add(
       this.events$.subscribe(events => this.events = events)
-    )
+    );
   }
 
   ngOnDestroy(): void {

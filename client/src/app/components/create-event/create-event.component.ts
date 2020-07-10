@@ -8,6 +8,7 @@ import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { InitVenueState } from 'src/app/state/venue/venue.actions';
 import { IEventForm } from 'src/app/state/event/event.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create-event',
