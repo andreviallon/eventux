@@ -1,7 +1,6 @@
 @import "src/styles.scss";
 
 #date-picker {
-
   input {
     cursor: pointer;
   }
@@ -155,13 +154,17 @@
     .myDpSelectedDay, .myDpSelectedMonth, .myDpSelectedYear {
       background-color: $mediumBlue;
       color: white;
+
+      span {
+        color: white !important;
+      }
     }
 
     .myDpTableSingleDay:hover, .myDpTableSingleMonth:hover, .myDpTableSingleYear:hover {
       background-color: $mediumBlue;
 
       span {
-        color: white;
+        color: white !important;
       }
     }
 

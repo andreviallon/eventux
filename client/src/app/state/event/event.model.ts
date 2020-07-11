@@ -5,7 +5,7 @@ export interface IEvent {
   _id: string;
   title: string;
   description: string;
-  date: string;
+  courseDate: string;
   startTime: string;
   endTime: string;
   price: number;
@@ -19,7 +19,7 @@ export interface IEventForm {
   _id?: string;
   title: string;
   description: string;
-  date: string;
+  courseDate: ICourseDate;
   startTime: string;
   endTime: string;
   price: number;
@@ -29,7 +29,6 @@ export interface IEventForm {
   teacherId: string;
 }
 
-
 export interface IEventOverview {
   _id: string;
   properties: IEventProperty[];
@@ -38,4 +37,10 @@ export interface IEventOverview {
 export interface IEventProperty {
   title: string;
   content: string;
+}
+
+export interface ICourseDate {
+  day: number;
+  month: number;
+  year: number;
 }

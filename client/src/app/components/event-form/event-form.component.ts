@@ -1,17 +1,21 @@
 import { IEventForm } from './../../state/event/event.model';
 import { ITeacher } from './../../state/teacher/teacher.model';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { times } from 'src/app/utils/times';
 import { IVenue } from './../../state/venue/venue.model';
 import { faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
+import { IAngularMyDpOptions, IMyDateModel } from 'angular-mydatepicker';
 
 @Component({
   selector: 'app-event-form',
   templateUrl: './event-form.component.html',
-  styleUrls: ['./event-form.component.scss']
+  styleUrls: ['./event-form.component.scss', '../shared/date-picker/date-picker.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
-export class EventFormComponent implements OnInit {
+export class EventFormComponent implements OnInit, AfterViewInit {
+
+  @ViewChild('courseDate', { static: false }) date: ElementRef;
 
   @Input() event: IEventForm;
   @Input() venues: IVenue[];
@@ -29,14 +33,24 @@ export class EventFormComponent implements OnInit {
 
   public eventForm: FormGroup;
 
+  public myDpOptions: IAngularMyDpOptions = {
+    dateRange: false,
+    dateFormat: 'dd.mm.yyyy'
+  };
+
+  public dateModel: IMyDateModel = {
+    isRange: false
+  };
+
   constructor(private formBuilder: FormBuilder) {
 
   }
 
   public ngOnInit(): void {
+    console.log('this.event.date', this.event.courseDate);
     this.eventForm = this.formBuilder.group({
       title: [this.event.title, Validators.required],
-      date: [this.event.date, Validators.required],
+      date: [{ date: this.event.courseDate }, Validators.required],
       price: [this.event.price, Validators.required],
       startTime: [this.event.startTime],
       endTime: [this.event.endTime],
@@ -62,6 +76,20 @@ export class EventFormComponent implements OnInit {
     this.startTimes = times;
   }
 
+  ngAfterViewInit() {
+    if (this.event.courseDate) {
+      this.date.nativeElement.value = this.populateDateField();
+    }
+  }
+
+  public populateDateField(): string {
+    const event = this.eventForm.get('date').value;
+    const day: string = event.date.day <= 9 ? `0${event.date.day}` : `${event.date.day}`;
+    const month: string = event.date.month <= 9 ? `0${event.date.month}` : `${event.date.month}`;
+
+    return `${day}.${month}.${event.date.year}`;
+  }
+
   public imageData($event: string): void {
     this.eventForm.get('imageData').setValue($event);
   }
@@ -85,11 +113,16 @@ export class EventFormComponent implements OnInit {
     this.selectedTeacher = this.teachers.find(teacher => teacher._id === teacherId);
   }
 
+  public onDateChanged($event) {
+    console.log('$event', $event);
+    this.eventForm.get('courseDate').setValue($event.singleDate.courseDate);
+  }
+
   public submitEventForm() {
     const form: IEventForm = {
       title: this.eventForm.value.title.trim(),
       description: this.eventForm.value.description,
-      date: this.eventForm.value.date,
+      courseDate: this.eventForm.value.courseDate,
       startTime: this.eventForm.value.startTime,
       endTime: this.eventForm.value.endTime,
       price: this.eventForm.value.price,

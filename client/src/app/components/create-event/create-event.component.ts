@@ -16,12 +16,14 @@ import { IEventForm, IEvent } from 'src/app/state/event/event.model';
 })
 export class CreateEventComponent implements OnInit {
 
+  public date = Date();
+
   public title = 'Add Event';
   public submitFormBtnText = 'Create Event';
   public defaultEvent: IEventForm = {
     title: '',
     description: '',
-    date: '',
+    courseDate: { year: 0, month: 0, day: 0 },
     startTime: '',
     endTime: '',
     price: 0,
@@ -41,6 +43,13 @@ export class CreateEventComponent implements OnInit {
   public ngOnInit(): void {
     this.store.dispatch(new InitVenueState());
     this.store.dispatch(new InitTeacherState());
+
+    let date: Date = new Date();
+    this.defaultEvent.courseDate = {
+      year: date.getFullYear(),
+      month: date.getMonth() + 1,
+      day: date.getDate()
+    };
   }
 
   public createEvent(event: IEventForm): void {

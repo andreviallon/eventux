@@ -10,6 +10,7 @@ import { IAngularMyDpOptions, IMyDateModel } from 'angular-mydatepicker';
 export class DatePickerComponent {
 
   @Input() placeholder: string;
+  @Input() date: string;
 
   public myDpOptions: IAngularMyDpOptions = {
     dateRange: false,

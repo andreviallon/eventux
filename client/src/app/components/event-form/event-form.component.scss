@@ -1,78 +1,80 @@
 @import 'src/styles.scss';
 
-.section-title {
-  font-size: 1.5rem;
-  margin: 3rem 0 1rem;
-  font-weight: bold;
-  color: $black;
-}
+#event-form {
+  .section-title {
+    font-size: 1.5rem;
+    margin: 3rem 0 1rem;
+    font-weight: bold;
+    color: $black;
+  }
 
-.price-input {
-  flex-grow: 1;
-}
+  .price-input {
+    flex-grow: 1;
+  }
 
-.select, select {
-  width: 100%;
-}
+  .select, select {
+    width: 100%;
+  }
 
-.tag-help {
-  color: $mediumGray;
-}
+  .tag-help {
+    color: $mediumGray;
+  }
 
-.tags-container {
-  display: flex;
-  flex-wrap: wrap;
-}
+  .tags-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
 
-.delete {
-  margin-left: 0.5rem !important;
-}
+  .delete {
+    margin-left: 0.5rem !important;
+  }
 
-.flex-container {
-  display: flex;
-}
+  .flex-container {
+    display: flex;
+  }
 
-.venue-image {
-  width: 400px;
-  border-radius: 4px;
-  margin-right: 2rem;
-}
+  .venue-image {
+    width: 400px;
+    border-radius: 4px;
+    margin-right: 2rem;
+  }
 
-.venue-flex-container {
-  display: flex;
-  flex-direction: column;
-}
+  .venue-flex-container {
+    display: flex;
+    flex-direction: column;
+  }
 
-p {
-  margin-bottom: 0.3rem;
-}
+  p {
+    margin-bottom: 0.3rem;
+  }
 
-.website-link {
-  margin-top: 1rem;
-  font-weight: 600;
-}
+  .website-link {
+    margin-top: 1rem;
+    font-weight: 600;
+  }
 
-.teacher-image {
-  margin-right: 1rem;
-  width: 100px;
-  border-radius: 50%;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -ms-border-radius: 50%;
-  -o-border-radius: 50%;
-}
+  .teacher-image {
+    margin-right: 1rem;
+    width: 100px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+  }
 
-.teacher-flex-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-}
+  .teacher-flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
-.buttons {
-  justify-content: flex-end;
-  margin-top: 3rem;
-}
+  .buttons {
+    justify-content: flex-end;
+    margin-top: 3rem;
+  }
 
-.button {
-  font-weight: 600;
+  .button {
+    font-weight: 600;
+  }
 }
