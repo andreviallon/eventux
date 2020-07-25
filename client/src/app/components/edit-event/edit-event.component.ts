@@ -1,4 +1,4 @@
-import { IEventForm, ICourseDate } from './../../state/event/event.model';
+import { ICourseDate, IEvent } from './../../state/event/event.model';
 import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { VenueState } from 'src/app/state/venue/venue.state';
@@ -21,7 +21,7 @@ export class EditEventComponent implements OnInit {
   public title = 'Edit Event';
   public submitFormBtnText = 'Edit Event';
   public eventId: string;
-  public event: IEventForm;
+  public event: IEvent;
 
   private subscription = new Subscription();
 
@@ -42,18 +42,16 @@ export class EditEventComponent implements OnInit {
 
     this.subscription.add(
       this.store.select(EventState.getEvent(this.eventId)).subscribe(event => {
-        const eventForm: IEventForm = {
+        const eventForm: IEvent = {
           ...event,
-          courseDate: { day: 3, month: 4, year: 2020 } as ICourseDate,
-          teacherId: event.teacher._id,
-          venueId: event.venue._id,
+          courseDate: { day: 3, month: 4, year: 2020 } as ICourseDate
         };
         this.event = eventForm;
       })
     );
   }
 
-  public editEvent(event: IEventForm): void {
+  public editEvent(event: IEvent): void {
     console.log(event);
   }
 

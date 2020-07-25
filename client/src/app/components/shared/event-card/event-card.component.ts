@@ -1,5 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { IEvent } from 'src/app/state/event/event.model';
+import { IEventIncTeacherAndVenue } from './../../../state/event/event.model';
+import { convertDate } from 'src/app/utils/convert-date';
 
 @Component({
   selector: 'app-event-card',
@@ -8,6 +9,10 @@ import { IEvent } from 'src/app/state/event/event.model';
 })
 export class EventCardComponent {
 
-  @Input() event: IEvent;
+  @Input() event: IEventIncTeacherAndVenue;
+
+  public getCourseDate() {
+    return convertDate(this.event.courseDate);
+  }
 
 }

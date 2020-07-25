@@ -1,15 +1,17 @@
 import { VenueService } from './../../venue.service';
 import { InitVenueState } from './venue.actions';
 import { IVenue } from './venue.model';
-import { State, Selector, Action, StateContext, createSelector } from '@ngxs/store';
+import { State, Selector, Action, StateContext, createSelector, StateToken } from '@ngxs/store';
 import { Injectable } from '@angular/core';
 
 export class VenueStateModel {
   venues: IVenue[];
 }
 
+export const VENUE_STATE = new StateToken<VenueStateModel>('venueState');
+
 @State<VenueStateModel>({
-  name: 'venues'
+  name: VENUE_STATE
 })
 
 @Injectable()
@@ -37,7 +39,7 @@ export class VenueState {
     const venues = this.venueService.getVenues();
 
     patchState({
-      venues: venues,
-    })
+      venues
+    });
   }
 }

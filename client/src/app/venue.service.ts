@@ -29,7 +29,7 @@ export class VenueService {
       img: 'imgUrl',
       website: 'https://www.hoteloasia.com/business/meeting-and-conference-rooms/'
     }
-  ]
+  ];
 
   public getVenues(): IVenue[] {
     return this.venues;

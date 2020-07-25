@@ -25,7 +25,7 @@ export class TeacherService {
       email: 'janedoe@gmail.com',
       phoneNumber: 30303030
     }
-  ]
+  ];
 
   public getTeachers(): ITeacher[] {
     return this.teachers;

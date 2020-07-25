@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { InitEventState } from './state/event/event.actions';
+import { InitTeacherState } from './state/teacher/teacher.actions';
 import { InitVenueState } from './state/venue/venue.actions';
 
 @Component({
@@ -16,7 +17,7 @@ export class AppComponent implements OnInit {
 
   public ngOnInit(): void {
     this.store.dispatch(new InitEventState());
-    this.store.dispatch(new InitVenueState());
+    this.store.dispatch(new InitTeacherState());
     this.store.dispatch(new InitVenueState());
   }
 }

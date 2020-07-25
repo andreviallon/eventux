@@ -1,4 +1,4 @@
-import { IEventForm } from './../../state/event/event.model';
+import { IEvent } from './../../state/event/event.model';
 import { ITeacher } from './../../state/teacher/teacher.model';
 import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -17,12 +17,12 @@ export class EventFormComponent implements OnInit, AfterViewInit {
 
   @ViewChild('courseDate', { static: false }) date: ElementRef;
 
-  @Input() event: IEventForm;
+  @Input() event: IEvent;
   @Input() venues: IVenue[];
   @Input() teachers: ITeacher[];
   @Input() submitFormBtnText: string;
 
-  @Output() submitForm: EventEmitter<IEventForm> = new EventEmitter();
+  @Output() submitForm: EventEmitter<IEvent> = new EventEmitter();
 
   public title = 'Add event';
   public tags: string[] = [];
@@ -47,7 +47,6 @@ export class EventFormComponent implements OnInit, AfterViewInit {
   }
 
   public ngOnInit(): void {
-    console.log('this.event.date', this.event.courseDate);
     this.eventForm = this.formBuilder.group({
       title: [this.event.title, Validators.required],
       date: [{ date: this.event.courseDate }, Validators.required],
@@ -114,12 +113,11 @@ export class EventFormComponent implements OnInit, AfterViewInit {
   }
 
   public onDateChanged($event) {
-    console.log('$event', $event);
     this.eventForm.get('courseDate').setValue($event.singleDate.courseDate);
   }
 
   public submitEventForm() {
-    const form: IEventForm = {
+    const form: IEvent = {
       title: this.eventForm.value.title.trim(),
       description: this.eventForm.value.description,
       courseDate: this.eventForm.value.courseDate,

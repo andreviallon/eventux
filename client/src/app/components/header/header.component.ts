@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  public showMobileMenu: boolean = false;
-  public showDesktopMenu: boolean = false;
+  public showMobileMenu = false;
+  public showDesktopMenu = false;
   public currentUser: User;
 
   constructor(private userService: UserService) {

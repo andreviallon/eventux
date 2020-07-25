@@ -1,21 +1,22 @@
-import { ITeacher } from './../teacher/teacher.model';
-import { IVenue } from './../venue/venue.model';
+import { IVenue } from '../venue/venue.model';
+import { ITeacher } from '../teacher/teacher.model';
 
-export interface IEvent {
-  _id: string;
+export interface IEventIncTeacherAndVenue {
+  _id?: string;
   title: string;
   description: string;
-  courseDate: string;
+  courseDate: ICourseDate;
   startTime: string;
   endTime: string;
   price: number;
-  tags: string[];
+  tags?: string[];
   img: string;
   venue: IVenue;
   teacher: ITeacher;
 }
 
-export interface IEventForm {
+
+export interface IEvent {
   _id?: string;
   title: string;
   description: string;

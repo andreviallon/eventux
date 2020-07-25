@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { InitVenueState } from 'src/app/state/venue/venue.actions';
-import { IEventForm, IEvent } from 'src/app/state/event/event.model';
+import { IEvent } from 'src/app/state/event/event.model';
 
 @Component({
   selector: 'app-create-event',
@@ -20,7 +20,7 @@ export class CreateEventComponent implements OnInit {
 
   public title = 'Add Event';
   public submitFormBtnText = 'Create Event';
-  public defaultEvent: IEventForm = {
+  public defaultEvent: IEvent = {
     title: '',
     description: '',
     courseDate: { year: 0, month: 0, day: 0 },
@@ -44,7 +44,7 @@ export class CreateEventComponent implements OnInit {
     this.store.dispatch(new InitVenueState());
     this.store.dispatch(new InitTeacherState());
 
-    let date: Date = new Date();
+    const date: Date = new Date();
     this.defaultEvent.courseDate = {
       year: date.getFullYear(),
       month: date.getMonth() + 1,
@@ -52,7 +52,7 @@ export class CreateEventComponent implements OnInit {
     };
   }
 
-  public createEvent(event: IEventForm): void {
+  public createEvent(event: IEvent): void {
     console.log(event);
   }
 }

@@ -1,3 +1,4 @@
+import { IEventIncTeacherAndVenue } from './../../../state/event/event.model';
 import { Subscription, Observable } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -12,10 +13,10 @@ import { IEvent } from 'src/app/state/event/event.model';
 })
 export class EventDetailPageComponent implements OnInit, OnDestroy {
 
-  @Select(EventState.getRelatedEvent) relatedEvents$: Observable<IEvent[]>;
+  @Select(EventState.getEventsIncTeacherAndVenue()) relatedEvents$: Observable<IEventIncTeacherAndVenue[]>;
 
   public eventId: string;
-  public event: IEvent;
+  public event: IEventIncTeacherAndVenue;
 
   private subscription = new Subscription();
 
@@ -27,7 +28,7 @@ export class EventDetailPageComponent implements OnInit, OnDestroy {
     );
 
     this.subscription.add(
-      this.store.select(EventState.getEvent(this.eventId)).subscribe(event => {
+      this.store.select(EventState.getEventIncTeacherAndVenue(this.eventId)).subscribe(event => {
         this.event = event;
       })
     );

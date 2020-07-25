@@ -1,32 +1,19 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component } from '@angular/core';
 import { EventState } from '../../../state/event/event.state';
-import { Select, Store } from '@ngxs/store';
-import { Observable, Subscription } from 'rxjs';
-import { IEvent } from 'src/app/state/event/event.model';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
 import { SvgIconRegistryService } from 'angular-svg-icon';
+import { IEventIncTeacherAndVenue } from './../../../state/event/event.model';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent implements OnInit, OnDestroy {
+export class HomeComponent {
 
-  public events: IEvent[] = [];
+  @Select(EventState.getEventsIncTeacherAndVenue()) events$: Observable<IEventIncTeacherAndVenue[]>;
 
-  private subscription = new Subscription();
+  constructor(private iconReg: SvgIconRegistryService) { }
 
-  @Select(EventState.getEvents) events$: Observable<IEvent[]>;
-
-  constructor(private store: Store, private iconReg: SvgIconRegistryService) { }
-
-  ngOnInit(): void {
-    this.subscription.add(
-      this.events$.subscribe(events => this.events = events)
-    );
-  }
-
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
 }
