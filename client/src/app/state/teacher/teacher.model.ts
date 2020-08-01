@@ -7,3 +7,13 @@ export interface ITeacher {
   email: string;
   phoneNumber: number;
 }
+
+export interface ITeacherOverview {
+  _id: string;
+  properties: ITeacherProperty[];
+}
+
+export interface ITeacherProperty {
+  title: string;
+  content: string;
+}

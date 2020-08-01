@@ -24,7 +24,7 @@ export class UserService {
     lastName: 'Doe',
     avatar: './assets/john-doe-avatar.png',
     permission: Permission.ADMIN
-  }
+  };
 
   constructor() { }
 

@@ -6,7 +6,6 @@ import { HomeComponent } from './components/home-page/home/home.component';
 import { EventsComponent } from './components/events-page/events/events.component';
 import { ManageEventsComponent } from './components/manage-event-page/manage-events/manage-events.component';
 import { CreateEventComponent } from './components/create-event/create-event.component';
-import { ManageTeachersComponent } from './components/manage-teacher-page/manage-teachers/manage-teachers.component';
 
 
 const routes: Routes = [
@@ -16,7 +15,6 @@ const routes: Routes = [
   { path: 'manage-events', component: ManageEventsComponent },
   { path: 'create-event', component: CreateEventComponent },
   { path: 'edit-event/:id', component: EditEventComponent },
-  { path: 'manage-teachers', component: ManageTeachersComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 

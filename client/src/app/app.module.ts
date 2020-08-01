@@ -20,8 +20,6 @@ import { EventsComponent } from './components/events-page/events/events.componen
 import { EventsFilterComponent } from './components/events-page/events-filter/events-filter.component';
 import { ManageEventsComponent } from './components/manage-event-page/manage-events/manage-events.component';
 import { ManageEventCardComponent } from './components/manage-event-page/manage-event-card/manage-event-card.component';
-import { ManageTeachersComponent } from './components/manage-teacher-page/manage-teachers/manage-teachers.component';
-import { ManageTeacherCardComponent } from './components/manage-teacher-page/manage-teacher-card/manage-teacher-card.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { AngularMyDatePickerModule } from 'angular-mydatepicker';
 import { DatePickerComponent } from './components/shared/date-picker/date-picker.component';
@@ -45,8 +43,6 @@ import { EditEventComponent } from './components/edit-event/edit-event.component
     EventsFilterComponent,
     ManageEventsComponent,
     ManageEventCardComponent,
-    ManageTeachersComponent,
-    ManageTeacherCardComponent,
     DatePickerComponent,
     EventCardComponent,
     EventListComponent,

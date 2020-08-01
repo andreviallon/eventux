@@ -1,4 +1,4 @@
-import { ITeacher } from './state/teacher/teacher.model';
+import { ITeacher, ITeacherOverview } from './state/teacher/teacher.model';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -27,11 +27,60 @@ export class TeacherService {
     }
   ];
 
+  private teachersOverview: ITeacherOverview[] = [
+    {
+      _id: '123',
+      properties: [
+        {
+          title: 'image',
+          content: './assets/john-doe-avatar.png'
+        },
+        {
+          title: 'name',
+          content: 'John Doe'
+        },
+        {
+          title: 'email',
+          content: 'johndoe@gmail.com'
+        },
+        {
+          title: 'phoneNumber',
+          content: '30303030'
+        }
+      ]
+    },
+    {
+      _id: '456',
+      properties: [
+        {
+          title: 'image',
+          content: './assets/john-doe-avatar.png'
+        },
+        {
+          title: 'name',
+          content: 'Jane Doe'
+        },
+        {
+          title: 'email',
+          content: 'janedoe@gmail.com'
+        },
+        {
+          title: 'phoneNumber',
+          content: '30303030'
+        }
+      ]
+    }
+  ];
+
   public getTeachers(): ITeacher[] {
     return this.teachers;
   }
 
   public getTeacher(id: string): ITeacher {
     return this.teachers.find(event => event._id === id);
+  }
+
+  public getTeachersOverview(): ITeacherOverview[] {
+    return this.teachersOverview;
   }
 }
