@@ -3,47 +3,9 @@
     <div class="columns">
       <div class="column">
         <div class="control">
-          <input class="input" type="text" placeholder="Search for an event...">
+          <input class="input" type="text" placeholder="Search for an event..." [(ngModel)]="query" (ngModelChange)="changeSearchQuery($event)">
         </div>
       </div>
     </div>
-
-    <div class="columns">
-      <div class="column">
-        <div class="select">
-          <select>
-            <option>All Topics</option>
-            <option>Angular</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="column">
-        <app-date-picker placeholder="Any date"></app-date-picker>
-      </div>
-
-      <div class="column">
-        <div class="select">
-          <select>
-            <option>All Locations</option>
-            <option>Copenhagen</option>
-            <option>Aarhus</option>
-            <option>This is a really long name for a city</option>
-
-          </select>
-        </div>
-      </div>
-
-      <div class="column">
-        <div class="select">
-          <select>
-            <option>All Price Ranges</option>
-            <option>>$10</option>
-            <option>>$20</option>
-          </select>
-        </div>
-      </div>
-    </div>
-
   </div>
 </div>

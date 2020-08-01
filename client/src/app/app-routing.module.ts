@@ -2,7 +2,7 @@ import { EditEventComponent } from './components/edit-event/edit-event.component
 import { EventDetailPageComponent } from './components/event-detail-page/event-detail-page/event-detail-page.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomeComponent } from './components/home-page/home/home.component';
+import { HomeComponent } from './components/home/home.component';
 import { EventsComponent } from './components/events-page/events/events.component';
 import { ManageEventsComponent } from './components/manage-event-page/manage-events/manage-events.component';
 import { CreateEventComponent } from './components/create-event/create-event.component';

@@ -2,6 +2,6 @@
   <div class="header-container">
     <app-page-header [title]="title" [addButton]="false"></app-page-header>
   </div>
-  <app-events-filter></app-events-filter>
-  <app-event-list [events]="events$ | async"></app-event-list>
+  <app-events-filter (searchQuery)="filterEvents($event)"></app-events-filter>
+  <app-event-list [events]="filteredEvents"></app-event-list>
 </div>

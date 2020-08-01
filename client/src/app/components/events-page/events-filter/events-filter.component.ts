@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-events-filter',
@@ -7,5 +7,13 @@ import { Component, ViewEncapsulation } from '@angular/core';
   encapsulation: ViewEncapsulation.None
 })
 export class EventsFilterComponent {
+
+  public query: string;
+
+  @Output() searchQuery = new EventEmitter();
+
+  changeSearchQuery(query: string): void {
+    this.searchQuery.emit(query);
+  }
 
 }

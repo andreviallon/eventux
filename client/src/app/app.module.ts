@@ -26,8 +26,7 @@ import { DatePickerComponent } from './components/shared/date-picker/date-picker
 import { EventCardComponent } from './components/shared/event-card/event-card.component';
 import { EventListComponent } from './components/shared/event-list/event-list.component';
 import { PageHeaderComponent } from './components/shared/page-header/page-header.component';
-import { HomeSearchComponent } from './components/home-page/home-search/home-search.component';
-import { HomeComponent } from './components/home-page/home/home.component';
+import { HomeComponent } from './components/home/home.component';
 import { ImageCropperComponent } from './components/shared/image-cropper/image-cropper.component';
 import { EventFormComponent } from './components/event-form/event-form.component';
 import { EventDetailPageComponent } from './components/event-detail-page/event-detail-page/event-detail-page.component';
@@ -47,7 +46,6 @@ import { EditEventComponent } from './components/edit-event/edit-event.component
     EventCardComponent,
     EventListComponent,
     PageHeaderComponent,
-    HomeSearchComponent,
     HomeComponent,
     ImageCropperComponent,
     EventFormComponent,
