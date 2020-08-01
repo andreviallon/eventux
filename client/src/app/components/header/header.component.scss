@@ -67,27 +67,10 @@ button {
 }
 
 .navbar-start {
-
   align-items: center;
 
   .navbar-item {
     display: inline-block;
-  }
-
-  .navbar-item::after {
-    content: "";
-    position: relative;
-    display: block;
-    width: 0;
-    z-index: -1;
-    height: 2.5px;
-    background: $black;
-    transition: width 0.3s;
-  }
-
-  .navbar-item:hover::after {
-	  width: 100%;
-	  transition: width 0.3s;
   }
 }
 

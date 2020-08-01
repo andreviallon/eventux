@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Store, Select } from '@ngxs/store';
 import { EventState } from 'src/app/state/event/event.state';
 import { IEvent } from 'src/app/state/event/event.model';
+import { convertDate } from 'src/app/utils/convert-date';
 
 @Component({
   selector: 'app-event-detail-page',
