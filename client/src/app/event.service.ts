@@ -22,7 +22,7 @@ export class EventService {
       endTime: '12.00',
       price: 120,
       img: './assets/event-image.png',
-      tags: ['React', 'JavaScript', 'Frontend Dev'],
+      tags: ['React', 'JavaScript'],
       venueId: '123',
       teacherId: '123'
     },
@@ -38,7 +38,7 @@ export class EventService {
       startTime: '11.00',
       endTime: '15.00',
       price: 100,
-      tags: ['React', 'JavaScript', 'Frontend Dev'],
+      tags: ['Angular', 'JavaScript'],
       img: './assets/event-image.png',
       venueId: '123',
       teacherId: '123'
@@ -55,7 +55,7 @@ export class EventService {
       startTime: '09.00',
       endTime: '12.00',
       price: 100,
-      tags: ['React', 'JavaScript', 'Frontend Dev'],
+      tags: ['Angular'],
       img: './assets/event-image.png',
       venueId: '123',
       teacherId: '123'
@@ -72,7 +72,7 @@ export class EventService {
       startTime: '09.00',
       endTime: '12.00',
       price: 90,
-      tags: ['React', 'JavaScript', 'Frontend Dev'],
+      tags: ['React', 'JavaScript'],
       img: './assets/event-image.png',
       venueId: '456',
       teacherId: '456',
@@ -89,7 +89,7 @@ export class EventService {
       startTime: '09.00',
       endTime: '12.00',
       price: 90,
-      tags: ['React', 'JavaScript', 'Frontend Dev'],
+      tags: ['Vue', 'JavaScript'],
       img: './assets/event-image.png',
       venueId: '456',
       teacherId: '456'
@@ -106,7 +106,7 @@ export class EventService {
       startTime: '09.00',
       endTime: '12.00',
       price: 90,
-      tags: ['React', 'JavaScript', 'Frontend Dev'],
+      tags: ['php'],
       img: './assets/event-image.png',
       venueId: '456',
       teacherId: '456'

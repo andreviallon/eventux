@@ -39,7 +39,7 @@ export class EventsComponent implements OnInit, OnDestroy {
   public filterEvents(inputQuery): void {
     const query = inputQuery.toLowerCase().trim();
 
-    this.filteredEvents = this.events.filter(event => event.title.toLowerCase().includes(query));
+    this.filteredEvents = this.events.filter(event => event.title.toLowerCase().includes(query) || event.tags.find(tag => tag.toLocaleLowerCase().includes(query)));
   }
 
   public ngOnDestroy(): void {
