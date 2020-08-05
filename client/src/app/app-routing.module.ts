@@ -1,3 +1,4 @@
+import { OrderPageComponent } from './order-page/order-page.component';
 import { EditEventComponent } from './components/edit-event/edit-event.component';
 import { EventDetailPageComponent } from './components/event-detail-page/event-detail-page/event-detail-page.component';
 import { NgModule } from '@angular/core';
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'manage-events', component: ManageEventsComponent },
   { path: 'create-event', component: CreateEventComponent },
   { path: 'edit-event/:id', component: EditEventComponent },
+  { path: 'order/:id', component: OrderPageComponent },
   { path: '', redirectTo: '/home', pathMatch: 'full' },
 ];
 

@@ -31,6 +31,8 @@ import { ImageCropperComponent } from './components/shared/image-cropper/image-c
 import { EventFormComponent } from './components/event-form/event-form.component';
 import { EventDetailPageComponent } from './components/event-detail-page/event-detail-page/event-detail-page.component';
 import { EditEventComponent } from './components/edit-event/edit-event.component';
+import { OrderPageComponent } from './order-page/order-page.component';
+import { OrderSummaryComponent } from './order-summary/order-summary.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +53,8 @@ import { EditEventComponent } from './components/edit-event/edit-event.component
     EventFormComponent,
     EventDetailPageComponent,
     EditEventComponent,
+    OrderPageComponent,
+    OrderSummaryComponent,
   ],
   imports: [
     NgxsModule.forRoot([

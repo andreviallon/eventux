@@ -1,0 +1,24 @@
+:host {
+  height: calc(100vh - 56px);
+}
+
+.order-page-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.thank-you-message-container {
+  flex: 1;
+  text-align: center;
+  margin-top: 6rem;
+}
+
+h1 {
+  font-size: 2.6rem;
+  font-weight: 600;
+}
+
+p {
+  margin-top: 0.5rem;
+  font-size: 1.2rem;
+}
