@@ -1,11 +1,11 @@
 const express = require('express');
 const router = express.Router();
-const { getEvents, addEvents, updateEvent, deleteEvent } = require('../controllers/eventCtrl');
+const { getEvents, addEvent, updateEvent, deleteEvent } = require('../controllers/eventCtrl');
 
 router
     .route('/')
     .get(getEvents)
-    .post(addEvents);
+    .post(addEvent);
 
 router
     .route('/:id')

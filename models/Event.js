@@ -1,11 +1,49 @@
 const mongoose = require('mongoose');
 
 const EventSchema = new mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
     title: {
         type: String,
         trim: true,
-        required: [true, 'Please add some text']
+        required: [true, 'Please add an event title']
     },
+    description: {
+        type: String,
+        trim: true,
+        required: false
+    },
+    courseDate: {
+        type: [{ day: Number, month: Number, year: Number }],
+        required: [true, 'Please add an event date']
+    },
+    startTime: {
+        type: String,
+        trim: true,
+        required: [true, 'Please add an event start time']
+    },
+    endTime: {
+        type: String,
+        trim: true,
+        required: [true, 'Please add an event end time']
+    },
+    price: {
+        type: Number,
+        required: [true, 'Please add an event price']
+    },
+    tags: {
+        type: Array,
+        required: false
+    },
+    img: {
+        type: String,
+        required: true
+    },
+    venueId: {
+        type: String
+    },
+    teacherId: {
+        type: String
+    }
 });
 
 module.exports = mongoose.model('Event', EventSchema);
