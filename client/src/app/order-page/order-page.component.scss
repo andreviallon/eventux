@@ -5,12 +5,21 @@
 .order-page-container {
   display: flex;
   justify-content: space-between;
+  flex-direction: row;
+
+  @media only screen and (max-width: 1024px) {
+    flex-direction: column;
+  }
 }
 
 .thank-you-message-container {
   flex: 1;
   text-align: center;
   margin-top: 6rem;
+
+  @media only screen and (max-width: 1024px) {
+    margin-bottom: 3rem;
+  }
 }
 
 h1 {
@@ -19,6 +28,6 @@ h1 {
 }
 
 p {
-  margin-top: 0.5rem;
-  font-size: 1.2rem;
+  margin-top: 0.7rem;
+  font-size: 1.1rem;
 }
