@@ -4,7 +4,21 @@ const Event = require('../models/Event');
 // @route GET /api/v1/events
 // @access Public
 exports.getEvents = async (req, res, next) => {
-    res.send('GET events');
+    // res.send('GET Events');
+    try {
+        const events = await Event.find();
+        console.log('events', events);
+        return res.status(200).json({
+            success: true,
+            count: events.length,
+            data: events
+        });
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
 }
 
 

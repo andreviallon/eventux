@@ -1,7 +1,6 @@
 const mongoose = require('mongoose');
 
 const EventSchema = new mongoose.Schema({
-    _id: mongoose.Schema.Types.ObjectId,
     title: {
         type: String,
         trim: true,
