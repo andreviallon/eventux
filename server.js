@@ -15,17 +15,21 @@ const app = express();
 
 app.use(express.json());
 
-if(process.env.NODE_ENV === 'development') {
+app.use('/api/v1/events', events);
+
+if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
-app.use('/api/v1/events', events);
-
-if(process.env.NODE_ENV === 'production') {
-  app.use(express.static('client/build'));
-
-  app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')));
+if (process.env.NODE_ENV === 'production') {
+  app.get('/*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'dist', 'event-app')));
 }
+
+app.use(express.static(path.join(__dirname, './client/dist/event-app')));
+
+app.get('/*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, 'client', 'dist', 'event-app', 'index.html'));
+});
 
 const PORT = process.env.PORT || 5000;
 

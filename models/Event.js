@@ -12,7 +12,8 @@ const EventSchema = new mongoose.Schema({
         required: false
     },
     courseDate: {
-        type: [{ day: Number, month: Number, year: Number }],
+        type: Map,
+        of: Number,
         required: [true, 'Please add an event date']
     },
     startTime: {
