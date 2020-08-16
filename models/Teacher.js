@@ -27,7 +27,6 @@ const TeacherSchema = new mongoose.Schema({
     },
     phoneNumber: {
         type: Number,
-        trim: true,
         required: [true, 'Please add a phone number']
     } 
 });

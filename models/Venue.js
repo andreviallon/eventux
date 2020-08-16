@@ -33,7 +33,6 @@ const VenueSchema = new mongoose.Schema({
     },
     img: {
         type: Number,
-        trim: true,
         required: [true, 'Please add an image']
     },
     website: {

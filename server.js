@@ -10,12 +10,12 @@ dotenv.config({ path: './config/config.env' });
 connectDB();
 
 const events = require('./routes/events');
-
+const teachers = require('./routes/teachers');
 const app = express();
 
 app.use(express.json());
-
 app.use('/api/v1/events', events);
+app.use('/api/v1/teachers', teachers);
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
