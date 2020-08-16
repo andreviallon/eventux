@@ -29,8 +29,7 @@ const TeacherSchema = new mongoose.Schema({
         type: Number,
         trim: true,
         required: [true, 'Please add a phone number']
-    },
-    
+    } 
 });
 
 module.exports = mongoose.model('Teacher', TeacherSchema);
