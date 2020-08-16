@@ -1,0 +1,103 @@
+const Venue = require('../models/Venue');
+
+// @desc Get all venues
+// @route GET /api/v1/venues
+// @access Public
+exports.getVenues = async (req, res, next) => {
+    // res.send('GET Venues');
+    try {
+        const venues = await Venue.find();
+        console.log('venues', venues);
+        return res.status(200).json({
+            success: true,
+            count: venues.length,
+            data: venues
+        });
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
+}
+
+
+// @desc Add all venues
+// @route POST /api/v1/venues
+// @access Public
+exports.addVenue = async (req, res, next) => {
+    try {
+        console.log('req', req.body);
+        const venue = await Venue.create(req.body);
+
+        return res.status(201).json({
+            success: true,
+            data: venue
+        });
+    } catch (err) {
+        if (err.name === 'ValidationError') {
+            const messages = Object.values(err.errors).map(val => val.message);
+
+            return res.status(400).json({
+                success: false,
+                error: messages
+            });
+        } else {
+            return res.status(500).json({
+                success: false,
+                error: err
+            });
+        }
+    }
+}
+
+// @desc Delete all venues
+// @route DELETE /api/v1/venues:id
+// @access Public
+exports.deleteVenue = async (req, res, next) => {
+    try {
+        const venue = await Venue.findById(req.params.id);
+
+        if (!venue) {
+            return res.status(404).json({
+                success: false,
+                error: 'No venue found'
+            });
+        }
+
+        await venue.remove();
+
+        return res.status(200).json({
+            success: true,
+            data: {}
+        });
+
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
+}
+
+// @desc Update venue
+// @route PATCH /api/v1/venues/:id
+// @access Public
+exports.updateVenue = async (req, res, next) => {
+    try {
+        const venue = await Venue.findById(req.params.id);
+        console.log('venue', venue);
+
+        await venue.updateOne(req.body)
+
+        return res.status(201).json({
+            success: true,
+            data: venue
+        });
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
+}

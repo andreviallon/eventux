@@ -32,11 +32,11 @@ const VenueSchema = new mongoose.Schema({
         required: [true, 'Please add a phone number']
     },
     img: {
-        type: Number,
+        type: String,
         required: [true, 'Please add an image']
     },
     website: {
-        type: Number,
+        type: String,
         trim: true,
         required: [true, 'Please add a website link']
     }

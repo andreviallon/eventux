@@ -11,11 +11,13 @@ connectDB();
 
 const events = require('./routes/events');
 const teachers = require('./routes/teachers');
+const venues = require('./routes/venues');
 const app = express();
 
 app.use(express.json());
 app.use('/api/v1/events', events);
 app.use('/api/v1/teachers', teachers);
+app.use('/api/v1/venues', venues);
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
