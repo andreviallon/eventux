@@ -55,12 +55,49 @@ exports.addEvent = async (req, res, next) => {
 // @route DELETE /api/v1/events:id
 // @access Public
 exports.deleteEvent = async (req, res, next) => {
-    res.send('DELETE event');
+    try {
+        const event = await Event.findById(req.params.id);
+
+        if (!event) {
+            return res.status(404).json({
+                success: false,
+                error: 'No event found'
+            });
+        }
+
+        await event.remove();
+
+        return res.status(200).json({
+            success: true,
+            data: {}
+        });
+
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
 }
 
 // @desc Update event
 // @route PATCH /api/v1/events/:id
 // @access Public
 exports.updateEvent = async (req, res, next) => {
-    res.send('PATCH event');
+    try {
+        const event = await Event.findById(req.params.id);
+        console.log('event', event);
+        
+        await event.updateOne(req.body)
+
+        return res.status(201).json({
+            success: true,
+            data: event
+        });
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
 }
