@@ -1,4 +1,4 @@
-import { OrderPageComponent } from './order-page/order-page.component';
+import { OrderPageComponent } from './components/order-page/order-page.component';
 import { EditEventComponent } from './components/edit-event/edit-event.component';
 import { EventDetailPageComponent } from './components/event-detail-page/event-detail-page/event-detail-page.component';
 import { NgModule } from '@angular/core';

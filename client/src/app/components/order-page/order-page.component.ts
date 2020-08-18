@@ -2,8 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngxs/store';
-import { EventState } from '../state/event/event.state';
-import { IEventIncTeacherAndVenue } from '../state/event/event.model';
+import { EventState } from '../../state/event/event.state';
+import { IEventIncTeacherAndVenue } from '../../state/event/event.model';
 
 @Component({
   selector: 'app-order-page',

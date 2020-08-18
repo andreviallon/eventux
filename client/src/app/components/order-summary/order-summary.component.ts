@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { IEventIncTeacherAndVenue } from '../state/event/event.model';
-import { convertDate } from '../utils/convert-date';
+import { IEventIncTeacherAndVenue } from '../../state/event/event.model';
+import { convertDate } from '../../utils/convert-date';
 
 @Component({
   selector: 'app-order-summary',
