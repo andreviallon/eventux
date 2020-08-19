@@ -6,6 +6,8 @@ import { State, Selector, Action, StateContext, createSelector, StateToken } fro
 import { IEvent, IEventIncTeacherAndVenue } from './event.model';
 import { InitEventState, DeleteEvent, EditEvent } from './event.actions';
 import { Injectable } from '@angular/core';
+import { ImmutableContext } from '@ngxs-labs/immer-adapter';
+import axios from 'axios';
 
 export class EventStateModel {
   events: IEvent[];
@@ -99,18 +101,24 @@ export class EventState {
     );
   }
 
-
-
   @Action(InitEventState)
-  initState({ patchState }: StateContext<EventStateModel>, { }: InitEventState) {
-    const events = this.eventService.getEvents();
-    const eventsOverview = this.eventService.getEventsOverview();
+  @ImmutableContext()
+  async initState({ setState }: StateContext<EventStateModel>, { }: InitEventState) {
 
-    patchState({
-      events,
-      eventsOverview,
-      relatedEvents: events
-    });
+    try {
+      const events = await axios.get('api/v1/events');
+      const eventsOverview = this.eventService.getEventsOverview();
+
+      setState((state: EventStateModel) => {
+        state.events = events.data.data;
+        state.eventsOverview = eventsOverview;
+        state.relatedEvents = events.data.data;
+        return state;
+      });
+
+    } catch(err) {
+      console.log('err', err);
+    }
   }
 
   @Action(EditEvent)

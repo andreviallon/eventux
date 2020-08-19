@@ -1,6 +1,8 @@
 import { IEventOverview } from 'src/app/state/event/event.model';
 import { Injectable } from '@angular/core';
 import { IEvent } from './state/event/event.model';
+import { HttpClient } from '@angular/common/http';
+import axios from 'axios';
 
 @Injectable({
   providedIn: 'root'
@@ -8,110 +10,13 @@ import { IEvent } from './state/event/event.model';
 
 export class EventService {
 
-  private events: IEvent[] = [
-    {
-      _id: '1',
-      title: 'React context API and hooks 101',
-      description: 'Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?',
-      courseDate: {
-        day: 12,
-        month: 12,
-        year: 2020
-      },
-      startTime: '10.00',
-      endTime: '12.00',
-      price: 120,
-      img: './assets/event-image.png',
-      tags: ['React', 'JavaScript'],
-      venueId: '123',
-      teacherId: '123'
-    },
-    {
-      _id: '2',
-      title: 'Event 2',
-      description: 'Event 2 description',
-      courseDate: {
-        day: 13,
-        month: 12,
-        year: 2020
-      },
-      startTime: '11.00',
-      endTime: '15.00',
-      price: 100,
-      tags: ['Angular', 'JavaScript'],
-      img: './assets/event-image.png',
-      venueId: '123',
-      teacherId: '123'
-    },
-    {
-      _id: '3',
-      title: 'Event 3',
-      description: 'Event 3 description',
-      courseDate: {
-        day: 15,
-        month: 12,
-        year: 2020
-      },
-      startTime: '09.00',
-      endTime: '12.00',
-      price: 100,
-      tags: ['Angular'],
-      img: './assets/event-image.png',
-      venueId: '123',
-      teacherId: '123'
-    },
-    {
-      _id: '4',
-      title: 'Event 4',
-      description: 'Event 4 description',
-      courseDate: {
-        day: 15,
-        month: 12,
-        year: 2020
-      },
-      startTime: '09.00',
-      endTime: '12.00',
-      price: 90,
-      tags: ['React', 'JavaScript'],
-      img: './assets/event-image.png',
-      venueId: '456',
-      teacherId: '456',
-    },
-    {
-      _id: '5',
-      title: 'Event 5',
-      description: 'Event 5 description',
-      courseDate: {
-        day: 20,
-        month: 12,
-        year: 2020
-      },
-      startTime: '09.00',
-      endTime: '12.00',
-      price: 90,
-      tags: ['Vue', 'JavaScript'],
-      img: './assets/event-image.png',
-      venueId: '456',
-      teacherId: '456'
-    },
-    {
-      _id: '6',
-      title: 'Event 6',
-      description: 'Event 6 description',
-      courseDate: {
-        day: 21,
-        month: 12,
-        year: 2020
-      },
-      startTime: '09.00',
-      endTime: '12.00',
-      price: 90,
-      tags: ['php'],
-      img: './assets/event-image.png',
-      venueId: '456',
-      teacherId: '456'
-    }
-  ];
+  http: HttpClient;
+
+  constructor(http: HttpClient) {
+    this.http = http;
+  }
+
+  private events: IEvent[];
 
   private eventsOverview: IEventOverview[] = [
     {
@@ -166,7 +71,11 @@ export class EventService {
     }
   ];
 
-  public getEvents(): IEvent[] {
+  public async getEvents() {
+    const events = await (await axios.get('api/v1/events')).data.data;
+
+    console.log('axios =>', events);
+
     return this.events;
   }
 
