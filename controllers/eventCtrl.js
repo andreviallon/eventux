@@ -27,8 +27,10 @@ exports.getEvents = async (req, res, next) => {
 // @access Public
 exports.addEvent = async (req, res, next) => {
     try {
-        console.log('req', req.body);
+        console.log('file =>', req.file);
         const event = await Event.create(req.body);
+        console.log('add event =>', event);
+        event.img = req.file.path
 
         return res.status(201).json({
             success: true,

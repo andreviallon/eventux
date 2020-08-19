@@ -18,6 +18,7 @@ app.use(express.json());
 app.use('/api/v1/events', events);
 app.use('/api/v1/teachers', teachers);
 app.use('/api/v1/venues', venues);
+app.use('/uploads/events', express.static('uploads/events'));
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
