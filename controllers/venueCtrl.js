@@ -27,8 +27,11 @@ exports.getVenues = async (req, res, next) => {
 // @access Public
 exports.addVenue = async (req, res, next) => {
     try {
-        console.log('req', req.body);
-        const venue = await Venue.create(req.body);
+        let venue = await Venue.create(req.body);
+
+        if (req.file) {
+            venue.img = req.file.path;
+        }
 
         return res.status(201).json({
             success: true,
@@ -85,10 +88,13 @@ exports.deleteVenue = async (req, res, next) => {
 // @access Public
 exports.updateVenue = async (req, res, next) => {
     try {
-        const venue = await Venue.findById(req.params.id);
-        console.log('venue', venue);
+        let venue = await Venue.findById(req.params.id);
 
-        await venue.updateOne(req.body)
+        if (req.file) {
+            venue.img = req.file.path;
+        }
+
+        await venue.updateOne(venue)
 
         return res.status(201).json({
             success: true,

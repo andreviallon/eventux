@@ -27,10 +27,11 @@ exports.getEvents = async (req, res, next) => {
 // @access Public
 exports.addEvent = async (req, res, next) => {
     try {
-        console.log('file =>', req.file);
         const event = await Event.create(req.body);
-        console.log('add event =>', event);
-        event.img = req.file.path
+
+        if (req.file) {
+            event.img = req.file.path;
+        }
 
         return res.status(201).json({
             success: true,
@@ -87,10 +88,13 @@ exports.deleteEvent = async (req, res, next) => {
 // @access Public
 exports.updateEvent = async (req, res, next) => {
     try {
-        const event = await Event.findById(req.params.id);
-        console.log('event', event);
-        
-        await event.updateOne(req.body)
+        let event = await Event.findById(req.params.id);
+
+        if (req.file) {
+            event.img = req.file.path;
+        }
+   
+        await event.updateOne(event);
 
         return res.status(201).json({
             success: true,

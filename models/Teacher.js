@@ -17,8 +17,7 @@ const TeacherSchema = new mongoose.Schema({
     },
     img: {
         type: String,
-        trim: true,
-        required: [true, 'Please add an image']
+        // required: [true, 'Please add an image']
     },
     email: {
         type: String,

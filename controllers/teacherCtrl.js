@@ -27,8 +27,11 @@ exports.getTeachers = async (req, res, next) => {
 // @access Public
 exports.addTeacher = async (req, res, next) => {
     try {
-        console.log('req', req.body);
         const teacher = await Teacher.create(req.body);
+
+        if (req.file) {
+            teacher.img = req.file.path;
+        }
 
         return res.status(201).json({
             success: true,
@@ -85,10 +88,13 @@ exports.deleteTeacher = async (req, res, next) => {
 // @access Public
 exports.updateTeacher = async (req, res, next) => {
     try {
-        const teacher = await Teacher.findById(req.params.id);
-        console.log('teacher', teacher);
+        let teacher = await Teacher.findById(req.params.id);
 
-        await teacher.updateOne(req.body)
+        if (req.file) {
+            teacher.img = req.file.path;
+        }
+
+        await teacher.updateOne(teacher)
 
         return res.status(201).json({
             success: true,

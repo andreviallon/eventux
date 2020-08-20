@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
+const { getEvents, addEvent, updateEvent, deleteEvent } = require('../controllers/eventCtrl');
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -23,8 +24,6 @@ const upload = multer({
     storage: storage,
     fileFilter: fileFilter
 });
-
-const { getEvents, addEvent, updateEvent, deleteEvent } = require('../controllers/eventCtrl');
 
 router
     .route('/')

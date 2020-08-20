@@ -15,10 +15,14 @@ const venues = require('./routes/venues');
 const app = express();
 
 app.use(express.json());
+
 app.use('/api/v1/events', events);
 app.use('/api/v1/teachers', teachers);
 app.use('/api/v1/venues', venues);
+
 app.use('/uploads/events', express.static('uploads/events'));
+app.use('/uploads/teachers', express.static('uploads/teachers'));
+app.use('/uploads/venues', express.static('uploads/venues'));
 
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
