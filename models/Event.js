@@ -42,7 +42,8 @@ const EventSchema = new mongoose.Schema({
         type: String
     },
     teacherId: {
-        type: String
+        type: String,
+        required: [true, 'Please add a teacher']
     }
 });
 

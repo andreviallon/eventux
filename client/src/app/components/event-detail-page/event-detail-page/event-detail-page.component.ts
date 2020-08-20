@@ -4,8 +4,6 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store, Select } from '@ngxs/store';
 import { EventState } from 'src/app/state/event/event.state';
-import { IEvent } from 'src/app/state/event/event.model';
-import { convertDate } from 'src/app/utils/convert-date';
 
 @Component({
   selector: 'app-event-detail-page',
@@ -31,6 +29,7 @@ export class EventDetailPageComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.store.select(EventState.getEventIncTeacherAndVenue(this.eventId)).subscribe(event => {
         this.event = event;
+        console.log('event page', event);
       })
     );
   }

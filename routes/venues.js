@@ -5,7 +5,7 @@ const { getVenues, addVenue, updateVenue, deleteVenue } = require('../controller
 
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
-        cb(null, './uploads/events/');
+        cb(null, './uploads/venues/');
     },
     filename: function (req, file, cb) {
         cb(null, file.originalname);

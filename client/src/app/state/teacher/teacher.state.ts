@@ -3,6 +3,8 @@ import { InitTeacherState } from './teacher.actions';
 import { ITeacher, ITeacherOverview } from './teacher.model';
 import { State, Selector, Action, StateContext, createSelector, StateToken } from '@ngxs/store';
 import { Injectable } from '@angular/core';
+import axios from 'axios';
+import { ImmutableContext } from '@ngxs-labs/immer-adapter';
 
 export class TeacherStateModel {
   teachers: ITeacher[];
@@ -41,13 +43,20 @@ export class TeacherState {
 
 
   @Action(InitTeacherState)
-  initState({ patchState }: StateContext<TeacherStateModel>, { }: InitTeacherState) {
-    const teachers = this.teacherService.getTeachers();
-    const teachersOverview = this.teacherService.getTeachersOverview();
+  @ImmutableContext()
+  async initState({ setState }: StateContext<TeacherStateModel>, { }: InitTeacherState) {
+    try {
+      const teachers = await axios.get('api/v1/teachers');
+      console.log('teachers', teachers);
+      const teachersOverview = this.teacherService.getTeachersOverview();
 
-    patchState({
-      teachers,
-      teachersOverview
-    });
+      setState((state: TeacherStateModel) => {
+        state.teachers = teachers.data.data;
+        state.teachersOverview = teachersOverview;
+        return state;
+      });
+    } catch (err) {
+      console.log('err', err);
+    }
   }
 }

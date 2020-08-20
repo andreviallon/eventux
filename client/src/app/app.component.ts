@@ -16,8 +16,8 @@ export class AppComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.store.dispatch(new InitEventState());
     this.store.dispatch(new InitTeacherState());
     this.store.dispatch(new InitVenueState());
+    this.store.dispatch(new InitEventState());
   }
 }

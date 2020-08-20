@@ -47,11 +47,11 @@
             <div class="teacher-title">
               <figure class="media-left">
                 <p class="image is-64x64">
-                  <img class="round-img" src="../../assets/john-doe-avatar.png">
+                  <img class="round-img" src="{{event.teacher.img}}">
                 </p>
               </figure>
               <div class="media-content">
-                <p><strong>John Doe</strong></p>
+                <p><strong>{{ event.teacher.firstName }} {{ event.teacher.lastName }}</strong></p>
               </div>
             </div>
             <div class="description">

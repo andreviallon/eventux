@@ -19,6 +19,10 @@ export class EventDetailComponent {
   public faTwitter = faTwitter;
   public faFacebook = faFacebookF;
 
+  ngOnChanges() {
+    console.log('event detail', this.event);
+  }
+
   public getCourseDate() {
     return convertDate(this.event.courseDate);
   }
