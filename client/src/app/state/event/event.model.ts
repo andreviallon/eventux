@@ -15,7 +15,6 @@ export interface IEventIncTeacherAndVenue {
   teacher: ITeacher;
 }
 
-
 export interface IEvent {
   _id?: string;
   title: string;

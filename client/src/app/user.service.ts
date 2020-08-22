@@ -10,7 +10,7 @@ export interface User {
   firstName: string;
   lastName: string;
   avatar: string;
-  permission: Permission
+  permission: Permission;
 }
 
 @Injectable({

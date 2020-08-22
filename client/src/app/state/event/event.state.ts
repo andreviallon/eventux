@@ -1,7 +1,5 @@
 import { VENUE_STATE } from './../venue/venue.state';
 import { TEACHER_STATE } from './../teacher/teacher.state';
-import { IEventOverview } from 'src/app/state/event/event.model';
-import { EventService } from '../../event.service';
 import { State, Selector, Action, StateContext, createSelector, StateToken } from '@ngxs/store';
 import { IEvent, IEventIncTeacherAndVenue } from './event.model';
 import { InitEventState, DeleteEvent, EditEvent } from './event.actions';
@@ -11,7 +9,6 @@ import axios from 'axios';
 
 export class EventStateModel {
   events: IEvent[];
-  eventsOverview: IEventOverview[];
   relatedEvents: IEvent[];
 }
 
@@ -24,20 +21,13 @@ export const EVENT_STATE = new StateToken<EventStateModel>('eventState');
 @Injectable()
 export class EventState {
 
-  constructor(private eventService: EventService) { }
-
   @Selector()
-  static getEvents(state: EventStateModel) {
+  static getEvents(state: EventStateModel): IEvent[] {
     return state.events;
   }
 
   @Selector()
-  static getEventsOverview(state: EventStateModel) {
-    return state.eventsOverview;
-  }
-
-  @Selector()
-  static getRelatedEvent(state: EventStateModel) {
+  static getRelatedEvent(state: EventStateModel): IEvent[] {
     return state.relatedEvents;
   }
 
@@ -106,18 +96,17 @@ export class EventState {
   async initState({ setState }: StateContext<EventStateModel>, { }: InitEventState) {
 
     try {
-      const events = await axios.get('api/v1/events');
-      const eventsOverview = this.eventService.getEventsOverview();
+      const eventsResponse = await axios.get('api/v1/events');
+      const event = eventsResponse.data.data;
 
       setState((state: EventStateModel) => {
-        state.events = events.data.data;
-        state.eventsOverview = eventsOverview;
-        state.relatedEvents = events.data.data;
+        state.events = event;
+        state.relatedEvents = event;
         return state;
       });
 
-    } catch(err) {
-      console.log('err', err);
+    } catch (err) {
+      throw err;
     }
   }
 

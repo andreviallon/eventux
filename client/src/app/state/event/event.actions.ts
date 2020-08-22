@@ -10,7 +10,6 @@ export class EditEvent {
   constructor(public id: string) { }
 }
 
-
 export class DeleteEvent {
   static readonly type = '[Event] Delete Event';
 

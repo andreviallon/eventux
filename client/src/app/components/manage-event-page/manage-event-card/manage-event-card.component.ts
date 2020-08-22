@@ -1,20 +1,26 @@
-import { IEventOverview } from 'src/app/state/event/event.model';
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { IEventOverview, IEventIncTeacherAndVenue } from 'src/app/state/event/event.model';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { faEllipsisV, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { getEventOverview } from 'src/app/utils/event-overview';
 
 @Component({
   selector: 'app-manage-event-card',
   templateUrl: './manage-event-card.component.html',
   styleUrls: ['./manage-event-card.component.scss']
 })
-export class ManageEventCardComponent {
+export class ManageEventCardComponent implements OnInit {
 
-  @Input() event: IEventOverview;
+  @Input() event: IEventIncTeacherAndVenue;
   @Output() editEvent: EventEmitter<string> = new EventEmitter();
   @Output() deleteEvent: EventEmitter<string> = new EventEmitter();
 
+  public eventOverview: IEventOverview;
   public faEllipsisV: IconDefinition = faEllipsisV;
   public showDropdown = false;
+
+  ngOnInit() {
+    this.eventOverview = getEventOverview(this.event);
+  }
 
   public toogleDropdown(event): void {
     event.stopPropagation();
