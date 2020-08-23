@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const multer = require('multer');
-const { getEvents, addEvent, updateEvent, deleteEvent } = require('../controllers/eventCtrl');
+const { getEvents, getEvent, addEvent, updateEvent, deleteEvent } = require('../controllers/eventCtrl');
 
 const storage = multer.diskStorage({
     destination: function(req, file, cb) {
@@ -27,11 +27,12 @@ const upload = multer({
 
 router
     .route('/')
-    .get(getEvents)
+    .get(getEvents)    
     .post(upload.single('img'), addEvent);
 
 router
     .route('/:id')
+    .get(getEvent)
     .patch(upload.single('img'), updateEvent)
     .delete(deleteEvent);
 

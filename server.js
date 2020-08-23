@@ -24,15 +24,15 @@ app.use('/uploads/events', express.static('uploads/events'));
 app.use('/uploads/teachers', express.static('uploads/teachers'));
 app.use('/uploads/venues', express.static('uploads/venues'));
 
+app.use(express.static(path.join(__dirname, './client/dist/event-app')));
+
 if (process.env.NODE_ENV === 'development') {
   app.use(morgan('dev'));
 }
 
 if (process.env.NODE_ENV === 'production') {
-  app.get('/*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'dist', 'event-app')));
+  app.get('/*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'dist', 'event-app', 'index.html')));
 }
-
-app.use(express.static(path.join(__dirname, './client/dist/event-app')));
 
 app.get('/*', (req, res) => {
   res.sendFile(path.resolve(__dirname, 'client', 'dist', 'event-app', 'index.html'));

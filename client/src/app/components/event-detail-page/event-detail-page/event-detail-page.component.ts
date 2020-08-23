@@ -29,7 +29,6 @@ export class EventDetailPageComponent implements OnInit, OnDestroy {
     this.subscription.add(
       this.store.select(EventState.getEventIncTeacherAndVenue(this.eventId)).subscribe(event => {
         this.event = event;
-        console.log('event page', event);
       })
     );
   }

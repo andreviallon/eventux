@@ -21,6 +21,26 @@ exports.getEvents = async (req, res, next) => {
     }
 }
 
+// @desc Get all events
+// @route GET /api/v1/events
+// @access Public
+exports.getEvent = async (req, res, next) => {
+    try {
+        const event = await Event.findById(req.params.id);
+
+        console.log('event', event);
+
+        return res.status(200).json({
+            success: true,
+            data: event
+        });
+    } catch (err) {
+        return res.status(500).json({
+            success: false,
+            error: 'Server Error'
+        });
+    }
+}
 
 // @desc Add all events
 // @route POST /api/v1/events
