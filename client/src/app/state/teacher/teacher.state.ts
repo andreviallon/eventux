@@ -25,7 +25,7 @@ export class TeacherState {
 
   static getTeacher(id: string) {
     return createSelector(
-      ['teacher'],
+      [TEACHER_STATE],
       (state: TeacherStateModel): ITeacher => {
         return state.teachers.find(teacher => teacher._id === id);
       }

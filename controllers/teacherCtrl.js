@@ -7,7 +7,7 @@ exports.getTeachers = async (req, res, next) => {
     // res.send('GET Teachers');
     try {
         const teachers = await Teacher.find();
-        console.log('teachers', teachers);
+
         return res.status(200).json({
             success: true,
             count: teachers.length,
