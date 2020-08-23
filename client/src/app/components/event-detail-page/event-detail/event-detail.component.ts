@@ -15,29 +15,12 @@ export class EventDetailComponent {
   @Input() event: IEventIncTeacherAndVenue;
   @Input() relatedEvents: IEventIncTeacherAndVenue[];
 
-  public eventImg;
   public faLongArrowAltRight = faLongArrowAltRight;
   public faShare = faShare;
   public faTwitter = faTwitter;
   public faFacebook = faFacebookF;
 
-  ngOnInit() {
-    // this.eventImg = this.getImage();
-  }
-
   public getCourseDate() {
     return convertDate(this.event.courseDate);
-  }
-
-  public async getImage() {
-    console.log('get img');
-    try {
-      // const eventResponse = await axios.get('api/v1/event/5f3e996daa08f015a19a562f');
-      // console.log('res', eventResponse);
-      // const event = eventResponse.data.data;
-      // console.log('event data =>', event);
-    } catch (err) {
-      throw err;
-    }
   }
 }
