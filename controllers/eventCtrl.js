@@ -28,8 +28,6 @@ exports.getEvent = async (req, res, next) => {
     try {
         const event = await Event.findById(req.params.id);
 
-        console.log('event', event);
-
         return res.status(200).json({
             success: true,
             data: event

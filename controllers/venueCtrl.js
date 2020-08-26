@@ -4,10 +4,9 @@ const Venue = require('../models/Venue');
 // @route GET /api/v1/venues
 // @access Public
 exports.getVenues = async (req, res, next) => {
-    // res.send('GET Venues');
     try {
         const venues = await Venue.find();
-        console.log('venues', venues);
+
         return res.status(200).json({
             success: true,
             count: venues.length,

@@ -73,7 +73,7 @@
         <div class="event-location-container">
           <h3 class="title is-4">Event Location</h3>
           <div class="venue-container">
-            <div class="venue-img">
+            <div class="venue-img" [ngStyle]="{'background-image': 'url(' + event.venue.img + ')'}">
               <div class="svg-venue">
                 <svg-icon src="../../assets/dot-pattern.svg"></svg-icon>
               </div>

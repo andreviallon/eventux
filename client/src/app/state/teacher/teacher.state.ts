@@ -34,7 +34,7 @@ export class TeacherState {
 
   @Action(InitTeacherState)
   @ImmutableContext()
-  async initState({ setState }: StateContext<TeacherStateModel>, { }: InitTeacherState) {
+  async initTeacherState({ setState }: StateContext<TeacherStateModel>, { }: InitTeacherState) {
     try {
       const teachers = await axios.get('api/v1/teachers');
 
