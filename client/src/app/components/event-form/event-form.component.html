@@ -97,7 +97,7 @@
       <div class="column is-full">
         <div class="field">
           <label class="label">Image</label>
-          <app-image-cropper [defaultImage]="event.img" (imageData)="imageData($event)"></app-image-cropper>
+          <app-image-cropper [defaultImage]="event.img | file | async" (imageData)="imageData($event)"></app-image-cropper>
         </div>
       </div>
     </div>

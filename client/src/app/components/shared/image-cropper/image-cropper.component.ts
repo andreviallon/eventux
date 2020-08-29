@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CropperOptions } from 'ngx-cropperjs-wrapper';
 
 @Component({
@@ -6,7 +6,7 @@ import { CropperOptions } from 'ngx-cropperjs-wrapper';
   templateUrl: './image-cropper.component.html',
   styleUrls: ['./image-cropper.component.scss']
 })
-export class ImageCropperComponent implements OnInit {
+export class ImageCropperComponent implements OnInit, OnChanges {
 
   @Input() defaultImage;
   @Output() imageData: EventEmitter<File> = new EventEmitter();
@@ -25,15 +25,24 @@ export class ImageCropperComponent implements OnInit {
     }
   }
 
-  public filePick(event: any) {
+  public ngOnChanges(changes: SimpleChanges): void {
+    console.log('changes', changes);
+    if (changes.defaultImage.currentValue !== changes.defaultImage.previousValue) {
+      this.fileInput = this.defaultImage;
+    }
+
+    console.log('changes defaultImage =>', this.defaultImage);
+  }
+
+  public filePick(event: any): void {
     this.fileInput = event.target.files.item(0);
   }
 
-  public fileChange(file: File) {
+  public fileChange(file: File): void {
     this.imageData.emit(file);
   }
 
-  public removeFile() {
+  public removeFile(): void {
     this.fileInput = null;
     this.imageData.emit(null);
   }
