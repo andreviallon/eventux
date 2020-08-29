@@ -1,12 +1,6 @@
 <a [routerLink]="['/event', event._id]">
   <div class="card">
-    <ng-container *ngIf="event.price; then eventPrice else free"></ng-container>
-    <ng-template #eventPrice>
-      <div class="price">{{ event.price | currency : 'USD' : 'symbol' : '1.0-0' }}</div>
-    </ng-template>
-    <ng-template #free>
-      <div class="price">Free</div>
-    </ng-template>
+    <div class="price">{{ event.price | eventPrice }}</div>
     <div class="card-image">
       <figure class="image is-16by9">
         <img src={{event.img}} alt="Event image">

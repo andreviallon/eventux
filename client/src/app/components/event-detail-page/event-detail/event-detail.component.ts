@@ -3,7 +3,6 @@ import { Component, Input } from '@angular/core';
 import { faLongArrowAltRight, faShare } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faFacebookF } from '@fortawesome/free-brands-svg-icons';
 import { convertDate } from 'src/app/utils/convert-date';
-import axios from 'axios';
 
 @Component({
   selector: 'app-event-detail',

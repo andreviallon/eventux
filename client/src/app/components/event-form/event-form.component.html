@@ -97,7 +97,7 @@
       <div class="column is-full">
         <div class="field">
           <label class="label">Image</label>
-          <app-image-cropper (imageData)="imageData($event)"></app-image-cropper>
+          <app-image-cropper [defaultImage]="event.img" (imageData)="imageData($event)"></app-image-cropper>
         </div>
       </div>
     </div>
@@ -127,7 +127,7 @@
           <div class="field">
             <label class="label">Venue details</label>
             <div class="flex-container">
-              <img src="../../../assets/venue-img.png" alt="venue image" class="venue-image">
+              <img {{selectedVenue.img}} alt="venue image" class="venue-image">
               <div class="venue-flex-container">
                 <p>{{ selectedVenue.address }}</p>
                 <p>{{ selectedVenue.zipcode }} {{ selectedVenue.city }}</p>
@@ -164,7 +164,7 @@
           <div class="field">
             <label class="label">Teacher details</label>
             <div class="flex-container">
-              <img src="../../../assets//john-doe-avatar.png" alt="teacher image" class="teacher-image">
+              <img src={{selectedTeacher.img}} alt="teacher image" class="teacher-image">
               <div class="teacher-flex-container">
                 <p>{{ selectedTeacher.email }}</p>
                 <p>{{ selectedTeacher.phoneNumber }}</p>

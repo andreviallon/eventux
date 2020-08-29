@@ -24,7 +24,7 @@
         <a class="button is-link" [routerLink]="['/order', event._id]">
           Book a sit now
           <br />
-          for {{ event.price | currency : 'USD' : 'symbol' : '1.0-0' }}
+          for {{ event.price | eventPrice }}
         </a>
       </div>
     </div>

@@ -89,6 +89,10 @@ exports.updateVenue = async (req, res, next) => {
     try {
         let venue = await Venue.findById(req.params.id);
 
+        for (const [key, value] of Object.entries(req.body)) {
+            venue[key] = value
+        }
+
         if (req.file) {
             venue.img = req.file.path;
         }

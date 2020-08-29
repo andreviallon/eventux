@@ -90,6 +90,10 @@ exports.updateTeacher = async (req, res, next) => {
     try {
         let teacher = await Teacher.findById(req.params.id);
 
+        for (const [key, value] of Object.entries(req.body)) {
+            teacher[key] = value
+        }
+
         if (req.file) {
             teacher.img = req.file.path;
         }

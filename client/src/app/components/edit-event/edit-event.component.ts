@@ -6,8 +6,6 @@ import { Observable, Subscription } from 'rxjs';
 import { IVenue } from 'src/app/state/venue/venue.model';
 import { TeacherState } from 'src/app/state/teacher/teacher.state';
 import { ITeacher } from 'src/app/state/teacher/teacher.model';
-import { InitVenueState } from 'src/app/state/venue/venue.actions';
-import { InitTeacherState } from 'src/app/state/teacher/teacher.actions';
 import { EventState } from 'src/app/state/event/event.state';
 import { ActivatedRoute } from '@angular/router';
 
@@ -33,9 +31,6 @@ export class EditEventComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.store.dispatch(new InitVenueState());
-    this.store.dispatch(new InitTeacherState());
-
     this.subscription.add(
       this.route.params.subscribe(params => this.eventId = params[`id`])
     );

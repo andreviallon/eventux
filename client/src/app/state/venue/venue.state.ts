@@ -22,6 +22,7 @@ export class VenueState {
 
   @Selector()
   static getVenues(state: VenueStateModel) {
+    console.log('state.venues', state.venues);
     return state.venues;
   }
 

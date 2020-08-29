@@ -33,6 +33,8 @@ import { EventDetailPageComponent } from './components/event-detail-page/event-d
 import { EditEventComponent } from './components/edit-event/edit-event.component';
 import { OrderPageComponent } from './components/order-page/order-page.component';
 import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
+import { EventPricePipe } from './pipes/event-price.pipe';
+import { CurrencyPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -55,6 +57,7 @@ import { OrderSummaryComponent } from './components/order-summary/order-summary.
     EditEventComponent,
     OrderPageComponent,
     OrderSummaryComponent,
+    EventPricePipe,
   ],
   imports: [
     NgxsModule.forRoot([
@@ -73,7 +76,7 @@ import { OrderSummaryComponent } from './components/order-summary/order-summary.
     ReactiveFormsModule,
     NgxCropperJsModule
   ],
-  providers: [],
+  providers: [CurrencyPipe],
   bootstrap: [AppComponent]
 })
 export class AppModule  { }

@@ -5,7 +5,7 @@
     <h4>Event</h4>
     <p>{{ event.title }}</p>
     <h4>Price</h4>
-    <p>{{ event.price | currency : 'USD' : 'symbol' : '1.0-0' }}</p>
+    <p>{{ event.price | eventPrice }}</p>
     <h4>Location</h4>
     <p>{{ event.venue.name }}</p>
     <p>{{ event.venue.address }}</p>

@@ -1,6 +1,6 @@
 import { IEvent } from './../../state/event/event.model';
 import { ITeacher } from './../../state/teacher/teacher.model';
-import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation, ViewChild, ElementRef, AfterViewInit, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { times } from 'src/app/utils/times';
 import { IVenue } from './../../state/venue/venue.model';
@@ -13,7 +13,7 @@ import { IAngularMyDpOptions, IMyDateModel } from 'angular-mydatepicker';
   styleUrls: ['./event-form.component.scss', '../shared/date-picker/date-picker.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class EventFormComponent implements OnInit, AfterViewInit {
+export class EventFormComponent implements OnInit, OnChanges, AfterViewInit {
 
   @ViewChild('courseDate', { static: false }) date: ElementRef;
 
@@ -42,7 +42,7 @@ export class EventFormComponent implements OnInit, AfterViewInit {
     isRange: false
   };
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private changeDetector: ChangeDetectorRef) {
 
   }
 
@@ -61,23 +61,50 @@ export class EventFormComponent implements OnInit, AfterViewInit {
     });
 
     this.tags = this.event.tags;
-    if (!this.eventForm.get('venueId').value && !this.eventForm.get('teacherId').value) {
-      this.selectVenue(this.venues[0]._id);
+    this.startTimes = times;
+
+    console.log('event', this.event);
+  }
+
+  public ngOnChanges(changes: SimpleChanges) {
+    if (changes.teachers?.previousValue !== changes.teachers?.currentValue) {
+      this.populateTeacherForm();
+    }
+
+    if (changes.venues?.previousValue !== changes.venues?.currentValue && this.eventForm) {
+      this.populateVenueForm();
+    }
+  }
+
+  public ngAfterViewInit() {
+    if (this.event.courseDate) {
+      this.date.nativeElement.value = this.populateDateField();
+    }
+    this.populateTeacherForm();
+    this.populateVenueForm();
+
+    this.changeDetector.detectChanges();
+    this.changeDetector.markForCheck();
+  }
+
+  public populateTeacherForm() {
+    if (!this.eventForm) {
+      return;
+    }
+    if (!this.eventForm.get('teacherId').value) {
       this.selectTeacher(this.teachers[0]._id);
     } else {
-      const venue = this.venues.find(v => v._id === this.event.venueId);
-      this.selectVenue(venue._id);
-
       const teacher = this.teachers.find(t => t._id === this.event.teacherId);
       this.selectTeacher(teacher._id);
     }
-
-    this.startTimes = times;
   }
 
-  ngAfterViewInit() {
-    if (this.event.courseDate) {
-      this.date.nativeElement.value = this.populateDateField();
+  public populateVenueForm() {
+    if (!this.eventForm.get('venueId').value) {
+      this.selectVenue(this.venues[0]._id);
+    } else {
+      const venue = this.venues.find(v => v._id === this.event.venueId);
+      this.selectVenue(venue._id);
     }
   }
 
@@ -110,10 +137,11 @@ export class EventFormComponent implements OnInit, AfterViewInit {
   public selectTeacher(teacherId: string): void {
     this.eventForm.get('teacherId').setValue(teacherId);
     this.selectedTeacher = this.teachers.find(teacher => teacher._id === teacherId);
+    this.changeDetector.markForCheck();
   }
 
   public onDateChanged($event) {
-    this.eventForm.get('courseDate').setValue($event.singleDate.courseDate);
+    this.eventForm.get('date').setValue($event.singleDate.courseDate);
   }
 
   public submitEventForm() {
