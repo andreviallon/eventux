@@ -40,6 +40,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatChipsModule } from '@angular/material/chips';
 
 @NgModule({
   declarations: [
@@ -83,7 +84,8 @@ import { MatButtonModule } from '@angular/material/button';
     NgxCropperJsModule,
     BrowserAnimationsModule,
     MatCardModule,
-    MatButtonModule
+    MatButtonModule,
+    MatChipsModule
   ],
   providers: [CurrencyPipe],
   bootstrap: [AppComponent]

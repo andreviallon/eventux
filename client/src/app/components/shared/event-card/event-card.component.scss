@@ -44,4 +44,11 @@
   .mat-card-header-text {
     margin: 0.5rem 0 0 !important;
   }
+
+  .mat-chip {
+    font-size: 0.8rem;
+    margin-top: 0.7rem;
+    margin-bottom: 0;
+    background-color: mat-color($mat-grey, 200);
+  }
 }
