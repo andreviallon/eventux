@@ -36,6 +36,10 @@ import { OrderSummaryComponent } from './components/order-summary/order-summary.
 import { EventPricePipe } from './pipes/event-price.pipe';
 import { CurrencyPipe } from '@angular/common';
 import { FilePipe } from './pipes/file.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -76,7 +80,10 @@ import { FilePipe } from './pipes/file.pipe';
     AngularSvgIconModule.forRoot(),
     AngularMyDatePickerModule,
     ReactiveFormsModule,
-    NgxCropperJsModule
+    NgxCropperJsModule,
+    BrowserAnimationsModule,
+    MatCardModule,
+    MatButtonModule
   ],
   providers: [CurrencyPipe],
   bootstrap: [AppComponent]

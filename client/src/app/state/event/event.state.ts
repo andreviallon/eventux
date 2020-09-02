@@ -9,7 +9,6 @@ import axios from 'axios';
 
 export class EventStateModel {
   events: IEvent[];
-  relatedEvents: IEvent[];
 }
 
 export const EVENT_STATE = new StateToken<EventStateModel>('eventState');
@@ -26,11 +25,6 @@ export class EventState {
     return state.events;
   }
 
-  @Selector()
-  static getRelatedEvent(state: EventStateModel): IEvent[] {
-    return state.relatedEvents;
-  }
-
   static getEvent(id: string) {
     return createSelector(
       [EVENT_STATE],
@@ -45,6 +39,32 @@ export class EventState {
       [EVENT_STATE, TEACHER_STATE, VENUE_STATE],
       (state: EventStateModel, teacherState, venueState): IEventIncTeacherAndVenue[] => {
         return state.events.map(event => {
+          const teacher = teacherState.teachers.filter(t => t._id === event.teacherId);
+          const venue = venueState.venues.filter(v => v._id === event.venueId);
+
+          return {
+            _id: event._id,
+            title: event.title,
+            description: event.description,
+            courseDate: event.courseDate,
+            startTime: event.startTime,
+            endTime: event.endTime,
+            price: event.price,
+            tags: event.tags,
+            img: event.img,
+            venue: venue[0],
+            teacher: teacher[0]
+          };
+        });
+      }
+    );
+  }
+
+  static getNextEvents() {
+    return createSelector(
+      [EVENT_STATE, TEACHER_STATE, VENUE_STATE],
+      (state: EventStateModel, teacherState, venueState): IEventIncTeacherAndVenue[] => {
+        return state.events.slice(0, 6).map(event => {
           const teacher = teacherState.teachers.filter(t => t._id === event.teacherId);
           const venue = venueState.venues.filter(v => v._id === event.venueId);
 
@@ -101,7 +121,6 @@ export class EventState {
 
       setState((state: EventStateModel) => {
         state.events = event;
-        state.relatedEvents = event;
         return state;
       });
 
