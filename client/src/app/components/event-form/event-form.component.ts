@@ -14,7 +14,6 @@ import { IAngularMyDpOptions, IMyDateModel } from 'angular-mydatepicker';
   encapsulation: ViewEncapsulation.None
 })
 export class EventFormComponent implements OnInit, OnChanges, AfterViewInit {
-
   @ViewChild('courseDate', { static: false }) date: ElementRef;
 
   @Input() event: IEvent;
@@ -62,8 +61,6 @@ export class EventFormComponent implements OnInit, OnChanges, AfterViewInit {
 
     this.tags = this.event.tags;
     this.startTimes = times;
-
-    console.log('event', this.event);
   }
 
   public ngOnChanges(changes: SimpleChanges) {

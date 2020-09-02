@@ -1,6 +1,0 @@
-<div class="container">
-  <app-page-header [title]="title" [addButton]="false"></app-page-header>
-  <ng-container *ngIf="event">
-    <app-event-form [event]="event" [venues]="venues$ | async" [teachers]="teachers$ | async" [submitFormBtnText]="submitFormBtnText" (submitForm)="editEvent($event)"></app-event-form>
-  </ng-container>
-</div>

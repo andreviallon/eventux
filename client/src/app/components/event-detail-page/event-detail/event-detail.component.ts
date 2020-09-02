@@ -10,7 +10,6 @@ import { convertDate } from 'src/app/utils/convert-date';
   styleUrls: ['./event-detail.component.scss']
 })
 export class EventDetailComponent {
-
   @Input() event: IEventIncTeacherAndVenue;
   @Input() relatedEvents: IEventIncTeacherAndVenue[];
 

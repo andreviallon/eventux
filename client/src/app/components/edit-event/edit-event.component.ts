@@ -11,11 +11,23 @@ import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edit-event',
-  templateUrl: './edit-event.component.html',
+  template: `
+    <div class="container">
+      <app-page-header [title]="title" [addButton]="false"></app-page-header>
+      <ng-container *ngIf="event">
+        <app-event-form
+          [event]="event"
+          [venues]="venues$ | async"
+          [teachers]="teachers$ | async"
+          [submitFormBtnText]="submitFormBtnText"
+          (submitForm)="editEvent($event)">
+        </app-event-form>
+      </ng-container>
+    </div>
+  `,
   styleUrls: ['./edit-event.component.scss']
 })
 export class EditEventComponent implements OnInit {
-
   public title = 'Edit Event';
   public submitFormBtnText = 'Edit Event';
   public eventId: string;
@@ -26,9 +38,7 @@ export class EditEventComponent implements OnInit {
   @Select(VenueState.getVenues) venues$: Observable<IVenue[]>;
   @Select(TeacherState.getTeachers) teachers$: Observable<ITeacher[]>;
 
-  constructor(private store: Store, private route: ActivatedRoute) {
-
-  }
+  constructor(private store: Store, private route: ActivatedRoute) {}
 
   public ngOnInit(): void {
     this.subscription.add(
@@ -49,5 +59,4 @@ export class EditEventComponent implements OnInit {
   public editEvent(event: IEvent): void {
     console.log(event);
   }
-
 }

@@ -6,25 +6,27 @@ import { convertDate } from 'src/app/utils/convert-date';
   selector: 'app-event-card',
   template: `
     <div id="event-card">
-      <mat-card>
-        <div class="card-image">
-          <img mat-card-image src="{{event.img}}">
-        </div>
-        <div class="price">{{ event.price | eventPrice }}</div>
-        <div class="card-content">
-          <mat-card-header>
-            <mat-card-title>{{ event.title }}</mat-card-title>
-          </mat-card-header>
-          <mat-card-content>
-            <p>{{ event.venue.city }}, {{ event.venue.country }}</p>
-            <p>{{ getCourseDate() }}</p>
-            <mat-chip-list aria-label="Fish selection">
-              <mat-chip *ngFor="let tag of event.tags">{{ tag }}</mat-chip>
-            </mat-chip-list>
+      <a [routerLink]="['/event', event._id]">
+        <mat-card>
+          <div class="card-image">
+            <img mat-card-image src="{{event.img}}">
+          </div>
+          <div class="price">{{ event.price | eventPrice }}</div>
+          <div class="card-content">
+            <mat-card-header>
+              <mat-card-title>{{ event.title }}</mat-card-title>
+            </mat-card-header>
+            <mat-card-content>
+              <p>{{ event.venue.city }}, {{ event.venue.country }}</p>
+              <p>{{ getCourseDate() }}</p>
+              <mat-chip-list aria-label="Fish selection">
+                <mat-chip *ngFor="let tag of event.tags">{{ tag }}</mat-chip>
+              </mat-chip-list>
 
-          </mat-card-content>
-        </div>
-      </mat-card>
+            </mat-card-content>
+          </div>
+        </mat-card>
+      </a>
     </div>
   `,
   styleUrls: ['./event-card.component.scss'],
