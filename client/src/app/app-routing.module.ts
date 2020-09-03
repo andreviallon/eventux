@@ -1,6 +1,6 @@
 import { OrderPageComponent } from './components/order-page/order-page.component';
 import { EditEventComponent } from './components/edit-event/edit-event.component';
-import { EventDetailPageComponent } from './components/event-detail-page/event-detail-page/event-detail-page.component';
+import { EventDetailComponent } from './components/event-detail/event-detail.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './components/home/home.component';
@@ -12,7 +12,7 @@ import { CreateEventComponent } from './components/create-event/create-event.com
 const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'events', component: EventsComponent },
-  { path: 'event/:id', component: EventDetailPageComponent },
+  { path: 'event/:id', component: EventDetailComponent },
   { path: 'manage-events', component: ManageEventsComponent },
   { path: 'create-event', component: CreateEventComponent },
   { path: 'edit-event/:id', component: EditEventComponent },

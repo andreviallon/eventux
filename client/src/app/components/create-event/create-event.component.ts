@@ -9,11 +9,21 @@ import { IEvent } from 'src/app/state/event/event.model';
 
 @Component({
   selector: 'app-create-event',
-  templateUrl: './create-event.component.html',
+  template: `
+    <div class="container">
+      <app-page-header [title]="title" [addButton]="false"></app-page-header>
+      <app-event-form
+        [event]="defaultEvent"
+        [venues]="venues$ | async"
+        [teachers]="teachers$ | async"
+        [submitFormBtnText]="submitFormBtnText"
+        (submitForm)="createEvent($event)">
+      </app-event-form>
+    </div>
+  `,
   styleUrls: ['./create-event.component.scss']
 })
 export class CreateEventComponent implements OnInit {
-
   public date = Date();
 
   public title = 'Add Event';

@@ -8,7 +8,27 @@ import { EditEvent, DeleteEvent } from 'src/app/state/event/event.actions';
 
 @Component({
   selector: 'app-manage-events',
-  templateUrl: './manage-events.component.html',
+  template: `
+    <div class="container">
+      <app-page-header
+        [title]="title"
+        [buttonName]="buttonName"
+        [addButton]="true"
+        (create)="navigateToCreateEventPage()">
+      </app-page-header>
+      <div class="columns">
+        <div class="column is-full" *ngFor="let event of events$ | async">
+          <div class="event-card-container">
+            <app-manage-event-card
+              [event]="event"
+              (deleteEvent)="deleteEvent($event)"
+              (editEvent)="editEvent($event)">
+            </app-manage-event-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  `,
   styleUrls: ['./manage-events.component.scss']
 })
 export class ManageEventsComponent {

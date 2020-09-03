@@ -14,7 +14,7 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
-import { EventDetailComponent } from './components/event-detail-page/event-detail/event-detail.component';
+import { EventDetailComponent } from './components/event-detail/event-detail.component';
 import { CreateEventComponent } from './components/create-event/create-event.component';
 import { EventsComponent } from './components/events-page/events/events.component';
 import { EventsFilterComponent } from './components/events-page/events-filter/events-filter.component';
@@ -29,7 +29,6 @@ import { PageHeaderComponent } from './components/shared/page-header/page-header
 import { HomeComponent } from './components/home/home.component';
 import { ImageCropperComponent } from './components/shared/image-cropper/image-cropper.component';
 import { EventFormComponent } from './components/event-form/event-form.component';
-import { EventDetailPageComponent } from './components/event-detail-page/event-detail-page/event-detail-page.component';
 import { EditEventComponent } from './components/edit-event/edit-event.component';
 import { OrderPageComponent } from './components/order-page/order-page.component';
 import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
@@ -66,7 +65,6 @@ import { MatInputModule } from '@angular/material/input';
     HomeComponent,
     ImageCropperComponent,
     EventFormComponent,
-    EventDetailPageComponent,
     EditEventComponent,
     OrderPageComponent,
     OrderSummaryComponent,
