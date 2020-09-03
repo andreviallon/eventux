@@ -9,7 +9,13 @@ $mediumBlue: #3273DC;
 
 body {
   color: $black;
+  letter-spacing: 0.1px !important;
 }
+
+a {
+  text-decoration: none;
+}
+
 
 .container {
   padding: 0 1rem;

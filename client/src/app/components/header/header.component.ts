@@ -17,8 +17,8 @@ import { Component, OnInit } from '@angular/core';
 
         <ng-template #logedIn>
           <div class="menu">
-            <img src="{{currentUser.avatar}}" class="avatar"/>
-            <button mat-button [matMenuTriggerFor]="beforeMenu">
+            <button mat-flat-button [matMenuTriggerFor]="beforeMenu">
+              <img src="{{currentUser.avatar}}" class="avatar"/>
               {{ currentUser.firstName }} {{ currentUser.lastName }}
               <mat-icon aria-hidden="false" aria-label="Example home icon">keyboard_arrow_down</mat-icon>
             </button>

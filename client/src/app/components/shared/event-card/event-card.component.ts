@@ -19,7 +19,7 @@ import { convertDate } from 'src/app/utils/convert-date';
             <mat-card-content>
               <p>{{ event.venue.city }}, {{ event.venue.country }}</p>
               <p>{{ getCourseDate() }}</p>
-              <mat-chip-list aria-label="Fish selection">
+              <mat-chip-list >
                 <mat-chip *ngFor="let tag of event.tags">{{ tag }}</mat-chip>
               </mat-chip-list>
 

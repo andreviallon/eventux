@@ -5,8 +5,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
 import { NgxCropperJsModule } from 'ngx-cropperjs-wrapper';
-
 import { NgxsModule } from '@ngxs/store';
 import { EventState } from './state/event/event.state';
 import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
@@ -79,6 +79,7 @@ import { MatInputModule } from '@angular/material/input';
     ]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     BrowserModule,
+    FlexLayoutModule,
     AppRoutingModule,
     FontAwesomeModule,
     HttpClientModule,
