@@ -1,11 +1,11 @@
-import { IEvent } from './../../state/event/event.model';
+import { IEvent, ICourseDate } from './../../state/event/event.model';
 import { ITeacher } from './../../state/teacher/teacher.model';
 import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation, ViewChild, ElementRef, AfterViewInit, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { times } from 'src/app/utils/times';
 import { IVenue } from './../../state/venue/venue.model';
-import { faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
-import { IAngularMyDpOptions, IMyDateModel } from 'angular-mydatepicker';
+import { faLongArrowAltRight, faCross } from '@fortawesome/free-solid-svg-icons';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-event-form',
@@ -32,18 +32,7 @@ export class EventFormComponent implements OnInit, OnChanges, AfterViewInit {
 
   public eventForm: FormGroup;
 
-  public myDpOptions: IAngularMyDpOptions = {
-    dateRange: false,
-    dateFormat: 'dd.mm.yyyy'
-  };
-
-  public dateModel: IMyDateModel = {
-    isRange: false
-  };
-
-  constructor(private formBuilder: FormBuilder, private changeDetector: ChangeDetectorRef) {
-
-  }
+  constructor(private formBuilder: FormBuilder, private changeDetector: ChangeDetectorRef) { }
 
   public ngOnInit(): void {
     this.eventForm = this.formBuilder.group({
@@ -74,14 +63,8 @@ export class EventFormComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   public ngAfterViewInit() {
-    if (this.event.courseDate) {
-      this.date.nativeElement.value = this.populateDateField();
-    }
     this.populateTeacherForm();
     this.populateVenueForm();
-
-    this.changeDetector.detectChanges();
-    this.changeDetector.markForCheck();
   }
 
   public populateTeacherForm() {
@@ -105,12 +88,15 @@ export class EventFormComponent implements OnInit, OnChanges, AfterViewInit {
     }
   }
 
-  public populateDateField(): string {
-    const event = this.eventForm.get('date').value;
-    const day: string = event.date.day <= 9 ? `0${event.date.day}` : `${event.date.day}`;
-    const month: string = event.date.month <= 9 ? `0${event.date.month}` : `${event.date.month}`;
+  public selectVenue(venueId: string): void {
+    this.eventForm.get('venueId').setValue(venueId);
+    this.selectedVenue = this.venues.find(venue => venue._id === venueId);
+  }
 
-    return `${day}.${month}.${event.date.year}`;
+  public selectTeacher(teacherId: string): void {
+    this.eventForm.get('teacherId').setValue(teacherId);
+    this.selectedTeacher = this.teachers.find(teacher => teacher._id === teacherId);
+    this.changeDetector.markForCheck();
   }
 
   public imageData($event: string): void {
@@ -126,26 +112,18 @@ export class EventFormComponent implements OnInit, OnChanges, AfterViewInit {
     this.tags.splice(index, 1);
   }
 
-  public selectVenue(venueId: string): void {
-    this.eventForm.get('venueId').setValue(venueId);
-    this.selectedVenue = this.venues.find(venue => venue._id === venueId);
-  }
-
-  public selectTeacher(teacherId: string): void {
-    this.eventForm.get('teacherId').setValue(teacherId);
-    this.selectedTeacher = this.teachers.find(teacher => teacher._id === teacherId);
-    this.changeDetector.markForCheck();
-  }
-
-  public onDateChanged($event) {
-    this.eventForm.get('date').setValue($event.singleDate.courseDate);
-  }
-
   public submitEventForm() {
+    const momentDate = moment(this.eventForm.get('date').value);
+    const formatedDate: ICourseDate = {
+      day: +momentDate.format('DD'),
+      month: +momentDate.format('MM'),
+      year: +momentDate.format('YYYY')
+    };
+
     const form: IEvent = {
       title: this.eventForm.value.title.trim(),
       description: this.eventForm.value.description,
-      courseDate: this.eventForm.value.courseDate,
+      courseDate: formatedDate,
       startTime: this.eventForm.value.startTime,
       endTime: this.eventForm.value.endTime,
       price: this.eventForm.value.price,

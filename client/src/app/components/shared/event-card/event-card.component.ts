@@ -21,7 +21,6 @@ import { IEventIncTeacherAndVenue } from './../../../state/event/event.model';
               <mat-chip-list>
                 <mat-chip *ngFor="let tag of event.tags">{{ tag }}</mat-chip>
               </mat-chip-list>
-
             </mat-card-content>
           </div>
         </mat-card>

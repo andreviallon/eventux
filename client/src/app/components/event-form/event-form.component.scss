@@ -1,36 +1,30 @@
 @import 'src/styles.scss';
 
 #event-form {
+  .mat-form-field-infix {
+    display: flex;
+  }
+
+  .mat-chip {
+    background-color: mat-color($mat-grey, 200);
+  }
+
+  .close-btn {
+    width: unset;
+    height: unset;
+  }
+
+  .mat-icon {
+    font-size: 1rem;
+    margin-bottom: 0.1rem;
+    line-height: 25px;
+  }
+
   .section-title {
     font-size: 1.5rem;
     margin: 3rem 0 1rem;
-    font-weight: bold;
+    font-weight: 500;
     color: $black;
-  }
-
-  .price-input {
-    flex-grow: 1;
-  }
-
-  .select, select {
-    width: 100%;
-  }
-
-  .tag-help {
-    color: $mediumGray;
-  }
-
-  .tags-container {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
-  .delete {
-    margin-left: 0.5rem !important;
-  }
-
-  .flex-container {
-    display: flex;
   }
 
   .venue-image {
@@ -51,7 +45,7 @@
 
   .website-link {
     margin-top: 1rem;
-    font-weight: 600;
+    font-weight: 500;
   }
 
   .teacher-image {
@@ -73,11 +67,12 @@
   }
 
   .buttons {
+    display: flex;
     justify-content: flex-end;
     margin-top: 3rem;
-  }
 
-  .button {
-    font-weight: 600;
+    button {
+      margin-left: 0.5rem;
+    }
   }
 }

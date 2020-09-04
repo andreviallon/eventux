@@ -1,126 +1,89 @@
 <form id="event-form" [formGroup]="eventForm">
   <section>
     <p class="section-title">Event Information</p>
-    <div class="columns">
-      <div class="column is-full">
-        <div class="field">
-          <label class="label">Title</label>
-          <div class="control">
-            <input class="input" type="text" formControlName="title">
-          </div>
-          <p *ngIf="eventForm.get('title').invalid && eventForm.get('title').touched" class="help is-danger">Title is required</p>
-        </div>
-      </div>
-    </div>
 
-    <div class="columns">
-      <div class="column is-half">
-        <div class="field">
-          <div id="date-picker">
-            <label class="label">Date</label>
-            <div class="control">
-              <input #courseDate class="input date" type="text" angular-mydatepicker #dp="angular-mydatepicker" name="date" [options]="myDpOptions" (click)="dp.toggleCalendar()" (dateChanged)="onDateChanged($event)" />
-            </div>
-          </div>
-          <p *ngIf="eventForm.get('date').invalid && eventForm.get('date').touched" class="help is-danger">Date is required</p>
-        </div>
-      </div>
-      <div class="column is-half">
-        <div class="field">
-          <label class="label">Price</label>
-          <div class="field has-addons">
-            <p class="control"><a class="button is-static">$</a></p>
-            <div class="control price-input">
-              <input class="input" type="text" formControlName="price">
-              <p *ngIf="eventForm.get('price').invalid && eventForm.get('price').touched" class="help is-danger">Price is required</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput type="text" formControlName="title">
+        <mat-error *ngIf="eventForm.get('title').invalid && eventForm.get('title').touched">
+          Title is required
+        </mat-error>
+      </mat-form-field>
 
-    <div class="columns">
-      <div class="column is-half">
-        <div class="field">
-          <label class="label">Start Time</label>
-          <div class="control">
-            <div class="select">
-              <select formControlName="startTime">
-                <option *ngFor="let time of startTimes">{{ time }}</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="column is-half">
-        <div class="field">
-          <label class="label">End Time</label>
-          <div class="control">
-            <div class="select">
-              <select formControlName="startTime">
-                <option *ngFor="let time of startTimes">{{ time }}</option>
-              </select>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+      <mat-form-field>
+        <mat-label>Date</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="date">
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="eventForm.get('date').invalid && eventForm.get('date').touched">
+          Date is required
+        </mat-error>
+      </mat-form-field>
 
-    <div class="columns">
-      <div class="column is-half">
-        <div class="field">
-          <label class="label">Topics</label>
-          <div class="control">
-            <input class="input" type="text" (keyup.enter)="addTag($event)" formControlName="tag">
-          </div>
-          <p class="tag-help">Press enter to add a tag</p>
-        </div>
-      </div>
-      <div class="column is-half tags-container">
-        <div class="tags are-medium">
-          <span class="tag" *ngFor="let tag of tags; index as index">#{{ tag }} <a class="delete is-small"
-              (click)="deleteTag(index)"></a> </span>
-        </div>
-      </div>
-    </div>
+      <mat-form-field>
+        <mat-label>Price</mat-label>
+        <input matInput type="number" formControlName="price">
+        <span matPrefix>$ &nbsp;</span>
+        <mat-error *ngIf="eventForm.get('price').invalid && eventForm.get('price').touched">
+          Price is required
+        </mat-error>
+      </mat-form-field>
 
-    <div class="columns">
-      <div class="column is-full">
-        <div class="field">
-          <label class="label">Description</label>
-          <textarea class="textarea" rows="6" formControlName="description"></textarea>
-        </div>
-      </div>
-    </div>
+      <mat-form-field>
+        <mat-label>Start Time</mat-label>
+        <mat-select formControlName="startTime">
+          <mat-option *ngFor="let time of startTimes" [value]="time">
+            {{ time }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
-    <div class="columns">
-      <div class="column is-full">
-        <div class="field">
-          <label class="label">Image</label>
-          <app-image-cropper [defaultImage]="event.img | file | async" (imageData)="imageData($event)"></app-image-cropper>
-        </div>
-      </div>
-    </div>
+      <mat-form-field>
+        <mat-label>End Time</mat-label>
+        <mat-select formControlName="endTime">
+          <mat-option *ngFor="let time of startTimes" [value]="time">
+            {{ time }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Topics</mat-label>
+        <input matInput type="text" (keyup.enter)="addTag($event)" formControlName="tag">
+        <mat-hint align="start">Press enter to add a topic</mat-hint>
+      </mat-form-field>
+      <mat-chip-list>
+        <mat-chip *ngFor="let tag of tags; index as index">
+          {{ tag }}
+          <button class="close-btn" mat-icon-button (click)="deleteTag(index)">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-chip>
+      </mat-chip-list>
+
+      <mat-form-field>
+        <mat-label>Image</mat-label>
+        <textarea matInput formControlName="description"></textarea>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Title</mat-label>
+        <input matInput type="text">
+        <app-image-cropper [defaultImage]="event.img | file | async" (imageData)="imageData($event)"></app-image-cropper>
+      </mat-form-field>
   </section>
 
   <section>
       <p class="section-title">Event Location</p>
-      <div class="columns">
-        <div class="column is-full">
-          <div class="field">
-            <label class="label">Venue</label>
-            <div class="control">
-              <div class="select">
-                <select formControlName="venueId">
-                  <ng-container *ngIf="venues">
-                    <option *ngFor="let venue of venues" [ngValue]="venue._id" (click)="selectVenue(venue._id)">{{venue.name}}</option>
-                  </ng-container>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+
+      <mat-form-field>
+        <mat-label>Venues</mat-label>
+        <mat-select formControlName="venueId">
+          <mat-option *ngFor="let venue of venues" [value]="venue._id" (click)="selectVenue(venue._id)">
+            {{ venue.name }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
       <div class="columns" *ngIf="selectedVenue">
         <div class="column is-full">
@@ -142,22 +105,14 @@
 
     <section>
       <p class="section-title">Event Teacher</p>
-      <div class="columns">
-        <div class="column is-full">
-          <div class="field">
-            <label class="label">Teacher</label>
-            <div class="control">
-              <div class="select">
-                <select formControlName="teacherId">
-                  <ng-container *ngIf="teachers">
-                    <option *ngFor="let teacher of teachers" [ngValue]="teacher._id" (click)="selectTeacher(teacher._id)">{{ teacher.firstName }} {{ teacher.lastName }}</option>
-                  </ng-container>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <mat-form-field>
+        <mat-label>Teacher</mat-label>
+        <mat-select formControlName="venueId">
+          <mat-option *ngFor="let teacher of teachers" [value]="teacher._id" (click)="selectTeacher(teacher._id)">
+            {{ teacher.firstName }} {{ teacher.lastName }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
 
       <div class="columns" *ngIf="selectedTeacher">
         <div class="column is-full">
@@ -176,8 +131,8 @@
     </section>
 
     <div class="buttons">
-      <button class="button is-white" routerLink="/manage-events">Cancel</button>
-      <button class="button is-link" (click)="submitEventForm()">{{ submitFormBtnText }}</button>
+      <button mat-flat-button routerLink="/manage-events">Cancel</button>
+      <button mat-flat-button color="primary" (click)="submitEventForm()">{{ submitFormBtnText }}</button>
     </div>
 
 </form>
