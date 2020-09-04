@@ -5,7 +5,7 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
   template: `
     <div class="flex-container">
       <h1>{{ title }}</h1>
-      <button *ngIf="addButton" class="button is-link" (click)="create.emit()">{{ buttonName }}</button>
+      <button mat-flat-button color="primary" *ngIf="addButton" (click)="create.emit()">{{ buttonName }}</button>
     </div>
   `,
   styleUrls: ['./page-header.component.scss']
