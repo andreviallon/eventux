@@ -1,8 +1,8 @@
+import { SelectEvent } from './../../state/event/event.actions';
 import { IEventIncTeacherAndVenue } from './../../state/event/event.model';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { faLongArrowAltRight, faShare } from '@fortawesome/free-solid-svg-icons';
 import { faTwitter, faFacebookF } from '@fortawesome/free-brands-svg-icons';
-import { convertDate } from 'src/app/utils/convert-date';
 import { Select, Store } from '@ngxs/store';
 import { EventState } from 'src/app/state/event/event.state';
 import { Observable, Subscription } from 'rxjs';
@@ -11,7 +11,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-event-detail',
   template: `
-    <div class="container">
+    <div class="container" *ngIf="(event$ | async) as event">
       <section class="hero is-medium">
           <div
             class="img-container"
@@ -95,7 +95,7 @@ import { ActivatedRoute } from '@angular/router';
             <div class="schedule-container">
                 <h3 class="title">Schedule</h3>
                 <p>From {{ event.startTime }} to {{ event.endTime }}</p>
-                <p>{{ getCourseDate() }}</p>
+                <p>{{ event.courseDate | date }}</p>
             </div>
             <div class="share-container">
                 <h3 class="title ">Share this course</h3>
@@ -122,17 +122,8 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./event-detail.component.scss']
 })
 export class EventDetailComponent implements OnInit, OnDestroy {
+  @Select(EventState.getSelectedEvent()) event$: Observable<IEventIncTeacherAndVenue>;
   @Select(EventState.getEventsIncTeacherAndVenue()) relatedEvents$: Observable<IEventIncTeacherAndVenue[]>;
-
-  tiles = [
-    { text: 'One', cols: 3, rows: 1, color: 'lightblue' },
-    { text: 'Two', cols: 1, rows: 2, color: 'lightgreen' },
-    { text: 'Three', cols: 1, rows: 1, color: 'lightpink' },
-    { text: 'Four', cols: 2, rows: 1, color: '#DDBDF1' },
-  ];
-
-  public eventId: string;
-  public event: IEventIncTeacherAndVenue;
 
   public faLongArrowAltRight = faLongArrowAltRight;
   public faShare = faShare;
@@ -145,21 +136,13 @@ export class EventDetailComponent implements OnInit, OnDestroy {
 
   public ngOnInit() {
     this.subscription.add(
-      this.route.params.subscribe(params => this.eventId = params[`id`])
-    );
-
-    this.subscription.add(
-      this.store.select(EventState.getEventIncTeacherAndVenue(this.eventId)).subscribe(event => {
-        this.event = event;
+      this.route.params.subscribe(params => {
+        this.store.dispatch(new SelectEvent(params[`id`]));
       })
     );
   }
 
   public ngOnDestroy(): void {
     this.subscription.unsubscribe();
-  }
-
-  public getCourseDate() {
-    return convertDate(this.event.courseDate);
   }
 }

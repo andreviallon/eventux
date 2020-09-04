@@ -8,9 +8,7 @@ import { InitVenueState } from './state/venue/venue.actions';
   selector: 'app-root',
   template: `
     <app-header></app-header>
-    <div class="app-container">
-      <router-outlet></router-outlet>
-    </div>
+    <router-outlet></router-outlet>
   `,
   styleUrls: ['./app.component.scss']
 })

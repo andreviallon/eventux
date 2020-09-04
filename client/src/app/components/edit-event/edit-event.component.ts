@@ -47,11 +47,7 @@ export class EditEventComponent implements OnInit {
 
     this.subscription.add(
       this.store.select(EventState.getEvent(this.eventId)).subscribe(event => {
-        const eventForm: IEvent = {
-          ...event,
-          courseDate: { day: 3, month: 4, year: 2020 } as ICourseDate
-        };
-        this.event = eventForm;
+        this.event = event;
       })
     );
   }

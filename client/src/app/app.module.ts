@@ -35,6 +35,7 @@ import { OrderSummaryComponent } from './components/order-summary/order-summary.
 import { EventPricePipe } from './pipes/event-price.pipe';
 import { CurrencyPipe } from '@angular/common';
 import { FilePipe } from './pipes/file.pipe';
+import { DatePipe } from './pipes/date.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatCardModule } from '@angular/material/card';
@@ -47,6 +48,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+
 
 @NgModule({
   declarations: [
@@ -70,6 +72,7 @@ import { MatInputModule } from '@angular/material/input';
     OrderSummaryComponent,
     EventPricePipe,
     FilePipe,
+    DatePipe,
   ],
   imports: [
     NgxsModule.forRoot([

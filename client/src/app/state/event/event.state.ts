@@ -2,13 +2,14 @@ import { VENUE_STATE } from './../venue/venue.state';
 import { TEACHER_STATE } from './../teacher/teacher.state';
 import { State, Selector, Action, StateContext, createSelector, StateToken } from '@ngxs/store';
 import { IEvent, IEventIncTeacherAndVenue } from './event.model';
-import { InitEventState, DeleteEvent, EditEvent } from './event.actions';
+import { InitEventState, DeleteEvent, EditEvent, SelectEvent } from './event.actions';
 import { Injectable } from '@angular/core';
 import { ImmutableContext } from '@ngxs-labs/immer-adapter';
 import axios from 'axios';
 
 export class EventStateModel {
   events: IEvent[];
+  selectedEventId: string;
 }
 
 export const EVENT_STATE = new StateToken<EventStateModel>('eventState');
@@ -24,6 +25,12 @@ export class EventState {
   static getEvents(state: EventStateModel): IEvent[] {
     return state.events;
   }
+
+  // @Selector()
+  // static getSelectedEvent(state: EventStateModel): IEvent {
+  //   const event = state.events.find(e => e._id === state.selectedEventId);
+  //   return event;
+  // }
 
   static getEvent(id: string) {
     return createSelector(
@@ -86,6 +93,31 @@ export class EventState {
     );
   }
 
+  static getSelectedEvent() {
+    return createSelector(
+      [EVENT_STATE, TEACHER_STATE, VENUE_STATE],
+      (state: EventStateModel, teacherState, venueState): IEventIncTeacherAndVenue => {
+        const event = state.events.find(e => e._id === state.selectedEventId);
+        const teacher = teacherState.teachers.filter(t => t._id === event.teacherId);
+        const venue = venueState.venues.filter(v => v._id === event.venueId);
+
+        return {
+          _id: event._id,
+          title: event.title,
+          description: event.description,
+          courseDate: event.courseDate,
+          startTime: event.startTime,
+          endTime: event.endTime,
+          price: event.price,
+          tags: event.tags,
+          img: event.img,
+          venue: venue[0],
+          teacher: teacher[0]
+        };
+      }
+    );
+  }
+
   static getEventIncTeacherAndVenue(id: string) {
     return createSelector(
       [EVENT_STATE, TEACHER_STATE, VENUE_STATE],
@@ -127,6 +159,16 @@ export class EventState {
     } catch (err) {
       throw err;
     }
+  }
+
+  @Action(SelectEvent)
+  @ImmutableContext()
+  async selectEvent({ setState }: StateContext<EventStateModel>, { id }: SelectEvent) {
+      setState((state: EventStateModel) => {
+        state.selectedEventId = id;
+        return state;
+      });
+
   }
 
   @Action(EditEvent)

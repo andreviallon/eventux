@@ -1,6 +1,5 @@
 import { Component, Input, ViewEncapsulation } from '@angular/core';
 import { IEventIncTeacherAndVenue } from './../../../state/event/event.model';
-import { convertDate } from 'src/app/utils/convert-date';
 
 @Component({
   selector: 'app-event-card',
@@ -18,8 +17,8 @@ import { convertDate } from 'src/app/utils/convert-date';
             </mat-card-header>
             <mat-card-content>
               <p>{{ event.venue.city }}, {{ event.venue.country }}</p>
-              <p>{{ getCourseDate() }}</p>
-              <mat-chip-list >
+              <p>{{ event.courseDate | date }}</p>
+              <mat-chip-list>
                 <mat-chip *ngFor="let tag of event.tags">{{ tag }}</mat-chip>
               </mat-chip-list>
 
@@ -33,10 +32,5 @@ import { convertDate } from 'src/app/utils/convert-date';
   encapsulation: ViewEncapsulation.None
 })
 export class EventCardComponent {
-
   @Input() event: IEventIncTeacherAndVenue;
-
-  public getCourseDate() {
-    return convertDate(this.event.courseDate);
-  }
 }

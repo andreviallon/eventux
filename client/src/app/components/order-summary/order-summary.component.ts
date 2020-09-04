@@ -1,6 +1,5 @@
 import { Component, Input } from '@angular/core';
 import { IEventIncTeacherAndVenue } from '../../state/event/event.model';
-import { convertDate } from '../../utils/convert-date';
 
 @Component({
   selector: 'app-order-summary',
@@ -20,18 +19,12 @@ import { convertDate } from '../../utils/convert-date';
         <p>{{ event.venue.phoneNumber }}</p>
         <h4>Schedule</h4>
         <p>From {{ event.startTime }} to {{ event.endTime }}</p>
-        <p>{{ getCourseDate() }}</p>
+        <p>{{ event.courseDate | date }}</p>
       </div>
     </div>
   `,
   styleUrls: ['./order-summary.component.scss']
 })
 export class OrderSummaryComponent {
-
   @Input() event: IEventIncTeacherAndVenue;
-
-  public getCourseDate() {
-    return convertDate(this.event.courseDate);
-  }
-
 }
