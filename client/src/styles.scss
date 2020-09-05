@@ -7,6 +7,21 @@ $lightGray: #C4C4C4;
 $darkBlue: #1E3060;
 $mediumBlue: #3273DC;
 
+html, body {
+  height: 100%;
+}
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  color: $black;
+  letter-spacing: 0.1px !important;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
 a {
   text-decoration: none;
 }
@@ -53,6 +68,3 @@ a {
 .email {
   text-transform: lowercase !important;
 }
-
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; color: $black; letter-spacing: 0.1px !important; }

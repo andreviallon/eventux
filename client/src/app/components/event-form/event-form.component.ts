@@ -4,7 +4,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation, View
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { times } from 'src/app/utils/times';
 import { IVenue } from './../../state/venue/venue.model';
-import { faLongArrowAltRight, faCross } from '@fortawesome/free-solid-svg-icons';
+import { faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
 import * as moment from 'moment';
 
 @Component({
@@ -48,6 +48,7 @@ export class EventFormComponent implements OnInit, OnChanges, AfterViewInit {
       teacherId: [this.event.teacherId, Validators.required],
     });
 
+    // this.tags = this.event.tags;
     this.tags = this.event.tags;
     this.startTimes = times;
   }
@@ -68,9 +69,6 @@ export class EventFormComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   public populateTeacherForm() {
-    if (!this.eventForm) {
-      return;
-    }
     if (!this.eventForm.get('teacherId').value) {
       this.selectTeacher(this.teachers[0]._id);
     } else {
@@ -104,8 +102,11 @@ export class EventFormComponent implements OnInit, OnChanges, AfterViewInit {
   }
 
   public addTag(tag): void {
-    this.tags.push(tag.target.value);
-    this.eventForm.get('tag').setValue('');
+    const newTag = tag.target.value.trim();
+    if (newTag) {
+      this.tags.push(newTag);
+      this.eventForm.get('tag').setValue('');
+    }
   }
 
   public deleteTag(index: number): void {
