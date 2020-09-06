@@ -9,8 +9,158 @@ import * as moment from 'moment';
 
 @Component({
   selector: 'app-event-form',
-  templateUrl: './event-form.component.html',
-  styleUrls: ['./event-form.component.scss', '../shared/date-picker/date-picker.component.scss'],
+  template: `
+    <form id="event-form" [formGroup]="eventForm">
+      <section>
+        <p class="section-title">Event Information</p>
+          <mat-form-field>
+            <mat-label>Title</mat-label>
+            <input matInput type="text" formControlName="title">
+            <mat-error *ngIf="eventForm.get('title').invalid && eventForm.get('title').touched">
+              Title is required
+            </mat-error>
+          </mat-form-field>
+
+          <div class="flex-space-evenly">
+            <mat-form-field>
+              <mat-label>Date</mat-label>
+              <input matInput [matDatepicker]="picker" formControlName="date">
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="eventForm.get('date').invalid && eventForm.get('date').touched">
+                Date is required
+              </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>Price</mat-label>
+              <input matInput type="number" formControlName="price">
+              <span matPrefix>$ &nbsp;</span>
+              <mat-error *ngIf="eventForm.get('price').invalid && eventForm.get('price').touched">
+                Price is required
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="flex-space-evenly">
+            <mat-form-field>
+              <mat-label>Start Time</mat-label>
+              <mat-select formControlName="startTime">
+                <mat-option *ngFor="let time of startTimes" [value]="time">
+                  {{ time }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field>
+              <mat-label>End Time</mat-label>
+              <mat-select formControlName="endTime">
+                <mat-option *ngFor="let time of startTimes" [value]="time">
+                  {{ time }}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="topic-container">
+            <div class="input">
+              <mat-form-field>
+                <mat-label>Topics</mat-label>
+                <div>
+                  <input matInput type="text" (keyup.enter)="addTag($event)" formControlName="tag">
+                </div>
+              </mat-form-field>
+              <button mat-flat-button color="primary" class="add-tag-btn" (click)="addTag()">Add</button>
+            </div>
+            <mat-chip-list>
+              <mat-chip *ngFor="let tag of tags; index as index">
+                {{ tag }}
+                <button class="close-btn" mat-icon-button (click)="deleteTag(index)">
+                  <mat-icon>close</mat-icon>
+                </button>
+              </mat-chip>
+            </mat-chip-list>
+          </div>
+
+          <mat-form-field>
+            <mat-label>Description</mat-label>
+            <textarea matInput rows="5" formControlName="description"></textarea>
+          </mat-form-field>
+
+          <app-image-cropper [defaultImage]="event.img | file | async" (imageData)="imageData($event)"></app-image-cropper>
+      </section>
+
+      <section>
+          <p class="section-title">Event Location</p>
+
+          <mat-form-field>
+            <mat-label>Venues</mat-label>
+            <mat-select formControlName="venueId">
+              <mat-option *ngFor="let venue of venues" [value]="venue._id" (click)="selectVenue(venue._id)">
+                {{ venue.name }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div class="columns" *ngIf="selectedVenue">
+            <div class="column is-full">
+              <div class="field">
+                <label class="label">Venue details</label>
+                <div class="flex-container">
+                  <img {{selectedVenue.img}} alt="venue image" class="venue-image">
+                  <div class="venue-flex-container">
+                    <p>{{ selectedVenue.address }}</p>
+                    <p>{{ selectedVenue.zipcode }} {{ selectedVenue.city }}</p>
+                    <p>{{ selectedVenue.phoneNumber }}</p>
+                    <a
+                      class="website-link"
+                      [href]="selectedVenue.website"
+                      target="_blank">Venue's website>
+                      <fa-icon [icon]="faLongArrowAltRight"></fa-icon>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section>
+          <p class="section-title">Event Teacher</p>
+          <mat-form-field>
+            <mat-label>Teacher</mat-label>
+            <mat-select formControlName="venueId">
+              <mat-option *ngFor="let teacher of teachers" [value]="teacher._id" (click)="selectTeacher(teacher._id)">
+                {{ teacher.firstName }} {{ teacher.lastName }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+
+          <div class="columns" *ngIf="selectedTeacher">
+            <div class="column is-full">
+              <div class="field">
+                <label class="label">Teacher details</label>
+                <div class="flex-container">
+                  <img src={{selectedTeacher.img}} alt="teacher image" class="teacher-image">
+                  <div class="teacher-flex-container">
+                    <p>{{ selectedTeacher.email }}</p>
+                    <p>{{ selectedTeacher.phoneNumber }}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="buttons">
+          <button mat-flat-button routerLink="/manage-events">Cancel</button>
+          <button mat-flat-button color="primary" (click)="submitEventForm()">{{ submitFormBtnText }}</button>
+        </div>
+
+    </form>
+
+  `,
+  styleUrls: ['./event-form.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
 export class EventFormComponent implements OnInit, OnChanges, AfterViewInit {
@@ -101,8 +251,8 @@ export class EventFormComponent implements OnInit, OnChanges, AfterViewInit {
     this.eventForm.get('imageData').setValue($event);
   }
 
-  public addTag(tag): void {
-    const newTag = tag.target.value.trim();
+  public addTag(tag?): void {
+    const newTag = this.eventForm.get('tag').value.trim();
     if (newTag) {
       this.tags.push(newTag);
       this.eventForm.get('tag').setValue('');

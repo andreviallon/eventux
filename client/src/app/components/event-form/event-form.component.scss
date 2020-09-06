@@ -32,6 +32,25 @@
     mat-form-field {
       width: 48%;
     }
+  }
+
+  .topic-container {
+    display: flex;
+    justify-content: space-between;
+
+    .input {
+      display: flex;
+      align-items: center;
+      width: 48%;
+    }
+
+    .add-tag-btn {
+      margin-left: 1rem;
+    }
+
+    mat-form-field {
+      width: 90%;
+    }
 
     mat-chip-list {
       width: 48%;
