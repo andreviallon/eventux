@@ -6,14 +6,16 @@ import { CropperOptions } from 'ngx-cropperjs-wrapper';
   template: `
     <div class="flex-container">
       <label>Image</label>
-      <div class="img-container">
+      <div class="flex-row">
+        <div class="img-container">
         <lib-cropper [imageFile]="fileInput" [options]="options" (fileChange)="fileChange($event)"></lib-cropper>
         <p *ngIf="!fileInput" class="no-image">No Image Selected</p>
       </div>
-      <div>
+      <div class="buttons-container">
         <input class="ng-hide" #inputFile multiple type="file" (change)="filePick($event)" accept="image/*"/>
         <button mat-flat-button color="primary" (click)="inputFile.click()">Upload</button>
         <button mat-button (click)="removeFile()">Remove</button>
+      </div>
       </div>
     </div>
   `,

@@ -47,9 +47,7 @@ export class HeaderComponent implements OnInit {
   public showDesktopMenu = false;
   public currentUser: User;
 
-  constructor(private userService: UserService) {
-
-  }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
     this.currentUser = this.userService.getUser();

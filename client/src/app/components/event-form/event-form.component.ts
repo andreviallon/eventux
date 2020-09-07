@@ -1,6 +1,18 @@
+import {
+  Component,
+  OnInit,
+  Input,
+  Output,
+  EventEmitter,
+  ViewEncapsulation,
+  ViewChild,
+  ElementRef,
+  OnChanges,
+  SimpleChanges,
+  ChangeDetectorRef
+} from '@angular/core';
 import { IEvent, ICourseDate } from './../../state/event/event.model';
 import { ITeacher } from './../../state/teacher/teacher.model';
-import { Component, OnInit, Input, Output, EventEmitter, ViewEncapsulation, ViewChild, ElementRef, AfterViewInit, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { times } from 'src/app/utils/times';
 import { IVenue } from './../../state/venue/venue.model';
@@ -92,64 +104,60 @@ import * as moment from 'moment';
 
       <section>
           <p class="section-title">Event Location</p>
-
           <mat-form-field>
-            <mat-label>Venues</mat-label>
+            <mat-label>Venue</mat-label>
             <mat-select formControlName="venueId">
               <mat-option *ngFor="let venue of venues" [value]="venue._id" (click)="selectVenue(venue._id)">
-                {{ venue.name }}
+                {{ venue.id }}
               </mat-option>
             </mat-select>
           </mat-form-field>
 
-          <div class="columns" *ngIf="selectedVenue">
-            <div class="column is-full">
-              <div class="field">
-                <label class="label">Venue details</label>
-                <div class="flex-container">
-                  <img {{selectedVenue.img}} alt="venue image" class="venue-image">
-                  <div class="venue-flex-container">
-                    <p>{{ selectedVenue.address }}</p>
-                    <p>{{ selectedVenue.zipcode }} {{ selectedVenue.city }}</p>
-                    <p>{{ selectedVenue.phoneNumber }}</p>
-                    <a
-                      class="website-link"
-                      [href]="selectedVenue.website"
-                      target="_blank">Venue's website>
-                      <fa-icon [icon]="faLongArrowAltRight"></fa-icon>
-                    </a>
-                  </div>
+          <ng-container *ngIf="selectedVenue">
+          <p>venue selected</p>
+            <div class="field">
+              <p class="details-title">Venue details</p>
+              <div class="flex-container">
+                <img {{selectedVenue.img}} alt="venue image" class="venue-image">
+                <div class="venue-flex-container">
+                  <p>{{ selectedVenue.address }}</p>
+                  <p>{{ selectedVenue.zipcode }} {{ selectedVenue.city }}</p>
+                  <p>{{ selectedVenue.phoneNumber }}</p>
+                  <a
+                    class="website-link"
+                    [href]="selectedVenue.website"
+                    target="_blank">Venue's website>
+                    <fa-icon [icon]="faLongArrowAltRight"></fa-icon>
+                  </a>
                 </div>
               </div>
             </div>
-          </div>
+          </ng-container>
         </section>
 
         <section>
           <p class="section-title">Event Teacher</p>
           <mat-form-field>
             <mat-label>Teacher</mat-label>
-            <mat-select formControlName="venueId">
+            <mat-select formControlName="teacherId">
               <mat-option *ngFor="let teacher of teachers" [value]="teacher._id" (click)="selectTeacher(teacher._id)">
                 {{ teacher.firstName }} {{ teacher.lastName }}
               </mat-option>
             </mat-select>
           </mat-form-field>
 
-          <div class="columns" *ngIf="selectedTeacher">
-            <div class="column is-full">
-              <div class="field">
-                <label class="label">Teacher details</label>
-                <div class="flex-container">
-                  <img src={{selectedTeacher.img}} alt="teacher image" class="teacher-image">
-                  <div class="teacher-flex-container">
-                    <p>{{ selectedTeacher.email }}</p>
-                    <p>{{ selectedTeacher.phoneNumber }}</p>
-                  </div>
+          <ng-container *ngIf="selectedTeacher">
+            <div class="field">
+              <p class="details-title">Teacher details</p>
+              <div class="flex-container">
+                <img src={{selectedTeacher.img}} alt="teacher image" class="teacher-image">
+                <div class="teacher-flex-container">
+                  <p>{{ selectedTeacher.email }}</p>
+                  <p>{{ selectedTeacher.phoneNumber }}</p>
                 </div>
               </div>
             </div>
-          </div>
+          </ng-container>
         </section>
 
         <div class="buttons">
@@ -163,7 +171,7 @@ import * as moment from 'moment';
   styleUrls: ['./event-form.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class EventFormComponent implements OnInit, OnChanges, AfterViewInit {
+export class EventFormComponent implements OnInit, OnChanges {
   @ViewChild('courseDate', { static: false }) date: ElementRef;
 
   @Input() event: IEvent;
@@ -213,11 +221,6 @@ export class EventFormComponent implements OnInit, OnChanges, AfterViewInit {
     }
   }
 
-  public ngAfterViewInit() {
-    this.populateTeacherForm();
-    this.populateVenueForm();
-  }
-
   public populateTeacherForm() {
     if (!this.eventForm.get('teacherId').value) {
       this.selectTeacher(this.teachers[0]._id);
@@ -239,6 +242,8 @@ export class EventFormComponent implements OnInit, OnChanges, AfterViewInit {
   public selectVenue(venueId: string): void {
     this.eventForm.get('venueId').setValue(venueId);
     this.selectedVenue = this.venues.find(venue => venue._id === venueId);
+    console.log('this selected venue', this.selectedVenue);
+
   }
 
   public selectTeacher(teacherId: string): void {
