@@ -127,7 +127,8 @@ import * as moment from 'moment';
                   <a
                     class="website-link"
                     [href]="selectedVenue.website"
-                    target="_blank">Venue's website>
+                    target="_blank">
+                    Venue's website
                     <fa-icon [icon]="faLongArrowAltRight"></fa-icon>
                   </a>
                 </div>
