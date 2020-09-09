@@ -9,7 +9,8 @@ import {
   ElementRef,
   OnChanges,
   SimpleChanges,
-  ChangeDetectorRef
+  ChangeDetectorRef,
+  AfterViewInit
 } from '@angular/core';
 import { IEvent, ICourseDate } from './../../state/event/event.model';
 import { ITeacher } from './../../state/teacher/teacher.model';
@@ -108,7 +109,7 @@ import * as moment from 'moment';
             <mat-label>Venue</mat-label>
             <mat-select formControlName="venueId">
               <mat-option *ngFor="let venue of venues" [value]="venue._id" (click)="selectVenue(venue._id)">
-                {{ venue.id }}
+                {{ venue.name }}
               </mat-option>
             </mat-select>
           </mat-form-field>
@@ -118,7 +119,7 @@ import * as moment from 'moment';
             <div class="field">
               <p class="details-title">Venue details</p>
               <div class="flex-container">
-                <img {{selectedVenue.img}} alt="venue image" class="venue-image">
+                <img src={{selectedVenue.img}} class="venue-image">
                 <div class="venue-flex-container">
                   <p>{{ selectedVenue.address }}</p>
                   <p>{{ selectedVenue.zipcode }} {{ selectedVenue.city }}</p>
@@ -150,7 +151,7 @@ import * as moment from 'moment';
             <div class="field">
               <p class="details-title">Teacher details</p>
               <div class="flex-container">
-                <img src={{selectedTeacher.img}} alt="teacher image" class="teacher-image">
+                <img src={{selectedTeacher.img}} class="teacher-image">
                 <div class="teacher-flex-container">
                   <p>{{ selectedTeacher.email }}</p>
                   <p>{{ selectedTeacher.phoneNumber }}</p>
@@ -171,7 +172,7 @@ import * as moment from 'moment';
   styleUrls: ['./event-form.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class EventFormComponent implements OnInit, OnChanges {
+export class EventFormComponent implements OnInit, OnChanges, AfterViewInit {
   @ViewChild('courseDate', { static: false }) date: ElementRef;
 
   @Input() event: IEvent;
@@ -206,22 +207,33 @@ export class EventFormComponent implements OnInit, OnChanges {
       teacherId: [this.event.teacherId, Validators.required],
     });
 
-    // this.tags = this.event.tags;
     this.tags = this.event.tags;
     this.startTimes = times;
   }
 
   public ngOnChanges(changes: SimpleChanges) {
-    if (changes.teachers?.previousValue !== changes.teachers?.currentValue) {
+    if (this.eventForm && changes.teachers?.previousValue !== changes.teachers?.currentValue) {
       this.populateTeacherForm();
     }
 
-    if (changes.venues?.previousValue !== changes.venues?.currentValue && this.eventForm) {
+    if (this.eventForm && changes.venues?.previousValue !== changes.venues?.currentValue && this.eventForm) {
       this.populateVenueForm();
     }
   }
 
-  public populateTeacherForm() {
+  public ngAfterViewInit(): void {
+    if (this.teachers) {
+      this.populateTeacherForm();
+    }
+
+    if (this.venues) {
+      this.populateVenueForm();
+    }
+
+    this.changeDetector.markForCheck();
+  }
+
+  public populateTeacherForm(): void {
     if (!this.eventForm.get('teacherId').value) {
       this.selectTeacher(this.teachers[0]._id);
     } else {
@@ -230,7 +242,7 @@ export class EventFormComponent implements OnInit, OnChanges {
     }
   }
 
-  public populateVenueForm() {
+  public populateVenueForm(): void {
     if (!this.eventForm.get('venueId').value) {
       this.selectVenue(this.venues[0]._id);
     } else {
@@ -243,7 +255,6 @@ export class EventFormComponent implements OnInit, OnChanges {
     this.eventForm.get('venueId').setValue(venueId);
     this.selectedVenue = this.venues.find(venue => venue._id === venueId);
     console.log('this selected venue', this.selectedVenue);
-
   }
 
   public selectTeacher(teacherId: string): void {
@@ -270,7 +281,7 @@ export class EventFormComponent implements OnInit, OnChanges {
 
   public submitEventForm() {
     const momentDate = moment(this.eventForm.get('date').value);
-    const formatedDate: ICourseDate = {
+    const formattedDate: ICourseDate = {
       day: +momentDate.format('DD'),
       month: +momentDate.format('MM'),
       year: +momentDate.format('YYYY')
@@ -279,7 +290,7 @@ export class EventFormComponent implements OnInit, OnChanges {
     const form: IEvent = {
       title: this.eventForm.value.title.trim(),
       description: this.eventForm.value.description,
-      courseDate: formatedDate,
+      courseDate: formattedDate,
       startTime: this.eventForm.value.startTime,
       endTime: this.eventForm.value.endTime,
       price: this.eventForm.value.price,

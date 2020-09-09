@@ -64,17 +64,23 @@
 
   .section-title {
     font-size: 1.5rem;
-    margin: 3rem 0 1rem;
+    margin: 4rem 0 2rem;
     font-weight: 500;
     color: $black;
   }
 
   .venue-image {
+    background-color: $black;
     width: 400px;
+    height: 180px;
     object-fit: cover;
-    border-radius: 4px;
     margin-right: 2rem;
-  }
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+}
 
   .venue-flex-container {
     display: flex;
@@ -91,6 +97,7 @@
   }
 
   .teacher-image {
+    background-color: $black;
     margin-right: 1rem;
     width: 100px;
     height: 100px;
