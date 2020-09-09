@@ -1,7 +1,7 @@
 @import "src/styles.scss";
 
-.card {
-  cursor: pointer;
+mat-card {
+  margin: 1.3rem;
 }
 
 .flex-container {
@@ -12,6 +12,9 @@
 
 li {
   padding: 0 0.2rem;
+  text-decoration: none;
+  list-style: none;
+  align-self: center;
 }
 
 .list-item {
@@ -25,24 +28,16 @@ li {
 }
 
 .overview-title {
-  margin-bottom: 0 !important;
-  font-weight: 600;
+  margin-bottom: 0.3rem;
+  font-weight: 500;
   font-size: 0.9rem;
   text-transform: capitalize;
   color: $mediumGray;
 }
 
 .overview-content {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 1rem;
   text-transform: capitalize;
   color: $black;
-}
-
-button {
-  border-radius: 200px;
-  -webkit-border-radius: 200px;
-  -moz-border-radius: 200px;
-  -ms-border-radius: 200px;
-  -o-border-radius: 200px;
 }

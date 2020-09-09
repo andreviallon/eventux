@@ -1,13 +1,21 @@
-import { Component, Input } from '@angular/core';
-import { IEvent } from 'src/app/state/event/event.model';
+import { Component, Input, OnInit } from '@angular/core';
+import { IEventIncTeacherAndVenue } from 'src/app/state/event/event.model';
 
 @Component({
   selector: 'app-event-list',
-  templateUrl: './event-list.component.html',
+  template: `
+    <div class="flex-container">
+      <div *ngFor="let event of events" class="event">
+        <app-event-card [event]="event"></app-event-card>
+      </div>
+    </div>
+  `,
   styleUrls: ['./event-list.component.scss']
 })
 export class EventListComponent {
 
-  @Input() events: IEvent[];
+  public columns: number;
+
+  @Input() events: IEventIncTeacherAndVenue[];
 
 }

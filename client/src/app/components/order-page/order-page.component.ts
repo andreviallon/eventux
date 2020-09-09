@@ -7,7 +7,15 @@ import { IEventIncTeacherAndVenue } from '../../state/event/event.model';
 
 @Component({
   selector: 'app-order-page',
-  templateUrl: './order-page.component.html',
+  template: `
+    <div class="order-page-container">
+      <div class="thank-you-message-container">
+        <h1>Thank you for your order!</h1>
+        <p>You’ll receive an invoice in your email very soon.</p>
+      </div>
+      <app-order-summary [event]="event"></app-order-summary>
+    </div>
+  `,
   styleUrls: ['./order-page.component.scss']
 })
 export class OrderPageComponent implements OnInit, OnDestroy {

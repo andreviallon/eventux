@@ -5,7 +5,29 @@ import { getEventOverview } from 'src/app/utils/event-overview';
 
 @Component({
   selector: 'app-manage-event-card',
-  templateUrl: './manage-event-card.component.html',
+  template: `
+    <mat-card [routerLink]="['/event', event._id]">
+      <ul class="content flex-container">
+        <li *ngFor="let eventProperty of eventOverview.properties" class="list-item">
+          <p class="overview-title">{{ eventProperty.title }}</p>
+          <p class="overview-content">{{ eventProperty.content }}</p>
+        </li>
+        <li>
+          <button mat-icon-button [matMenuTriggerFor]="menu" (click)="stopPropagation($event)">
+            <fa-icon [icon]="faEllipsisV"></fa-icon>
+          </button>
+          <mat-menu #menu="matMenu" xPosition="before">
+            <button mat-menu-item>
+              <a class="dropdown-item" (click)="edit()">Edit Event</a>
+            </button>
+            <button mat-menu-item>
+              <a class="dropdown-item" (click)="delete()">Delete Event</a>
+            </button>
+          </mat-menu>
+        </li>
+      </ul>
+    </mat-card>
+  `,
   styleUrls: ['./manage-event-card.component.scss']
 })
 export class ManageEventCardComponent implements OnInit {

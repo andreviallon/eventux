@@ -6,7 +6,10 @@ import { InitVenueState } from './state/venue/venue.actions';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: `
+    <app-header></app-header>
+    <router-outlet></router-outlet>
+  `,
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {

@@ -4,42 +4,22 @@
   display: flex;
   justify-content: space-between;
   padding: 0 0.5rem;
+  width: 100%;
 }
 
-h1 {
-  color: $black;
-  font-size: 1.2rem;
-  font-weight: bold;
-  letter-spacing: 2px;
-  padding-top: 0.4rem;
-  text-transform: uppercase;
+.mat-toolbar {
+  background-color: white;
 }
 
-a {
-  color: $black;
-
-  &:hover {
-    background-color: unset;
-    color: $black;
-  }
-
-  &:focus {
-    background-color: unset;
-    color: $black;
-  }
-}
-
-.user-name {
+span {
+  font-size: 1.3rem;
+  margin-right: 1rem;
   font-weight: 500;
-  color: $black;
+  letter-spacing: 3px;
 }
 
-.has-dropdown {
-  cursor: pointer;
-}
-
-.navbar-dropdown {
-  margin-top: 0.5rem;
+button {
+  margin: 0 0.3rem;
 }
 
 .avatar {
@@ -58,31 +38,14 @@ a {
   }
 }
 
-.buttons {
-  margin-right: 0.5rem;
+.menu {
+  display: flex;
 }
 
-button {
-  font-weight: 600;
+.button-menu {
+  margin: 0;
 }
 
-.navbar-start {
-  align-items: center;
-
-  .navbar-item {
-    display: inline-block;
-  }
-}
-
-.active {
-  font-weight: bold;
-}
-
-@media only screen and (max-width: 1024px) {
-  .nav-start {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: baseline;
-  }
+mat-divider {
+  margin: 0.3rem 0;
 }

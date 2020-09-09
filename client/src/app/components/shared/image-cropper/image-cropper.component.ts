@@ -3,7 +3,22 @@ import { CropperOptions } from 'ngx-cropperjs-wrapper';
 
 @Component({
   selector: 'app-image-cropper',
-  templateUrl: './image-cropper.component.html',
+  template: `
+    <div class="flex-container">
+      <label>Image</label>
+      <div class="flex-row">
+        <div class="img-container">
+        <lib-cropper [imageFile]="fileInput" [options]="options" (fileChange)="fileChange($event)"></lib-cropper>
+        <p *ngIf="!fileInput" class="no-image">No Image Selected</p>
+      </div>
+      <div class="buttons-container">
+        <input class="ng-hide" #inputFile multiple type="file" (change)="filePick($event)" accept="image/*"/>
+        <button mat-flat-button color="primary" (click)="inputFile.click()">Upload</button>
+        <button mat-button (click)="removeFile()">Remove</button>
+      </div>
+      </div>
+    </div>
+  `,
   styleUrls: ['./image-cropper.component.scss']
 })
 export class ImageCropperComponent implements OnInit, OnChanges {
@@ -26,12 +41,9 @@ export class ImageCropperComponent implements OnInit, OnChanges {
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    console.log('changes', changes);
     if (changes.defaultImage.currentValue !== changes.defaultImage.previousValue) {
       this.fileInput = this.defaultImage;
     }
-
-    console.log('changes defaultImage =>', this.defaultImage);
   }
 
   public filePick(event: any): void {

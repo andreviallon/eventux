@@ -1,7 +1,13 @@
 export class InitEventState {
-  static readonly type = '[Event] Init Event State';
+  static readonly type = '[Event API] Init Event State';
 
   constructor() { }
+}
+
+export class SelectEvent {
+  static readonly type = '[Event Detail] Select Event';
+
+  constructor(public id: string) { }
 }
 
 export class EditEvent {

@@ -1,3 +1,5 @@
+@import '~@angular/material/theming';
+
 $black: #000000;
 $darkGray: #363636;
 $mediumGray: #797979;
@@ -5,21 +7,26 @@ $lightGray: #C4C4C4;
 $darkBlue: #1E3060;
 $mediumBlue: #3273DC;
 
+html, body {
+  height: 100%;
+}
+
 body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   color: $black;
+  letter-spacing: 0.1px !important;
+}
+
+a {
+  text-decoration: none;
 }
 
 .container {
+  max-width: 1380px;
+  margin: 1rem auto;
   padding: 0 1rem;
 }
 
-.card {
-  border-radius: 4px;
-  -webkit-border-radius: 4px;
-  -moz-border-radius: 4px;
-  -ms-border-radius: 4px;
-  -o-border-radius: 4px;
-}
 
 .round-img {
   border-radius: 100px;
@@ -49,6 +56,8 @@ body {
 
 .title {
   color: $black;
+  font-size: 1.2rem;
+  font-weight: 500;
 }
 
 .email {
