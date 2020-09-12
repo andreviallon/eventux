@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CropperOptions } from 'ngx-cropperjs-wrapper';
 
 @Component({
@@ -27,7 +27,7 @@ export class ImageCropperComponent implements OnInit, OnChanges {
   @Input() defaultImage: string;
   @Output() imageData: EventEmitter<File> = new EventEmitter();
 
-  constructor(private changeDetectorRef: ChangeDetectorRef, private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
   public fileInput: File | Blob = null;
   public options = {
@@ -40,15 +40,12 @@ export class ImageCropperComponent implements OnInit, OnChanges {
     if (this.defaultImage) {
       this.setDefaultImg();
     }
-    this.changeDetectorRef.markForCheck();
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
-    if (changes.defaultImage.currentValue !== changes.defaultImage.previousValue) {
+    if (this.defaultImage && changes.defaultImage.currentValue !== changes.defaultImage.previousValue) {
       this.setDefaultImg();
     }
-
-    this.changeDetectorRef.markForCheck();
   }
 
   public setDefaultImg(): void {
