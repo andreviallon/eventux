@@ -17,11 +17,11 @@ import { getEventOverview } from 'src/app/utils/event-overview';
             <fa-icon [icon]="faEllipsisV"></fa-icon>
           </button>
           <mat-menu #menu="matMenu" xPosition="before">
-            <button mat-menu-item>
-              <a class="dropdown-item" (click)="edit()">Edit Event</a>
+            <button mat-menu-item (click)="edit()">
+              <a class="dropdown-item">Edit Event</a>
             </button>
-            <button mat-menu-item>
-              <a class="dropdown-item" (click)="delete()">Delete Event</a>
+            <button mat-menu-item (click)="delete()">
+              <a class="dropdown-item">Delete Event</a>
             </button>
           </mat-menu>
         </li>

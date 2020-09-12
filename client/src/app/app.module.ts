@@ -22,7 +22,6 @@ import { ManageEventsComponent } from './components/manage-event-page/manage-eve
 import { ManageEventCardComponent } from './components/manage-event-page/manage-event-card/manage-event-card.component';
 import { AngularSvgIconModule } from 'angular-svg-icon';
 import { AngularMyDatePickerModule } from 'angular-mydatepicker';
-import { DatePickerComponent } from './components/shared/date-picker/date-picker.component';
 import { EventCardComponent } from './components/shared/event-card/event-card.component';
 import { EventListComponent } from './components/shared/event-list/event-list.component';
 import { PageHeaderComponent } from './components/shared/page-header/page-header.component';
@@ -61,7 +60,6 @@ import { MatSelectModule } from '@angular/material/select';
     EventsFilterComponent,
     ManageEventsComponent,
     ManageEventCardComponent,
-    DatePickerComponent,
     EventCardComponent,
     EventListComponent,
     PageHeaderComponent,

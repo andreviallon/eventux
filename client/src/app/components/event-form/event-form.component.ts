@@ -9,7 +9,6 @@ import {
   ElementRef,
   OnChanges,
   SimpleChanges,
-  ChangeDetectorRef,
   AfterContentInit
 } from '@angular/core';
 import { IEvent, ICourseDate } from './../../state/event/event.model';
@@ -29,7 +28,7 @@ import * as moment from 'moment';
           <mat-form-field>
             <mat-label>Title</mat-label>
             <input matInput type="text" formControlName="title">
-            <mat-error *ngIf="eventForm.get('title').invalid && eventForm.get('title').touched">
+            <mat-error *ngIf="eventForm.get('title').hasError('required')">
               Title is required
             </mat-error>
           </mat-form-field>
@@ -40,7 +39,7 @@ import * as moment from 'moment';
               <input matInput [matDatepicker]="picker" formControlName="date">
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
-              <mat-error *ngIf="eventForm.get('date').invalid && eventForm.get('date').touched">
+              <mat-error *ngIf="eventForm.get('date').hasError('required')">
                 Date is required
               </mat-error>
             </mat-form-field>
@@ -49,7 +48,7 @@ import * as moment from 'moment';
               <mat-label>Price</mat-label>
               <input matInput type="number" formControlName="price">
               <span matPrefix>$ &nbsp;</span>
-              <mat-error *ngIf="eventForm.get('price').invalid && eventForm.get('price').touched">
+              <mat-error *ngIf="eventForm.get('price').hasError('required')">
                 Price is required
               </mat-error>
             </mat-form-field>
