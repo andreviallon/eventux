@@ -1,4 +1,5 @@
-import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, OnInit, Output, EventEmitter, Input, OnChanges, SimpleChanges, ChangeDetectorRef } from '@angular/core';
 import { CropperOptions } from 'ngx-cropperjs-wrapper';
 
 @Component({
@@ -23,10 +24,12 @@ import { CropperOptions } from 'ngx-cropperjs-wrapper';
 })
 export class ImageCropperComponent implements OnInit, OnChanges {
 
-  @Input() defaultImage;
+  @Input() defaultImage: string;
   @Output() imageData: EventEmitter<File> = new EventEmitter();
 
-  public fileInput: File = null;
+  constructor(private changeDetectorRef: ChangeDetectorRef, private http: HttpClient) {}
+
+  public fileInput: File | Blob = null;
   public options = {
     scalable: false,
     zoomable: false,
@@ -35,15 +38,25 @@ export class ImageCropperComponent implements OnInit, OnChanges {
 
   public ngOnInit(): void {
     if (this.defaultImage) {
-      this.fileInput = this.defaultImage;
-      console.log('this.defaultImage', this.defaultImage);
+      this.setDefaultImg();
     }
+    this.changeDetectorRef.markForCheck();
   }
 
   public ngOnChanges(changes: SimpleChanges): void {
     if (changes.defaultImage.currentValue !== changes.defaultImage.previousValue) {
-      this.fileInput = this.defaultImage;
+      this.setDefaultImg();
     }
+
+    this.changeDetectorRef.markForCheck();
+  }
+
+  public setDefaultImg(): void {
+    this.http.get(this.defaultImage, { responseType: 'blob' }).subscribe(response => {
+      this.fileInput = response;
+    }, () => {
+      console.error('There was an error fetching the image');
+    });
   }
 
   public filePick(event: any): void {

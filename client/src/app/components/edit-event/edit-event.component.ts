@@ -1,4 +1,4 @@
-import { ICourseDate, IEvent } from './../../state/event/event.model';
+import { IEvent } from './../../state/event/event.model';
 import { Component, OnInit } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { VenueState } from 'src/app/state/venue/venue.state';

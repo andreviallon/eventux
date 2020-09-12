@@ -26,12 +26,6 @@ export class EventState {
     return state.events;
   }
 
-  // @Selector()
-  // static getSelectedEvent(state: EventStateModel): IEvent {
-  //   const event = state.events.find(e => e._id === state.selectedEventId);
-  //   return event;
-  // }
-
   static getEvent(id: string) {
     return createSelector(
       [EVENT_STATE],
@@ -168,7 +162,6 @@ export class EventState {
         state.selectedEventId = id;
         return state;
       });
-
   }
 
   @Action(EditEvent)

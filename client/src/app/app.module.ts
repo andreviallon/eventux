@@ -34,7 +34,6 @@ import { OrderPageComponent } from './components/order-page/order-page.component
 import { OrderSummaryComponent } from './components/order-summary/order-summary.component';
 import { EventPricePipe } from './pipes/event-price.pipe';
 import { CurrencyPipe } from '@angular/common';
-import { FilePipe } from './pipes/file.pipe';
 import { DatePipe } from './pipes/date.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -73,7 +72,6 @@ import { MatSelectModule } from '@angular/material/select';
     OrderPageComponent,
     OrderSummaryComponent,
     EventPricePipe,
-    FilePipe,
     DatePipe,
   ],
   imports: [

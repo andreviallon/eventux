@@ -10,7 +10,7 @@ import {
   OnChanges,
   SimpleChanges,
   ChangeDetectorRef,
-  AfterViewInit
+  AfterContentInit
 } from '@angular/core';
 import { IEvent, ICourseDate } from './../../state/event/event.model';
 import { ITeacher } from './../../state/teacher/teacher.model';
@@ -80,7 +80,7 @@ import * as moment from 'moment';
               <mat-form-field>
                 <mat-label>Topics</mat-label>
                 <div>
-                  <input matInput type="text" (keyup.enter)="addTag($event)" formControlName="tag">
+                  <input matInput type="text" (keyup.enter)="addTag()" formControlName="tag">
                 </div>
               </mat-form-field>
               <button mat-flat-button color="primary" class="add-tag-btn" (click)="addTag()">Add</button>
@@ -100,7 +100,7 @@ import * as moment from 'moment';
             <textarea matInput rows="5" formControlName="description"></textarea>
           </mat-form-field>
 
-          <app-image-cropper [defaultImage]="event.img | file | async" (imageData)="imageData($event)"></app-image-cropper>
+          <app-image-cropper [defaultImage]="event.img" (imageData)="imageData($event)"></app-image-cropper>
       </section>
 
       <section>
@@ -115,7 +115,6 @@ import * as moment from 'moment';
           </mat-form-field>
 
           <ng-container *ngIf="selectedVenue">
-          <p>venue selected</p>
             <div class="field">
               <p class="details-title">Venue details</p>
               <div class="flex-container">
@@ -173,7 +172,7 @@ import * as moment from 'moment';
   styleUrls: ['./event-form.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class EventFormComponent implements OnInit, OnChanges, AfterViewInit {
+export class EventFormComponent implements OnInit, OnChanges, AfterContentInit {
   @ViewChild('courseDate', { static: false }) date: ElementRef;
 
   @Input() event: IEvent;
@@ -192,7 +191,7 @@ export class EventFormComponent implements OnInit, OnChanges, AfterViewInit {
 
   public eventForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private changeDetector: ChangeDetectorRef) { }
+  constructor(private formBuilder: FormBuilder) { }
 
   public ngOnInit(): void {
     this.eventForm = this.formBuilder.group({
@@ -222,7 +221,7 @@ export class EventFormComponent implements OnInit, OnChanges, AfterViewInit {
     }
   }
 
-  public ngAfterViewInit(): void {
+  public ngAfterContentInit(): void {
     if (this.teachers) {
       this.populateTeacherForm();
     }
@@ -230,8 +229,6 @@ export class EventFormComponent implements OnInit, OnChanges, AfterViewInit {
     if (this.venues) {
       this.populateVenueForm();
     }
-
-    this.changeDetector.markForCheck();
   }
 
   public populateTeacherForm(): void {
@@ -255,20 +252,18 @@ export class EventFormComponent implements OnInit, OnChanges, AfterViewInit {
   public selectVenue(venueId: string): void {
     this.eventForm.get('venueId').setValue(venueId);
     this.selectedVenue = this.venues.find(venue => venue._id === venueId);
-    console.log('this selected venue', this.selectedVenue);
   }
 
   public selectTeacher(teacherId: string): void {
     this.eventForm.get('teacherId').setValue(teacherId);
     this.selectedTeacher = this.teachers.find(teacher => teacher._id === teacherId);
-    this.changeDetector.markForCheck();
   }
 
   public imageData($event: string): void {
     this.eventForm.get('imageData').setValue($event);
   }
 
-  public addTag(tag?): void {
+  public addTag(): void {
     const newTag = this.eventForm.get('tag').value.trim();
     if (newTag) {
       this.tags.push(newTag);
@@ -280,7 +275,7 @@ export class EventFormComponent implements OnInit, OnChanges, AfterViewInit {
     this.tags.splice(index, 1);
   }
 
-  public submitEventForm() {
+  public submitEventForm(): void {
     const momentDate = moment(this.eventForm.get('date').value);
     const formattedDate: ICourseDate = {
       day: +momentDate.format('DD'),
