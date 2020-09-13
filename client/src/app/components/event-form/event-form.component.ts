@@ -5,19 +5,16 @@ import {
   Output,
   EventEmitter,
   ViewEncapsulation,
-  ViewChild,
-  ElementRef,
   OnChanges,
   SimpleChanges,
   AfterContentInit
 } from '@angular/core';
-import { IEvent, ICourseDate } from './../../state/event/event.model';
+import { IEvent } from './../../state/event/event.model';
 import { ITeacher } from './../../state/teacher/teacher.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { times } from 'src/app/utils/times';
 import { IVenue } from './../../state/venue/venue.model';
 import { faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
-import * as moment from 'moment';
 
 @Component({
   selector: 'app-event-form',
@@ -172,8 +169,6 @@ import * as moment from 'moment';
   encapsulation: ViewEncapsulation.None
 })
 export class EventFormComponent implements OnInit, OnChanges, AfterContentInit {
-  @ViewChild('courseDate', { static: false }) date: ElementRef;
-
   @Input() event: IEvent;
   @Input() venues: IVenue[];
   @Input() teachers: ITeacher[];
@@ -195,7 +190,7 @@ export class EventFormComponent implements OnInit, OnChanges, AfterContentInit {
   public ngOnInit(): void {
     this.eventForm = this.formBuilder.group({
       title: [this.event.title, Validators.required],
-      date: [{ date: this.event.courseDate }, Validators.required],
+      date: [this.event.date, Validators.required],
       price: [this.event.price, Validators.required],
       startTime: [this.event.startTime],
       endTime: [this.event.endTime],
@@ -275,17 +270,10 @@ export class EventFormComponent implements OnInit, OnChanges, AfterContentInit {
   }
 
   public submitEventForm(): void {
-    const momentDate = moment(this.eventForm.get('date').value);
-    const formattedDate: ICourseDate = {
-      day: +momentDate.format('DD'),
-      month: +momentDate.format('MM'),
-      year: +momentDate.format('YYYY')
-    };
-
     const form: IEvent = {
       title: this.eventForm.value.title.trim(),
       description: this.eventForm.value.description,
-      courseDate: formattedDate,
+      date: this.eventForm.value.date,
       startTime: this.eventForm.value.startTime,
       endTime: this.eventForm.value.endTime,
       price: this.eventForm.value.price,

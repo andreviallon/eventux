@@ -5,7 +5,7 @@ export interface IEventIncTeacherAndVenue {
   _id?: string;
   title: string;
   description: string;
-  courseDate: ICourseDate;
+  date: string;
   startTime: string;
   endTime: string;
   price: number;
@@ -19,7 +19,7 @@ export interface IEvent {
   _id?: string;
   title: string;
   description: string;
-  courseDate: ICourseDate;
+  date: string;
   startTime: string;
   endTime: string;
   price: number;
@@ -37,10 +37,4 @@ export interface IEventOverview {
 export interface IEventProperty {
   title: string;
   content: string;
-}
-
-export interface ICourseDate {
-  day: number;
-  month: number;
-  year: number;
 }

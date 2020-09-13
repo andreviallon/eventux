@@ -6,6 +6,24 @@ import { InitEventState, DeleteEvent, EditEvent, SelectEvent } from './event.act
 import { Injectable } from '@angular/core';
 import { ImmutableContext } from '@ngxs-labs/immer-adapter';
 import axios from 'axios';
+import { ITeacher } from '../teacher/teacher.model';
+import { IVenue } from '../venue/venue.model';
+
+export const createEventIncTeacherAndVenue = (event: IEvent, teacher: ITeacher, venue: IVenue): IEventIncTeacherAndVenue => {
+  return {
+    _id: event._id,
+    title: event.title,
+    description: event.description,
+    courseDate: event.courseDate,
+    startTime: event.startTime,
+    endTime: event.endTime,
+    price: event.price,
+    tags: event.tags,
+    img: event.img,
+    venue,
+    teacher
+  };
+};
 
 export class EventStateModel {
   events: IEvent[];
@@ -43,45 +61,7 @@ export class EventState {
           const teacher = teacherState.teachers.filter(t => t._id === event.teacherId);
           const venue = venueState.venues.filter(v => v._id === event.venueId);
 
-          return {
-            _id: event._id,
-            title: event.title,
-            description: event.description,
-            courseDate: event.courseDate,
-            startTime: event.startTime,
-            endTime: event.endTime,
-            price: event.price,
-            tags: event.tags,
-            img: event.img,
-            venue: venue[0],
-            teacher: teacher[0]
-          };
-        });
-      }
-    );
-  }
-
-  static getNextEvents() {
-    return createSelector(
-      [EVENT_STATE, TEACHER_STATE, VENUE_STATE],
-      (state: EventStateModel, teacherState, venueState): IEventIncTeacherAndVenue[] => {
-        return state.events.slice(0, 6).map(event => {
-          const teacher = teacherState.teachers.filter(t => t._id === event.teacherId);
-          const venue = venueState.venues.filter(v => v._id === event.venueId);
-
-          return {
-            _id: event._id,
-            title: event.title,
-            description: event.description,
-            courseDate: event.courseDate,
-            startTime: event.startTime,
-            endTime: event.endTime,
-            price: event.price,
-            tags: event.tags,
-            img: event.img,
-            venue: venue[0],
-            teacher: teacher[0]
-          };
+          return createEventIncTeacherAndVenue(event, teacher[0], venue[0]);
         });
       }
     );
@@ -95,19 +75,7 @@ export class EventState {
         const teacher = teacherState.teachers.filter(t => t._id === event.teacherId);
         const venue = venueState.venues.filter(v => v._id === event.venueId);
 
-        return {
-          _id: event._id,
-          title: event.title,
-          description: event.description,
-          courseDate: event.courseDate,
-          startTime: event.startTime,
-          endTime: event.endTime,
-          price: event.price,
-          tags: event.tags,
-          img: event.img,
-          venue: venue[0],
-          teacher: teacher[0]
-        };
+        return createEventIncTeacherAndVenue(event, teacher[0], venue[0]);
       }
     );
   }
@@ -120,19 +88,21 @@ export class EventState {
         const teacher = teacherState.teachers.filter(t => t._id === event.teacherId);
         const venue = venueState.venues.filter(v => v._id === event.venueId);
 
-        return {
-          _id: event._id,
-          title: event.title,
-          description: event.description,
-          courseDate: event.courseDate,
-          startTime: event.startTime,
-          endTime: event.endTime,
-          price: event.price,
-          tags: event.tags,
-          img: event.img,
-          venue: venue[0],
-          teacher: teacher[0]
-        };
+        return createEventIncTeacherAndVenue(event, teacher[0], venue[0]);
+      }
+    );
+  }
+
+  static getUpcomingEvents() {
+    return createSelector(
+      [EVENT_STATE, TEACHER_STATE, VENUE_STATE],
+      (state: EventStateModel, teacherState, venueState): IEventIncTeacherAndVenue[] => {
+        return state.events.slice(0, 6).map(event => {
+          const teacher = teacherState.teachers.filter(t => t._id === event.teacherId);
+          const venue = venueState.venues.filter(v => v._id === event.venueId);
+
+          return createEventIncTeacherAndVenue(event, teacher[0], venue[0]);
+        });
       }
     );
   }
@@ -140,7 +110,6 @@ export class EventState {
   @Action(InitEventState)
   @ImmutableContext()
   async initState({ setState }: StateContext<EventStateModel>, { }: InitEventState) {
-
     try {
       const eventsResponse = await axios.get('api/v1/events');
       const event = eventsResponse.data.data;

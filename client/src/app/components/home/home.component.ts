@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { EventState } from '../../state/event/event.state';
 import { Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { SvgIconRegistryService } from 'angular-svg-icon';
 import { IEventIncTeacherAndVenue } from './../../state/event/event.model';
+import { EventState } from 'src/app/state/event/event.state';
 
 @Component({
   selector: 'app-home',
@@ -38,8 +38,7 @@ import { IEventIncTeacherAndVenue } from './../../state/event/event.model';
 })
 export class HomeComponent {
 
-  @Select(EventState.getEventsIncTeacherAndVenue()) events$: Observable<IEventIncTeacherAndVenue[]>;
-
+  @Select(EventState.getUpcomingEvents()) events$: Observable<IEventIncTeacherAndVenue[]>;
   constructor(private iconReg: SvgIconRegistryService) { }
 
 }
