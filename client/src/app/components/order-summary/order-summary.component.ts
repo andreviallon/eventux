@@ -19,7 +19,7 @@ import { IEventIncTeacherAndVenue } from '../../state/event/event.model';
         <p>{{ event.venue.phoneNumber }}</p>
         <h4>Schedule</h4>
         <p>From {{ event.startTime }} to {{ event.endTime }}</p>
-        <p>{{ event.courseDate | date }}</p>
+        <p>{{ event.date | date }}</p>
       </div>
     </div>
   `,

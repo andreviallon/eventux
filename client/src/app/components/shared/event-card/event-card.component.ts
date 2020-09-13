@@ -17,7 +17,7 @@ import { IEventIncTeacherAndVenue } from './../../../state/event/event.model';
             </mat-card-header>
             <mat-card-content>
               <p>{{ event.venue.city }}, {{ event.venue.country }}</p>
-              <p>{{ event.courseDate | date }}</p>
+              <p>{{ event.date | date }}</p>
               <mat-chip-list>
                 <mat-chip *ngFor="let tag of event.tags">{{ tag }}</mat-chip>
               </mat-chip-list>

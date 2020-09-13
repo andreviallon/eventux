@@ -11,7 +11,7 @@ const EventSchema = new mongoose.Schema({
         trim: true,
         required: false
     },
-    courseDate: {
+    date: {
         type: String,
         required: [true, 'Please add an event date']
     },
@@ -35,7 +35,7 @@ const EventSchema = new mongoose.Schema({
     },
     img: {
         type: String,
-        // required: [true, 'Please add an image']
+        required: [true, 'Please add an image']
     },
     venueId: {
         type: String

@@ -95,7 +95,7 @@ import { ActivatedRoute } from '@angular/router';
             <div class="schedule-container">
                 <h3 class="title">Schedule</h3>
                 <p>From {{ event.startTime }} to {{ event.endTime }}</p>
-                <p>{{ event.courseDate | date }}</p>
+                <p>{{ event.date | date }}</p>
             </div>
             <div class="share-container">
                 <h3 class="title ">Share this course</h3>

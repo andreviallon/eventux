@@ -10,7 +10,7 @@ export function getEventOverview(event: IEventIncTeacherAndVenue): IEventOvervie
       },
       {
         title: 'date',
-        content: `${event.courseDate.day}/${event.courseDate.month}/${event.courseDate.year}`
+        content: `ds`
       },
       {
         title: 'teacher',
