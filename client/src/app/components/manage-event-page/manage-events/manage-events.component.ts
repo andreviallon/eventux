@@ -1,10 +1,10 @@
-import { IEvent, IEventIncTeacherAndVenue } from './../../../state/event/event.model';
-import { Observable, Subscription } from 'rxjs';
+import { IEventOverview } from './../../../state/event/event.model';
+import { Observable } from 'rxjs';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { Select, Store } from '@ngxs/store';
 import { EventState } from 'src/app/state/event/event.state';
-import { EditEvent, DeleteEvent } from 'src/app/state/event/event.actions';
+import { DeleteEvent } from 'src/app/state/event/event.actions';
 
 @Component({
   selector: 'app-manage-events',
@@ -36,9 +36,7 @@ export class ManageEventsComponent {
   public title = 'Manage Events';
   public buttonName = 'Add Event';
 
-  private subscription = new Subscription();
-
-  @Select(EventState.getEventsIncTeacherAndVenue()) events$: Observable<IEventIncTeacherAndVenue[]>;
+  @Select(EventState.getEventsOverview()) events$: Observable<IEventOverview[]>;
 
   constructor(private store: Store, private router: Router) { }
 

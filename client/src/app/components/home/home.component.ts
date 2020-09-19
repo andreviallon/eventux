@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
-import { Observable, Subscription } from 'rxjs';
+import { Store } from '@ngxs/store';
+import { Subscription } from 'rxjs';
 import { SvgIconRegistryService } from 'angular-svg-icon';
 import { IEventIncTeacherAndVenue } from './../../state/event/event.model';
 import { EventState } from 'src/app/state/event/event.state';

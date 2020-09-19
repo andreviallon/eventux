@@ -1,7 +1,7 @@
 import { VENUE_STATE } from './../venue/venue.state';
 import { TEACHER_STATE } from './../teacher/teacher.state';
 import { State, Selector, Action, StateContext, createSelector, StateToken } from '@ngxs/store';
-import { IEvent, IEventIncTeacherAndVenue } from './event.model';
+import { IEvent, IEventIncTeacherAndVenue, IEventOverview } from './event.model';
 import { InitEventState, DeleteEvent, EditEvent, SelectEvent } from './event.actions';
 import { Injectable } from '@angular/core';
 import { ImmutableContext } from '@ngxs-labs/immer-adapter';
@@ -97,35 +97,51 @@ export class EventState {
     return createSelector(
       [EVENT_STATE, TEACHER_STATE, VENUE_STATE],
       (state: EventStateModel, teacherState, venueState): IEventIncTeacherAndVenue[] => {
-
-        console.log('get upcoming events', state.events);
-
-        // if (state.events) {
-        //   const sortedEvents = state.events.sort((a, b) => {
-        //     const dateA = new Date(a.date);
-        //     const dateB = new Date(b.date);
-
-        //     // console.log('dateB', dateA - dateB);
-        //     // return dateA - dateB;
-        //   });
-
-        //   console.log('sortedEvents', sortedEvents);
-
-        //   return sortedEvents.slice(0, 6).map(event => {
-        //     const teacher = teacherState.teachers.filter(t => t._id === event.teacherId);
-        //     const venue = venueState.venues.filter(v => v._id === event.venueId);
-
-        //     return createEventIncTeacherAndVenue(event, teacher[0], venue[0]);
-        //   });
-        // } else {
-        //   return [];
-        // }
-
         return state.events.slice(0, 6).map(event => {
           const teacher = teacherState.teachers.filter(t => t._id === event.teacherId);
           const venue = venueState.venues.filter(v => v._id === event.venueId);
 
           return createEventIncTeacherAndVenue(event, teacher[0], venue[0]);
+        });
+      }
+    );
+  }
+
+  static getEventsOverview() {
+    return createSelector(
+      [EVENT_STATE, TEACHER_STATE, VENUE_STATE],
+      (state: EventStateModel, teacherState, venueState): IEventOverview[] => {
+        return state.events.map(event => {
+          const teacher = teacherState.teachers.filter(t => t._id === event.teacherId);
+          const venue = venueState.venues.filter(v => v._id === event.venueId);
+
+          console.log('venue', venue);
+
+          return {
+            _id: event._id,
+            properties: [
+              {
+                title: 'name',
+                content: event.title
+              },
+              {
+                title: 'date',
+                content: event.date
+              },
+              {
+                title: 'teacher',
+                content: `${teacher[0].firstName} ${teacher[0].lastName}`
+              },
+              {
+                title: 'venue',
+                content: venue[0].address
+              },
+              {
+                title: 'city',
+                content: venue[0].city
+              }
+            ]
+          };
         });
       }
     );

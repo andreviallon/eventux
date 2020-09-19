@@ -1,16 +1,21 @@
-import { IEventOverview, IEventIncTeacherAndVenue } from 'src/app/state/event/event.model';
-import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import { IEventOverview } from 'src/app/state/event/event.model';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { faEllipsisV, IconDefinition } from '@fortawesome/free-solid-svg-icons';
-import { getEventOverview } from 'src/app/utils/event-overview';
 
 @Component({
   selector: 'app-manage-event-card',
   template: `
     <mat-card [routerLink]="['/event', event._id]">
       <ul class="content flex-container">
-        <li *ngFor="let eventProperty of eventOverview.properties" class="list-item">
+        <li *ngFor="let eventProperty of event.properties" class="list-item">
           <p class="overview-title">{{ eventProperty.title }}</p>
-          <p class="overview-content">{{ eventProperty.content }}</p>
+          <ng-container *ngIf="eventProperty.title === 'date'; then dateProperty; else otherProperty;"></ng-container>
+          <ng-template #dateProperty>
+            <p class="overview-content">{{ eventProperty.content | date }}</p>
+          </ng-template>
+          <ng-template #otherProperty>
+            <p class="overview-content">{{ eventProperty.content }}</p>
+          </ng-template>
         </li>
         <li>
           <button mat-icon-button [matMenuTriggerFor]="menu" (click)="stopPropagation($event)">
@@ -30,9 +35,9 @@ import { getEventOverview } from 'src/app/utils/event-overview';
   `,
   styleUrls: ['./manage-event-card.component.scss']
 })
-export class ManageEventCardComponent implements OnInit {
+export class ManageEventCardComponent {
 
-  @Input() event: IEventIncTeacherAndVenue;
+  @Input() event: IEventOverview;
   @Output() editEvent: EventEmitter<string> = new EventEmitter();
   @Output() deleteEvent: EventEmitter<string> = new EventEmitter();
 
@@ -41,8 +46,9 @@ export class ManageEventCardComponent implements OnInit {
   public showDropdown = false;
 
   ngOnInit() {
-    this.eventOverview = getEventOverview(this.event);
+    console.log('event', this.event);
   }
+
 
   public toogleDropdown(event): void {
     event.stopPropagation();
