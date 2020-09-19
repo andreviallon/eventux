@@ -5,9 +5,9 @@ import { IEvent, IEventIncTeacherAndVenue } from './event.model';
 import { InitEventState, DeleteEvent, EditEvent, SelectEvent } from './event.actions';
 import { Injectable } from '@angular/core';
 import { ImmutableContext } from '@ngxs-labs/immer-adapter';
-import axios from 'axios';
 import { ITeacher } from '../teacher/teacher.model';
 import { IVenue } from '../venue/venue.model';
+import axios from 'axios';
 
 export const createEventIncTeacherAndVenue = (event: IEvent, teacher: ITeacher, venue: IVenue): IEventIncTeacherAndVenue => {
   return {
@@ -97,6 +97,30 @@ export class EventState {
     return createSelector(
       [EVENT_STATE, TEACHER_STATE, VENUE_STATE],
       (state: EventStateModel, teacherState, venueState): IEventIncTeacherAndVenue[] => {
+
+        console.log('get upcoming events', state.events);
+
+        // if (state.events) {
+        //   const sortedEvents = state.events.sort((a, b) => {
+        //     const dateA = new Date(a.date);
+        //     const dateB = new Date(b.date);
+
+        //     // console.log('dateB', dateA - dateB);
+        //     // return dateA - dateB;
+        //   });
+
+        //   console.log('sortedEvents', sortedEvents);
+
+        //   return sortedEvents.slice(0, 6).map(event => {
+        //     const teacher = teacherState.teachers.filter(t => t._id === event.teacherId);
+        //     const venue = venueState.venues.filter(v => v._id === event.venueId);
+
+        //     return createEventIncTeacherAndVenue(event, teacher[0], venue[0]);
+        //   });
+        // } else {
+        //   return [];
+        // }
+
         return state.events.slice(0, 6).map(event => {
           const teacher = teacherState.teachers.filter(t => t._id === event.teacherId);
           const venue = venueState.venues.filter(v => v._id === event.venueId);

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IEventIncTeacherAndVenue } from 'src/app/state/event/event.model';
 
 @Component({
