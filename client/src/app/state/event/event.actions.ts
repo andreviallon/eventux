@@ -1,3 +1,4 @@
+import { IEvent } from './event.model';
 export class InitEventState {
   static readonly type = '[Event API] Init Event State';
 
@@ -13,7 +14,7 @@ export class SelectEvent {
 export class EditEvent {
   static readonly type = '[Event] Edit Event';
 
-  constructor(public id: string) { }
+  constructor(public event: IEvent) { }
 }
 
 export class DeleteEvent {

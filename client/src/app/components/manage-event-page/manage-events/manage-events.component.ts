@@ -32,7 +32,6 @@ import { DeleteEvent } from 'src/app/state/event/event.actions';
   styleUrls: ['./manage-events.component.scss']
 })
 export class ManageEventsComponent {
-
   public title = 'Manage Events';
   public buttonName = 'Add Event';
 
@@ -51,5 +50,4 @@ export class ManageEventsComponent {
   deleteEvent($event: string): void {
     this.store.dispatch(new DeleteEvent($event));
   }
-
 }

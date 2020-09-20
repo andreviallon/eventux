@@ -45,11 +45,6 @@ export class ManageEventCardComponent {
   public faEllipsisV: IconDefinition = faEllipsisV;
   public showDropdown = false;
 
-  ngOnInit() {
-    console.log('event', this.event);
-  }
-
-
   public toogleDropdown(event): void {
     event.stopPropagation();
     this.showDropdown = !this.showDropdown;

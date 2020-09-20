@@ -27,11 +27,10 @@ export class CreateEventComponent {
   public title = 'Add Event';
   public submitFormBtnText = 'Create Event';
 
-  public date = new Date();
   public defaultEvent = {
-    title: 'title 1',
+    title: '',
     description: '',
-    courseDate: this.date,
+    courseDate: '',
     startTime: '',
     endTime: '',
     price: 0,

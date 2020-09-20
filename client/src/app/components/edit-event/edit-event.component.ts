@@ -7,7 +7,8 @@ import { IVenue } from 'src/app/state/venue/venue.model';
 import { TeacherState } from 'src/app/state/teacher/teacher.state';
 import { ITeacher } from 'src/app/state/teacher/teacher.model';
 import { EventState } from 'src/app/state/event/event.state';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { EditEvent } from 'src/app/state/event/event.actions';
 
 @Component({
   selector: 'app-edit-event',
@@ -38,7 +39,7 @@ export class EditEventComponent implements OnInit {
   @Select(VenueState.getVenues) venues$: Observable<IVenue[]>;
   @Select(TeacherState.getTeachers) teachers$: Observable<ITeacher[]>;
 
-  constructor(private store: Store, private route: ActivatedRoute) {}
+  constructor(private store: Store, private route: ActivatedRoute, private router: Router) {}
 
   public ngOnInit(): void {
     this.subscription.add(
@@ -54,5 +55,7 @@ export class EditEventComponent implements OnInit {
 
   public editEvent(event: IEvent): void {
     console.log(event);
+    this.store.dispatch(new EditEvent(event));
+    this.router.navigate(['manage-events']);
   }
 }

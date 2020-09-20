@@ -115,8 +115,6 @@ export class EventState {
           const teacher = teacherState.teachers.filter(t => t._id === event.teacherId);
           const venue = venueState.venues.filter(v => v._id === event.venueId);
 
-          console.log('venue', venue);
-
           return {
             _id: event._id,
             properties: [
@@ -174,9 +172,21 @@ export class EventState {
   }
 
   @Action(EditEvent)
-  editEvent({ patchState }: StateContext<EventStateModel>, { id }: EditEvent) {
-    patchState({
-    });
+  @ImmutableContext()
+  async editEvent({ setState }: StateContext<EventStateModel>, { event }: EditEvent) {
+    try {
+      const eventsResponse = await axios.patch(`api/v1/events/${event._id}`, event);
+      const updatedEvent = eventsResponse.data.data;
+
+      setState((state: EventStateModel) => {
+        const foundIndex = state.events.findIndex(e => e._id === updatedEvent._id);
+        state.events[foundIndex] = updatedEvent;
+        return state;
+      });
+
+    } catch (err) {
+      throw err;
+    }
   }
 
   @Action(DeleteEvent)

@@ -25,7 +25,7 @@ import { faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
           <mat-form-field>
             <mat-label>Title</mat-label>
             <input matInput type="text" formControlName="title">
-            <mat-error *ngIf="eventForm.get('title').hasError('required')">
+            <mat-error *ngIf="eventForm.get('title').hasError('required') && eventForm.get('title').dirty">
               Title is required
             </mat-error>
           </mat-form-field>
@@ -36,7 +36,7 @@ import { faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
               <input matInput [matDatepicker]="picker" formControlName="date">
               <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
               <mat-datepicker #picker></mat-datepicker>
-              <mat-error *ngIf="eventForm.get('date').hasError('required')">
+              <mat-error *ngIf="eventForm.get('date').hasError('required') && eventForm.get('date').dirty">
                 Date is required
               </mat-error>
             </mat-form-field>
@@ -159,7 +159,7 @@ import { faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
 
         <div class="buttons">
           <button mat-flat-button routerLink="/manage-events">Cancel</button>
-          <button mat-flat-button color="primary" (click)="submitEventForm()">{{ submitFormBtnText }}</button>
+          <button mat-flat-button color="primary" (click)="submitEventForm()" [disabled]="!eventForm.valid">{{ submitFormBtnText }}</button>
         </div>
 
     </form>
@@ -201,7 +201,7 @@ export class EventFormComponent implements OnInit, OnChanges, AfterContentInit {
       teacherId: [this.event.teacherId, Validators.required],
     });
 
-    this.tags = this.event.tags;
+    this.tags = [...this.event.tags];
     this.startTimes = times;
   }
 
@@ -271,6 +271,7 @@ export class EventFormComponent implements OnInit, OnChanges, AfterContentInit {
 
   public submitEventForm(): void {
     const form: IEvent = {
+      _id: this.event._id,
       title: this.eventForm.value.title.trim(),
       description: this.eventForm.value.description,
       date: this.eventForm.value.date,
