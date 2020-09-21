@@ -2,7 +2,7 @@ import { VENUE_STATE } from './../venue/venue.state';
 import { TEACHER_STATE } from './../teacher/teacher.state';
 import { State, Selector, Action, StateContext, createSelector, StateToken } from '@ngxs/store';
 import { IEvent, IEventIncTeacherAndVenue, IEventOverview } from './event.model';
-import { InitEventState, DeleteEvent, EditEvent, SelectEvent } from './event.actions';
+import { InitEventState, DeleteEvent, EditEvent, SelectEvent, CreateEvent } from './event.actions';
 import { Injectable } from '@angular/core';
 import { ImmutableContext } from '@ngxs-labs/immer-adapter';
 import { ITeacher } from '../teacher/teacher.model';
@@ -169,6 +169,25 @@ export class EventState {
         state.selectedEventId = id;
         return state;
       });
+  }
+
+  @Action(CreateEvent)
+  @ImmutableContext()
+  async createEvent({ setState }: StateContext<EventStateModel>, { event }: CreateEvent) {
+    try {
+      console.log('event used for request', event);
+      const eventsResponse = await axios.post('api/v1/events', event);
+      console.log('eventsResponse', eventsResponse);
+      // const newEvent = eventsResponse.data.data;
+      // console.log('newEvent', newEvent);
+
+      setState((state: EventStateModel) => {
+        return state;
+      });
+
+    } catch (err) {
+      throw err;
+    }
   }
 
   @Action(EditEvent)

@@ -57,10 +57,12 @@ export class ImageCropperComponent implements OnInit, OnChanges {
   }
 
   public filePick(event: any): void {
+    console.log('event =>', event);
     this.fileInput = event.target.files.item(0);
   }
 
   public fileChange(file: File): void {
+    console.log('file', file);
     this.imageData.emit(file);
   }
 

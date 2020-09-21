@@ -253,8 +253,9 @@ export class EventFormComponent implements OnInit, OnChanges, AfterContentInit {
     this.selectedTeacher = this.teachers.find(teacher => teacher._id === teacherId);
   }
 
-  public imageData($event: string): void {
-    this.eventForm.get('imageData').setValue($event);
+  public imageData(event: string): void {
+    console.log('imageData', event);
+    this.eventForm.get('imageData').setValue(event);
   }
 
   public addTag(): void {
@@ -271,7 +272,6 @@ export class EventFormComponent implements OnInit, OnChanges, AfterContentInit {
 
   public submitEventForm(): void {
     const form: IEvent = {
-      _id: this.event._id,
       title: this.eventForm.value.title.trim(),
       description: this.eventForm.value.description,
       date: this.eventForm.value.date,
@@ -283,6 +283,13 @@ export class EventFormComponent implements OnInit, OnChanges, AfterContentInit {
       venueId: this.eventForm.value.venueId,
       teacherId: this.eventForm.value.teacherId
     };
+
+    if (this.event._id) {
+      form._id = this.event._id;
+    }
+
+    console.log('form', form);
+    console.log('this.eventForm.value.imageData', this.eventForm.value.imageData);
 
     this.submitForm.emit(form);
   }

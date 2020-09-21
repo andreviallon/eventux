@@ -11,6 +11,12 @@ export class SelectEvent {
   constructor(public id: string) { }
 }
 
+export class CreateEvent {
+  static readonly type = '[Event] Create Event';
+
+  constructor(public event: IEvent) { }
+}
+
 export class EditEvent {
   static readonly type = '[Event] Edit Event';
 

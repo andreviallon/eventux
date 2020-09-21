@@ -1,6 +1,6 @@
 import { IEvent } from './../../state/event/event.model';
 import { Component, OnInit } from '@angular/core';
-import { Select, Store } from '@ngxs/store';
+import { Actions, ofActionSuccessful, Select, Store } from '@ngxs/store';
 import { VenueState } from 'src/app/state/venue/venue.state';
 import { Observable, Subscription } from 'rxjs';
 import { IVenue } from 'src/app/state/venue/venue.model';
@@ -39,7 +39,7 @@ export class EditEventComponent implements OnInit {
   @Select(VenueState.getVenues) venues$: Observable<IVenue[]>;
   @Select(TeacherState.getTeachers) teachers$: Observable<ITeacher[]>;
 
-  constructor(private store: Store, private route: ActivatedRoute, private router: Router) {}
+  constructor(private store: Store, private route: ActivatedRoute, private router: Router, private actions$: Actions) {}
 
   public ngOnInit(): void {
     this.subscription.add(
@@ -51,11 +51,16 @@ export class EditEventComponent implements OnInit {
         this.event = event;
       })
     );
+
+    this.subscription.add(
+      this.actions$
+        .pipe(ofActionSuccessful(EditEvent))
+        .subscribe(() => this.router.navigate(['manage-events']))
+    );
   }
 
   public editEvent(event: IEvent): void {
     console.log(event);
     this.store.dispatch(new EditEvent(event));
-    this.router.navigate(['manage-events']);
   }
 }
