@@ -31,7 +31,7 @@
     "@ngxs/store": "^3.6.2-dev.master-eaa5d86",
     "angular-mydatepicker": "^0.9.4",
     "angular-svg-icon": "^9.2.0",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "immer": "^7.0.5",
     "ionicons": "^5.0.1",
     "moment": "^2.27.0",
